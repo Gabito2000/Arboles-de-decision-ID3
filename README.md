@@ -1,2 +1,2 @@
-# -rboles-de-desici-n-ID3
+# Arboles-de-decision-ID3
 Taréa 2 de aprendizage automatico
