@@ -49,7 +49,7 @@ Y = df.stroke
 #1022 test size porque es el 20%, 5110 datos en total
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=1022, random_state=42)
 
-dt_clf = tree.DecisionTreeClassifier(max_depth=10, criterion="entropy")
+dt_clf = tree.DecisionTreeClassifier(max_depth=4, criterion="entropy")
 dt_clf = dt_clf.fit(X_train, Y_train)
 
 Y_pred = dt_clf.predict (X_test)
