@@ -35,6 +35,7 @@ plt.show()
 
 
 df['bmi'] = df['bmi'].replace(['N/A'], [0.0])
+df['bmi'] = df['bmi'].fillna(0.0)
 df['ever_married'] = df['ever_married'].replace(['Yes', 'No'], [1,0])
 df['gender'] = df['gender'].replace(['Male', 'Female', 'Other'], [0,1,2])
 df['work_type'] = df['work_type'].replace(['Private', 'Self-employed', 'Govt_job', 'children', 'Never_worked'], [0,1,2,3,4])
@@ -42,7 +43,7 @@ df['Residence_type'] = df['Residence_type'].replace(['Urban', 'Rural'], [1,0])
 df['smoking_status'] = df['smoking_status'].replace(['formerly smoked', 'never smoked', 'smokes', 'Unknown'], [0,1,2,3])
 
 X = df[["gender", "age", "hypertension", "heart_disease", "ever_married", "work_type", "Residence_type",
-        "avg_glucose_level", "smoking_status"]]
+        "avg_glucose_level", "bmi", "smoking_status"]]
 Y = df.stroke
 
 #1022 test size porque es el 20%, 5110 datos en total
