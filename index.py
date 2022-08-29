@@ -94,7 +94,16 @@ class G02TreeNode():
         #valor, arboles o un valor de retorno
         def __init__(self, value):
                 self.Value = value
-                self.SubTree = None                
+                self.SubTree = None      
+
+class G02TreeContNode(G02TreeNode):
+        #valor, arboles o un valor de retorno
+        def __init__(self, valueFrom, valueTo):
+                super().__init__(valueFrom)
+                self.ValueFrom = valueFrom
+                self.ValueTo = valueTo
+                self.SubTree = None         
+  
 
 def GetColumnDescriptor(df, col):
         desc = [col]
@@ -128,6 +137,7 @@ def GetBestAtt(pdf): #retornar el mejor atributo para separara
 
 
 dfGlobal = df.copy()
+del dfGlobal["id"] #el id no puede ir ya que hace sobreajuste
 def ID3_DecisionTree(pdf):
         dataf = pdf.copy()
         #Elegir un atributo
@@ -137,7 +147,7 @@ def ID3_DecisionTree(pdf):
 
         #• Si todos los ej. tienen el mismo valor → etiquetar con ese valor
         uniqueStrokes = dataf.stroke.unique()
-        if(uniqueStrokes.size == 0):
+        if(uniqueStrokes.size == 1):
                 return G02TreeSheet(idColumn, uniqueStrokes[0])
         
         #• Si no me quedan atributos → etiquetar con el valor más común
@@ -154,8 +164,10 @@ def ID3_DecisionTree(pdf):
                 #๏ Genero una rama
                 node = G02TreeNode(vi)
                 #๏ Ejemplosvi={ejemplos en los cuales A=vi }
-                if(coldesc[1]): #es continuo                        
-                        ejemplosvi = dataf[dataf[idColumn] >= oldvalue and dataf[idColumn] < vi]
+                if(coldesc[1]): #es continuo   
+                        node = G02TreeContNode(oldvalue, vi)                     
+                        ejemplosvi = dataf[dataf[idColumn] >= oldvalue]
+                        ejemplosvi = ejemplosvi[ejemplosvi[idColumn] < vi]
                         oldvalue = vi
                 else: 
                         ejemplosvi = dataf[dataf[idColumn] == vi]
@@ -172,16 +184,4 @@ def ID3_DecisionTree(pdf):
                 
 
 
-              
-
-
-        
-         
-        #        
-        #        
-        #        ๏ En caso contrario → ID3(Ejemplosvi, Atributos -{A})
-        #         
-        return ret
-
-
-ID3_DecisionTree(df)
+ID3_DecisionTree(dfGlobal)
