@@ -58,3 +58,35 @@ print("F1 -> "+str(f1 (Y_test, Y_pred)))
 print("Accuracy -> "+str(acc (Y_test, Y_pred)))
 print("Precision -> "+str(precision (Y_test, Y_pred)))
 print("Recall -> "+str(recall (Y_test, Y_pred)))
+
+
+	
+"""
+Fase 1
+	- Acomodar datos en 1 archivo solo
+	- Ajustar tipos de datos
+	- rellenar datos faltantes
+	- Todos los valores a reales
+	- Enumerados: crear columnas binarias
+	- Normalizar los valores
+	
+Fase 2
+	- Separar conjuntos Entrenamiento, Validacion, Test
+	- Misma distribucion: aleatorio
+	
+"""
+
+"""
+ID3:
+Crear una raíz
+• Si todos los ej. tienen el mismo valor → etiquetar con ese valor
+• Si no me quedan atributos → etiquetar con el valor más común
+• En caso contrario:
+    ‣ La raíz pregunta por A, atributo que mejor clasifica los ejemplos
+    ‣ Para cada valor vi de A
+        ๏ Genero una rama 
+        ๏ Ejemplosvi={ejemplos en los cuales A=vi }
+        ๏ Si Ejemplosvi es vacío → etiquetar con el valor más probable
+        ๏ En caso contrario → ID3(Ejemplosvi, Atributos -{A})
+
+"""
