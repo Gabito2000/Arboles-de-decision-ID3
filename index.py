@@ -107,6 +107,21 @@ class G02TreeContNode(G02TreeNode):
                 self.ValueTo = valueTo
                 self.SubTree = None         
   
+def EvaluateTable(item, ID3_tree):        
+        if(ID3_tree is G02TreeSheet):
+                return ID3_tree.ReturnValue
+        for node in ID3_tree.Nodes:
+                v = item[node.IdColumn]
+                if(node is G02TreeContNode):                        
+                        if(v >= node.ValueFrom and v < node.ValidTo):
+                                return EvaluateTable(item, node.SubTree)
+                else:
+                        if(v == node.Value):
+                                return EvaluateTable(item, node.SubTree)
+
+        #Retornar un valor por defecto, por ejemplo el promedio de las hojas
+        return 0 #TODO
+
 
 def GetColumnDescriptor(df, col):
         desc = [col]
@@ -223,5 +238,9 @@ def ID3_DecisionTree(pdf):
 
 
 ID3_tree = ID3_DecisionTree(dfGlobal)
+
+for index, row in dfGlobal.iterrows():
+        EvaluateTable(row, ID3_tree)
+        break
 
 print(ID3_tree.__dict__)
