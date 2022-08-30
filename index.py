@@ -82,11 +82,15 @@ Fase 2
 	
 """
 
+#########################################################################################
+# ESPECIFICACION DE LAS CLASES PARA LA GENERACION DEL ARBOL
+#########################################################################################
 
 class G02Tree():
         def __init__(self, idColumn):
                 self.IdColumn = idColumn
                 self.Nodes= []
+                self.DefaultReturn = 0
 
 class G02TreeSheet(G02Tree):
         def __init__(self, idColumn, returnValue):
@@ -104,23 +108,10 @@ class G02TreeContNode():
                 self.Value = value
                 self.SubTree = None  
                 self.IsFirstSet = isFirstSet                      
-  
-def EvaluateTable(item, ID3_tree):        
-        if(type(ID3_tree) is G02TreeSheet):
-                return ID3_tree.ReturnValue
-        v = item[ID3_tree.IdColumn]
-        for node in ID3_tree.Nodes:                
-                if(type(node) == G02TreeContNode):    
-                        if(node.IsFirstSet and v <= node.Value):
-                                return EvaluateTable(item, node.SubTree) 
-                        if((not node.IsFirstSet) and v > node.Value):
-                                return EvaluateTable(item, node.SubTree)                                           
-                else:
-                        if(v == node.Value):
-                                return EvaluateTable(item, node.SubTree)
 
-        #Retornar un valor por defecto, por ejemplo el promedio de las hojas
-        return 0 #TODO
+#########################################################################################
+# FUNCIONES UTILES EN EL ALGORITMO ID3
+#########################################################################################
 
 def GetColumnDescriptor(df, col):        
         desc = [col]
@@ -200,16 +191,19 @@ def GetBestAtt(table): #retornar el mejor atributo para aplicar con Id3
         return bestAttr
 
 
+#########################################################################################
+# ALGORITMO ID3
+#########################################################################################
 
 dfGlobal = df.copy()
 del dfGlobal["id"] #el id no puede ir ya que hace sobreajuste
 
 def ID3_DecisionTree(pdf):
-        dataf = pdf.copy()
-        #Elegir un atributo
-        idColumn = GetBestAtt(dataf) # o Afuera de la funcion?        
+        dataf = pdf.copy()        
+        idColumn = GetBestAtt(dataf) #Elegir un atributo
         #Crear una raíz
         ret = G02Tree(idColumn)
+        ret.DefaultReturn = pdf.stroke.mode()
 
         #• Si todos los ej. tienen el mismo valor → etiquetar con ese valor
         uniqueStrokes = dataf.stroke.unique()
@@ -231,9 +225,8 @@ def ID3_DecisionTree(pdf):
                 #๏ Si Ejemplosvi es vacío → etiquetar con el valor más probable
                 if(len(ejemplosvi) == 0):
                         node.SubTree = G02TreeSheet(idColumn, dataf.stroke.mode())
-                else: #En caso contrario → ID3(Ejemplosvi, Atributos -{A})
-                        #Atributos -{A}
-                        del ejemplosvi[idColumn]
+                else: #En caso contrario → ID3(Ejemplosvi, Atributos -{A})                        
+                        del ejemplosvi[idColumn] #Atributos -{A}
                         node.SubTree = ID3_DecisionTree(ejemplosvi)
                 ret.Nodes.append(node)
 
@@ -243,9 +236,8 @@ def ID3_DecisionTree(pdf):
                 #๏ Si Ejemplosvi es vacío → etiquetar con el valor más probable
                 if(len(ejemplosvi) == 0):
                         node.SubTree = G02TreeSheet(idColumn, dataf.stroke.mode())
-                else: #En caso contrario → ID3(Ejemplosvi, Atributos -{A})
-                        #Atributos -{A}
-                        del ejemplosvi[idColumn]
+                else: #En caso contrario → ID3(Ejemplosvi, Atributos -{A})                        
+                        del ejemplosvi[idColumn] #Atributos -{A}
                         node.SubTree = ID3_DecisionTree(ejemplosvi)
                 ret.Nodes.append(node)  
         else:
@@ -256,15 +248,29 @@ def ID3_DecisionTree(pdf):
                         #๏ Si Ejemplosvi es vacío → etiquetar con el valor más probable
                         if(len(ejemplosvi) == 0):
                                 node.SubTree = G02TreeSheet(idColumn, dataf.stroke.mode())
-                        else: #En caso contrario → ID3(Ejemplosvi, Atributos -{A})
-                                #Atributos -{A}
-                                del ejemplosvi[idColumn]
+                        else: #En caso contrario → ID3(Ejemplosvi, Atributos -{A})                                
+                                del ejemplosvi[idColumn] #Atributos -{A}
                                 node.SubTree = ID3_DecisionTree(ejemplosvi)
                         ret.Nodes.append(node)
         
         return ret
                 
+def EvaluateTable(item, ID3_tree):        
+        if(type(ID3_tree) is G02TreeSheet):
+                return ID3_tree.ReturnValue
+        v = item[ID3_tree.IdColumn]
+        for node in ID3_tree.Nodes:                
+                if(type(node) == G02TreeContNode):    
+                        if(node.IsFirstSet and v <= node.Value):
+                                return EvaluateTable(item, node.SubTree) 
+                        if((not node.IsFirstSet) and v > node.Value):
+                                return EvaluateTable(item, node.SubTree)                                           
+                else:
+                        if(v == node.Value):
+                                return EvaluateTable(item, node.SubTree)
 
+        #Retornar un valor por defecto, por ejemplo el promedio de las hojas
+        return ID3_tree.DefaultReturn
 
 ID3_tree = ID3_DecisionTree(dfGlobal)
 
