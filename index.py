@@ -1,4 +1,6 @@
 from ast import For
+from datetime import date
+import json
 import math
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -222,4 +224,4 @@ def ID3_DecisionTree(pdf):
 
 ID3_tree = ID3_DecisionTree(dfGlobal)
 
-print(ID3_tree)
+print(ID3_tree.__dict__)
