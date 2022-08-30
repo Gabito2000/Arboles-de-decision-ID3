@@ -97,24 +97,24 @@ class G02TreeNode():
         #valor, arboles o un valor de retorno
         def __init__(self, value):
                 self.Value = value
-                self.SubTree = None      
-
-class G02TreeContNode(G02TreeNode):
+                self.SubTree = None     
+class G02TreeContNode():
         #valor, arboles o un valor de retorno
-        def __init__(self, valueFrom, valueTo):
-                super().__init__(valueFrom)
-                self.ValueFrom = valueFrom
-                self.ValueTo = valueTo
-                self.SubTree = None         
+        def __init__(self, value, isFirstSet):
+                self.Value = value
+                self.SubTree = None  
+                self.IsFirstSet = isFirstSet                      
   
 def EvaluateTable(item, ID3_tree):        
         if(type(ID3_tree) is G02TreeSheet):
                 return ID3_tree.ReturnValue
-        for node in ID3_tree.Nodes:
-                v = item[ID3_tree.IdColumn]
-                if(type(node) == G02TreeContNode):                        
-                        if(v >= node.ValueFrom and v < node.ValueTo):
-                                return EvaluateTable(item, node.SubTree)
+        v = item[ID3_tree.IdColumn]
+        for node in ID3_tree.Nodes:                
+                if(type(node) == G02TreeContNode):    
+                        if(node.IsFirstSet and v <= node.Value):
+                                return EvaluateTable(item, node.SubTree) 
+                        if((not node.IsFirstSet) and v > node.Value):
+                                return EvaluateTable(item, node.SubTree)                                           
                 else:
                         if(v == node.Value):
                                 return EvaluateTable(item, node.SubTree)
@@ -130,18 +130,28 @@ def GetColumnDescriptor(df, col):
                 #tomo solo la columna en cuestion y el stroke
                 aux = df[[col, "stroke"]]
                 #ordeno por la primer columna
-                aux = aux.sort_values(col)
-                values = np.array([])
-                stroke = -1
+                aux = aux.sort_values(col)                
+                currStroke = -1
+                vAnt  = 0 
+                bestCutvalue = -1
+                bestGain = -1
                 for index, row in aux.iterrows():
-                        if(stroke == -1):
-                                stroke = row[1]
-                        elif(stroke != row[1]):                                
-                                stroke = row[1]
-                                if(values[values == row[0]].size ==0):
-                                        values = np.append(values, row[0])
-                        #hay valores que que se repiten y tienen valores diferentes de stroke                        
-                values = np.append(values, sys.maxsize) #agrego un valor maximo para representar el ultimo rango
+                        if(currStroke == -1):
+                                currStroke = row[1]
+                        elif(currStroke != row[1]): #encontre un cambio, deberia calcular la ganancia y guardar ese valor                               
+                                currStroke = row[1]                                
+                                vCorte = (row[0] + vAnt)/2
+                                #calculamos la ganancia de esta divicion
+                                ejemplosvi = df[df[col] <= vCorte]
+                                gain = 1 - GetEntropy(ejemplosvi)*(len(ejemplosvi.index) / len(df.index) )
+                                ejemplosvi = df[df[col] > vCorte]
+                                gain = gain - GetEntropy(ejemplosvi)*(len(ejemplosvi.index) / len(df.index) )
+
+                                if(gain > bestGain):
+                                        bestGain = gain
+                                        bestCutvalue = vCorte
+                        vAnt = row[0]                       
+                values = np.array([bestCutvalue]) 
                 desc.append(values)
         else:
                 desc.append(df[col].value_counts().index)
@@ -160,20 +170,21 @@ def GetEntropy(table):
         return entropia
 
 def GetAttGanancia(table, colName): #Gan(S, Ded) = 1 − 1/4.E(SDed=Alta) − 2/4.E(SDed=Media) − 1/4.E(SDed=Baja)
-        coldesc = GetColumnDescriptor(table, colName)
-        oldvalue = 0
-        gAcumul = 1
-        for vi in coldesc[2]:
-                if(coldesc[1]): #es continuo
-                        ejemplosvi = table[table[colName] >= oldvalue]
-                        ejemplosvi = ejemplosvi[ejemplosvi[colName] < vi]
-                        oldvalue = vi
-                else:
+        coldesc = GetColumnDescriptor(table, colName)        
+        if(coldesc[1]):
+                vCorte = coldesc[2][0]
+                ejemplosvi = table[table[colName] <= vCorte]
+                gAcumul = 1 - GetEntropy(ejemplosvi)*(len(ejemplosvi.index) / len(table.index) )
+                ejemplosvi = table[table[colName] > vCorte]
+                gAcumul = gAcumul - GetEntropy(ejemplosvi)*(len(ejemplosvi.index) / len(table.index) )            
+                return gAcumul
+        else:
+                gAcumul = 1
+                for vi in coldesc[2]:
                         ejemplosvi = table[table[colName] == vi]
+                        gAcumul = gAcumul - GetEntropy(ejemplosvi)*(len(ejemplosvi.index) / len(table.index) )
 
-                gAcumul = gAcumul - GetEntropy(ejemplosvi)*(len(ejemplosvi.index) / len(table.index) )
-
-        return gAcumul
+                return gAcumul
 
 
 def GetBestAtt(table): #retornar el mejor atributo para aplicar con Id3
@@ -196,9 +207,7 @@ del dfGlobal["id"] #el id no puede ir ya que hace sobreajuste
 def ID3_DecisionTree(pdf):
         dataf = pdf.copy()
         #Elegir un atributo
-        idColumn = GetBestAtt(dataf) # o Afuera de la funcion?
-        #print(pdf.columns,idColumn)        
-        
+        idColumn = GetBestAtt(dataf) # o Afuera de la funcion?        
         #Crear una raíz
         ret = G02Tree(idColumn)
 
@@ -211,23 +220,14 @@ def ID3_DecisionTree(pdf):
         if(dataf.columns.size == 1):
                 return G02TreeSheet(idColumn, dataf.stroke.mode())
 
-        #• En caso contrario:
-        #    ‣ La raíz pregunta por A, atributo que mejor clasifica los ejemplos
-
         #    ‣ Para cada valor vi de A 
-        coldesc = GetColumnDescriptor(pdf, idColumn) #obtiene los posibles valores de una columna, teniendo en cuenta los valores continuos
-        oldvalue = 0
-        for vi in coldesc[2]: #dfGlobal el df original
+        coldesc = GetColumnDescriptor(pdf, idColumn) #obtiene los posibles valores de una columna, teniendo en cuenta los valores continuos 
+        if(coldesc[1]):#es continuo
                 #๏ Genero una rama
-                node = G02TreeNode(vi)
-                #๏ Ejemplosvi={ejemplos en los cuales A=vi }
-                if(coldesc[1]): #es continuo   
-                        node = G02TreeContNode(oldvalue, vi)                     
-                        ejemplosvi = dataf[dataf[idColumn] >= oldvalue]
-                        ejemplosvi = ejemplosvi[ejemplosvi[idColumn] < vi]
-                        oldvalue = vi
-                else: 
-                        ejemplosvi = dataf[dataf[idColumn] == vi]
+                vi = coldesc[2][0]
+                node = G02TreeContNode(vi, True)  
+                #creo arbol menor
+                ejemplosvi = dataf[dataf[idColumn] <= vi]
                 #๏ Si Ejemplosvi es vacío → etiquetar con el valor más probable
                 if(len(ejemplosvi) == 0):
                         node.SubTree = G02TreeSheet(idColumn, dataf.stroke.mode())
@@ -236,6 +236,31 @@ def ID3_DecisionTree(pdf):
                         del ejemplosvi[idColumn]
                         node.SubTree = ID3_DecisionTree(ejemplosvi)
                 ret.Nodes.append(node)
+
+                # creo arbol mayor 
+                node = G02TreeContNode(vi, False)  
+                ejemplosvi = dataf[dataf[idColumn] > vi]
+                #๏ Si Ejemplosvi es vacío → etiquetar con el valor más probable
+                if(len(ejemplosvi) == 0):
+                        node.SubTree = G02TreeSheet(idColumn, dataf.stroke.mode())
+                else: #En caso contrario → ID3(Ejemplosvi, Atributos -{A})
+                        #Atributos -{A}
+                        del ejemplosvi[idColumn]
+                        node.SubTree = ID3_DecisionTree(ejemplosvi)
+                ret.Nodes.append(node)  
+        else:
+                for vi in coldesc[2]: #dfGlobal el df original
+                        #๏ Ejemplosvi={ejemplos en los cuales A=vi }
+                        node = G02TreeNode(vi)
+                        ejemplosvi = dataf[dataf[idColumn] == vi]
+                        #๏ Si Ejemplosvi es vacío → etiquetar con el valor más probable
+                        if(len(ejemplosvi) == 0):
+                                node.SubTree = G02TreeSheet(idColumn, dataf.stroke.mode())
+                        else: #En caso contrario → ID3(Ejemplosvi, Atributos -{A})
+                                #Atributos -{A}
+                                del ejemplosvi[idColumn]
+                                node.SubTree = ID3_DecisionTree(ejemplosvi)
+                        ret.Nodes.append(node)
         
         return ret
                 
