@@ -1,4 +1,5 @@
 from ast import For
+import math
 import pandas as pd
 import matplotlib.pyplot as plt
 #import seaborn as sns
@@ -129,10 +130,45 @@ def GetColumnDescriptor(df, col):
                 desc.append(df[col].value_counts().index)
         return desc
            
+def GetEntropy(table):
+        #Entropia(S) = − p+ . log(p+) − p− . log(p−)
+        if(len(table) ==0):
+                return 0
+        p_plus = len(table[table["stroke"] == 1]) / len(table)
+        p_min = len(table[table["stroke"] == 0]) / len(table)
+        if(p_min == 1 or p_plus == 1):
+                return 0
+        entropia = - p_plus*math.log(p_plus) - p_min*math.log(p_min)
+        return entropia
 
-def GetBestAtt(pdf): #retornar el mejor atributo para separara
-        return pdf.columns[0] #por ahora retornamos el primer atributo
-        #TODO usar algun algoritmo del teorico, entropia?
+def GetAttGanancia(table, colName): #Gan(S, Ded) = 1 − 1/4.E(SDed=Alta) − 2/4.E(SDed=Media) − 1/4.E(SDed=Baja)
+        coldesc = GetColumnDescriptor(table, colName)
+        oldvalue = 0
+        gAcumul = 1
+        for vi in coldesc[2]:
+                if(coldesc[1]): #es continuo
+                        ejemplosvi = table[table[colName] >= oldvalue]
+                        ejemplosvi = ejemplosvi[ejemplosvi[colName] < vi]
+                        oldvalue = vi
+                else:
+                        ejemplosvi = table[table[colName] == vi]
+
+                gAcumul = gAcumul - GetEntropy(ejemplosvi)*(len(ejemplosvi.index) / len(table.index) )
+
+        return gAcumul
+
+
+def GetBestAtt(table): #retornar el mejor atributo para aplicar con Id3
+        bestAttr = table.columns[0]
+        bestGan = -1
+        for col in table.columns:
+                if(col  != "stroke"):
+                        g = GetAttGanancia(table, col)
+                        if(g>bestGan):
+                                bestGan = g
+                                bestAttr = col
+
+        return bestAttr
 
 
 
@@ -184,4 +220,6 @@ def ID3_DecisionTree(pdf):
                 
 
 
-ID3_DecisionTree(dfGlobal)
+ID3_tree = ID3_DecisionTree(dfGlobal)
+
+print(ID3_tree)
