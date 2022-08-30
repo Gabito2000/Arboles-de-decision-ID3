@@ -108,12 +108,12 @@ class G02TreeContNode(G02TreeNode):
                 self.SubTree = None         
   
 def EvaluateTable(item, ID3_tree):        
-        if(ID3_tree is G02TreeSheet):
+        if(type(ID3_tree) is G02TreeSheet):
                 return ID3_tree.ReturnValue
         for node in ID3_tree.Nodes:
-                v = item[node.IdColumn]
-                if(node is G02TreeContNode):                        
-                        if(v >= node.ValueFrom and v < node.ValidTo):
+                v = item[ID3_tree.IdColumn]
+                if(type(node) == G02TreeContNode):                        
+                        if(v >= node.ValueFrom and v < node.ValueTo):
                                 return EvaluateTable(item, node.SubTree)
                 else:
                         if(v == node.Value):
