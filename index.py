@@ -122,30 +122,33 @@ def EvaluateTable(item, ID3_tree):
         #Retornar un valor por defecto, por ejemplo el promedio de las hojas
         return 0 #TODO
 
-
-def GetColumnDescriptor(df, col):
-        desc = [col]
-        isContinuo = col == "age" or col ==  "avg_glucose_level" or col ==  "bmi"
-        desc.append(isContinuo)
-        if(isContinuo):      #es continuo          
-                #tomo solo la columna en cuestion y el stroke
-                aux = df[[col, "stroke"]]
-                #ordeno por la primer columna
-                aux = aux.sort_values(col)
-                values = np.array([])
-                stroke = -1
-                for index, row in aux.iterrows():
-                        if(stroke == -1):
-                                stroke = row[1]
-                        elif(stroke != row[1]):                                
-                                stroke = row[1]
-                                if(values[values == row[0]].size ==0):
-                                        values = np.append(values, row[0])
-                        #hay valores que que se repiten y tienen valores diferentes de stroke
-                desc.append(values)
-        else:
-                desc.append(df[col].value_counts().index)
-        return desc
+def GetAllColumnDescriptors(df):
+        descritors = {}
+        for col in df.columns:
+                desc = [col]
+                isContinuo = col == "age" or col ==  "avg_glucose_level" or col ==  "bmi"
+                desc.append(isContinuo)
+                if(isContinuo):      #es continuo          
+                        #tomo solo la columna en cuestion y el stroke
+                        aux = df[[col, "stroke"]]
+                        #ordeno por la primer columna
+                        aux = aux.sort_values(col)
+                        values = np.array([])
+                        stroke = -1
+                        for index, row in aux.iterrows():
+                                if(stroke == -1):
+                                        stroke = row[1]
+                                elif(stroke != row[1]):                                
+                                        stroke = row[1]
+                                        if(values[values == row[0]].size ==0):
+                                                values = np.append(values, row[0])
+                                #hay valores que que se repiten y tienen valores diferentes de stroke
+                        desc.append(values)
+                else:
+                        desc.append(df[col].value_counts().index)
+                descritors[col] = desc
+        
+        return descritors     
            
 def GetEntropy(table):
         #Entropia(S) = − p+ . log(p+) − p− . log(p−)
@@ -154,12 +157,12 @@ def GetEntropy(table):
         p_plus = len(table[table["stroke"] == 1]) / len(table)
         p_min = len(table[table["stroke"] == 0]) / len(table)
         if(p_min == 1 or p_plus == 1):
-                return 0
+                return 1
         entropia = - p_plus*math.log(p_plus) - p_min*math.log(p_min)
         return entropia
 
 def GetAttGanancia(table, colName): #Gan(S, Ded) = 1 − 1/4.E(SDed=Alta) − 2/4.E(SDed=Media) − 1/4.E(SDed=Baja)
-        coldesc = GetColumnDescriptor(table, colName)
+        coldesc = columnDescriptors[colName]
         oldvalue = 0
         gAcumul = 1
         for vi in coldesc[2]:
@@ -191,10 +194,13 @@ def GetBestAtt(table): #retornar el mejor atributo para aplicar con Id3
 
 dfGlobal = df.copy()
 del dfGlobal["id"] #el id no puede ir ya que hace sobreajuste
+columnDescriptors = GetAllColumnDescriptors(dfGlobal)
+
 def ID3_DecisionTree(pdf):
         dataf = pdf.copy()
         #Elegir un atributo
         idColumn = GetBestAtt(dataf) # o Afuera de la funcion?
+        print(pdf.columns,idColumn)        
         #Crear una raíz
         ret = G02Tree(idColumn)
 
@@ -211,7 +217,7 @@ def ID3_DecisionTree(pdf):
         #    ‣ La raíz pregunta por A, atributo que mejor clasifica los ejemplos
 
         #    ‣ Para cada valor vi de A 
-        coldesc = GetColumnDescriptor(dfGlobal, idColumn) #obtiene los posibles valores de una columna, teniendo en cuenta los valores continuos
+        coldesc = columnDescriptors[idColumn] #obtiene los posibles valores de una columna, teniendo en cuenta los valores continuos
         oldvalue = 0
         for vi in coldesc[2]: #dfGlobal el df original
                 #๏ Genero una rama
