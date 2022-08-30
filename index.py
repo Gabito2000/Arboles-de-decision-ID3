@@ -1,6 +1,6 @@
 from ast import For
 from datetime import date
-import json
+import sys
 import math
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -142,7 +142,8 @@ def GetAllColumnDescriptors(df):
                                         stroke = row[1]
                                         if(values[values == row[0]].size ==0):
                                                 values = np.append(values, row[0])
-                                #hay valores que que se repiten y tienen valores diferentes de stroke
+                                #hay valores que que se repiten y tienen valores diferentes de stroke                        
+                        values = np.append(values, sys.maxsize) #agrego un valor maximo para representar el ultimo rango
                         desc.append(values)
                 else:
                         desc.append(df[col].value_counts().index)
@@ -200,7 +201,8 @@ def ID3_DecisionTree(pdf):
         dataf = pdf.copy()
         #Elegir un atributo
         idColumn = GetBestAtt(dataf) # o Afuera de la funcion?
-        print(pdf.columns,idColumn)        
+        #print(pdf.columns,idColumn)        
+        
         #Crear una raíz
         ret = G02Tree(idColumn)
 
@@ -249,4 +251,3 @@ for index, row in dfGlobal.iterrows():
         EvaluateTable(row, ID3_tree)
         break
 
-print(ID3_tree.__dict__)
