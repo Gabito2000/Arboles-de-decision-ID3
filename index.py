@@ -58,6 +58,7 @@ dt_clf = dt_clf.fit(X_train, Y_train)
 
 Y_pred = dt_clf.predict (X_test)
 
+print("############DecisionTreeClassifier#############")
 print("F1 -> "+str(f1 (Y_test, Y_pred)))
 print("Accuracy -> "+str(acc (Y_test, Y_pred)))
 print("Precision -> "+str(precision (Y_test, Y_pred)))
@@ -195,15 +196,14 @@ def GetBestAtt(table): #retornar el mejor atributo para aplicar con Id3
 # ALGORITMO ID3
 #########################################################################################
 
-dfGlobal = df.copy()
-del dfGlobal["id"] #el id no puede ir ya que hace sobreajuste
+
 
 def ID3_DecisionTree(pdf):
         dataf = pdf.copy()        
         idColumn = GetBestAtt(dataf) #Elegir un atributo
         #Crear una raíz
         ret = G02Tree(idColumn)
-        ret.DefaultReturn = pdf.stroke.mode()
+        ret.DefaultReturn = dataf["stroke"].mode().values[0]
 
         #• Si todos los ej. tienen el mismo valor → etiquetar con ese valor
         uniqueStrokes = dataf.stroke.unique()
@@ -212,7 +212,7 @@ def ID3_DecisionTree(pdf):
         
         #• Si no me quedan atributos → etiquetar con el valor más común
         if(dataf.columns.size == 1):
-                return G02TreeSheet(idColumn, dataf.stroke.mode())
+                return G02TreeSheet(idColumn, dataf["stroke"].mode().values[0])
 
         #    ‣ Para cada valor vi de A 
         coldesc = GetColumnDescriptor(pdf, idColumn) #obtiene los posibles valores de una columna, teniendo en cuenta los valores continuos 
@@ -224,7 +224,7 @@ def ID3_DecisionTree(pdf):
                 ejemplosvi = dataf[dataf[idColumn] <= vi]
                 #๏ Si Ejemplosvi es vacío → etiquetar con el valor más probable
                 if(len(ejemplosvi) == 0):
-                        node.SubTree = G02TreeSheet(idColumn, dataf.stroke.mode())
+                        node.SubTree = G02TreeSheet(idColumn, dataf["stroke"].mode().values[0])
                 else: #En caso contrario → ID3(Ejemplosvi, Atributos -{A})                        
                         del ejemplosvi[idColumn] #Atributos -{A}
                         node.SubTree = ID3_DecisionTree(ejemplosvi)
@@ -235,7 +235,7 @@ def ID3_DecisionTree(pdf):
                 ejemplosvi = dataf[dataf[idColumn] > vi]
                 #๏ Si Ejemplosvi es vacío → etiquetar con el valor más probable
                 if(len(ejemplosvi) == 0):
-                        node.SubTree = G02TreeSheet(idColumn, dataf.stroke.mode())
+                        node.SubTree = G02TreeSheet(idColumn, dataf["stroke"].mode().values[0])
                 else: #En caso contrario → ID3(Ejemplosvi, Atributos -{A})                        
                         del ejemplosvi[idColumn] #Atributos -{A}
                         node.SubTree = ID3_DecisionTree(ejemplosvi)
@@ -247,7 +247,7 @@ def ID3_DecisionTree(pdf):
                         ejemplosvi = dataf[dataf[idColumn] == vi]
                         #๏ Si Ejemplosvi es vacío → etiquetar con el valor más probable
                         if(len(ejemplosvi) == 0):
-                                node.SubTree = G02TreeSheet(idColumn, dataf.stroke.mode())
+                                node.SubTree = G02TreeSheet(idColumn, dataf["stroke"].mode().values[0])
                         else: #En caso contrario → ID3(Ejemplosvi, Atributos -{A})                                
                                 del ejemplosvi[idColumn] #Atributos -{A}
                                 node.SubTree = ID3_DecisionTree(ejemplosvi)
@@ -272,9 +272,24 @@ def EvaluateTable(item, ID3_tree):
         #Retornar un valor por defecto, por ejemplo el promedio de las hojas
         return ID3_tree.DefaultReturn
 
-ID3_tree = ID3_DecisionTree(dfGlobal)
+dfGlobal = df.copy()
+del dfGlobal["id"] #el id no puede ir ya que hace sobreajuste
 
-for index, row in dfGlobal.iterrows():
-        EvaluateTable(row, ID3_tree)
-        break
 
+#1022 test size porque es el 20%, 5110 datos en total
+df_train, df_test = train_test_split(dfGlobal, test_size=0.2, random_state=42)
+
+ID3_tree = ID3_DecisionTree(df_train)
+
+predict = []
+
+for index, row in df_test.iterrows():
+        eval = EvaluateTable(row, ID3_tree)
+        predict.append(eval)
+
+pred = np.array(predict, dtype=int)
+print("############ID3_DecisionTree#############")
+print("F1 -> "+str(f1 (df_test['stroke'].values, pred)))
+print("Accuracy -> "+str(acc (df_test['stroke'].values, predict)))
+print("Precision -> "+str(precision (df_test['stroke'].values, predict)))
+print("Recall -> "+str(recall (df_test['stroke'].values, predict)))
