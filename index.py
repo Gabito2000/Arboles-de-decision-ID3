@@ -4,6 +4,7 @@ import sys
 import math
 import pandas as pd
 import matplotlib.pyplot as plt
+import statistics as stat
 #import seaborn as sns
 import numpy as np
 import warnings
@@ -37,8 +38,11 @@ sns.countplot(data = df, x="smoking_status")
 plt.show()
 """
 
+media = stat.median(df['bmi'])
+df['bmi'] = df['bmi'].replace(['N/A'], [media])
 
-df['bmi'] = df['bmi'].replace(['N/A'], [0.0])
+
+
 df['bmi'] = df['bmi'].fillna(0.0)
 df['ever_married'] = df['ever_married'].replace(['Yes', 'No'], [1,0])
 df['gender'] = df['gender'].replace(['Male', 'Female', 'Other'], [0,1,2])
