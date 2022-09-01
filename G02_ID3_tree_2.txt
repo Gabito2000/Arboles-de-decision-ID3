@@ -1,0 +1,8 @@
+age <= 53.0 (1561 ms) 
+       bmi <= 26.25 ===> NO
+       bmi >  26.25 ===> NO
+age >  53.0 (4.886 s) 
+       bmi <= 44.05 ===> YES
+       bmi >  44.05 ===> YES
+
+Tiempo Total 12.493 segundos 

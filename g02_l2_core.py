@@ -2,99 +2,11 @@ from ast import For
 from datetime import date, datetime
 import sys
 import math
-import pandas as pd
-import matplotlib.pyplot as plt
-import statistics as stat
-import seaborn as sns
 import numpy as np
 import warnings
-from imblearn.over_sampling import RandomOverSampler as oversampler
-from sklearn.model_selection import train_test_split
-from sklearn import tree
-from sklearn.metrics import f1_score as f1
-from sklearn.metrics import accuracy_score as acc
-from sklearn.metrics import precision_score as precision
-from sklearn.metrics import recall_score as recall
+
 
 warnings.filterwarnings("ignore")
-
-df = pd.read_csv("./healthcare-dataset-stroke-data.csv")
-
-#print (df.head())
-
-#print (df.shape)
-
-#print(df.isnull().sum())
-
-#print (df.describe())
-
-""""
-sns.countplot(data = df, x="gender")
-plt.show()
-sns.countplot(data = df, x="work_type")
-plt.show()
-sns.countplot(data = df, x="Residence_type")
-plt.show()
-sns.countplot(data = df, x="smoking_status")
-plt.show()
-"""
-
-media = stat.median(df['bmi'])
-df['bmi'] = df['bmi'].replace(['N/A'], [media])
-
-df['bmi'] = df['bmi'].fillna(media)
-df['ever_married'] = df['ever_married'].replace(['Yes', 'No'], [1,0])
-df['gender'] = df['gender'].replace(['Male', 'Female', 'Other'], [0,1,2])
-df['work_type'] = df['work_type'].replace(['Private', 'Self-employed', 'Govt_job', 'children', 'Never_worked'], [0,1,2,3,4])
-df['Residence_type'] = df['Residence_type'].replace(['Urban', 'Rural'], [1,0])
-df['smoking_status'] = df['smoking_status'].replace(['formerly smoked', 'never smoked', 'smokes', 'Unknown'], [0,1,2,3])
-
-ros = oversampler(random_state=42)
-X = df[["gender", "age", "hypertension", "heart_disease", "ever_married", "work_type", "Residence_type",
-        "avg_glucose_level", "bmi", "smoking_status"]]
-Y = df.stroke
-X, Y = ros.fit_resample(X,Y)
-
-df = X
-df["stroke"] = Y
-
-sns.countplot(data = df, x="stroke")
-plt.show()
-
-
-#1022 test size porque es el 20%, 5110 datos en total
-X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=1022, random_state=42)
-
-
-dt_clf = tree.DecisionTreeClassifier()
-dt_clf = dt_clf.fit(X_train, Y_train)
-
-Y_pred = dt_clf.predict (X_test)
-
-print("############DecisionTreeClassifier#############")
-print("F1 -> "+str(f1 (Y_test, Y_pred)))
-print("Accuracy -> "+str(acc (Y_test, Y_pred)))
-print("Precision -> "+str(precision (Y_test, Y_pred)))
-print("Recall -> "+str(recall (Y_test, Y_pred)))
-
-     
-	
-"""
-Fase 1
-	- Acomodar datos en 1 archivo solo
-	- Ajustar tipos de datos
-	- rellenar datos faltantes
-	- Todos los valores a reales
-	- Enumerados: crear columnas binarias
-	- Normalizar los valores
-        - los atributos continuos, cambiarlos como se vio en el teoricos, diapo arboles 33
-
-	
-Fase 2
-	- Separar conjuntos Entrenamiento, Validacion, Test
-	- Misma distribucion: aleatorio
-	
-"""
 
 #########################################################################################
 # ESPECIFICACION DE LAS CLASES PARA LA GENERACION DEL ARBOL
@@ -333,31 +245,3 @@ def SaveId3Tree(fileName, id3tree):
     f.write(strTree)
     f.close()
 
-
-#########################################################################################
-# PRUEBAS
-#########################################################################################
-
-dfGlobal = df.copy()
-#del dfGlobal["id"] #el id no puede ir ya que hace sobreajuste
-
-
-#1022 test size porque es el 20%, 5110 datos en total
-df_train, df_test = train_test_split(dfGlobal, test_size=0.2, random_state=42)
-
-maxTreeLevels = 10
-ID3_tree = ID3_DecisionTree(df_train, maxTreeLevels)
-SaveId3Tree(f"G02_ID3_tree_{maxTreeLevels}.txt", ID3_tree)
-
-predict = []
-
-for index, row in df_test.iterrows():
-        eval = EvaluateTable(row, ID3_tree)
-        predict.append(eval)
-
-pred = np.array(predict, dtype=int)
-print("\n############ID3_DecisionTree#############")
-print("F1 -> "+str(f1 (df_test['stroke'].values, pred)))
-print("Accuracy -> "+str(acc (df_test['stroke'].values, predict)))
-print("Precision -> "+str(precision (df_test['stroke'].values, predict)))
-print("Recall -> "+str(recall (df_test['stroke'].values, predict)))
