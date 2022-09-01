@@ -1,5 +1,5 @@
 from ast import For
-from datetime import date
+from datetime import date, datetime
 import sys
 import math
 import pandas as pd
@@ -105,6 +105,7 @@ class G02Tree():
                 self.IdColumn = idColumn
                 self.Nodes= []
                 self.DefaultReturn = 0
+                self.DelayTime = 0
 
 class G02TreeSheet(G02Tree):
         def __init__(self, idColumn, returnValue):
@@ -134,7 +135,9 @@ def GetColumnDescriptor(df, col):
         if(isContinuo):      #es continuo          
                 #tomo solo la columna en cuestion y el stroke
                 aux = df[[col, "stroke"]]
-                #ordeno por la primer columna
+                #elimino los repetidos ya que afecta el performance
+                aux = aux.drop_duplicates()
+                #ordeno por la primer columna                
                 aux = aux.sort_values(col)                
                 currStroke = -1
                 vAnt  = 0 
@@ -182,41 +185,45 @@ def GetAttGanancia(table, colName): #Gan(S, Ded) = 1 − 1/4.E(SDed=Alta) − 2/
                 gAcumul = 1 - GetEntropy(ejemplosvi)*(len(ejemplosvi.index) / len(table.index) )
                 ejemplosvi = table[table[colName] > vCorte]
                 gAcumul = gAcumul - GetEntropy(ejemplosvi)*(len(ejemplosvi.index) / len(table.index) )            
-                return gAcumul
+                return (gAcumul, coldesc)
         else:
                 gAcumul = 1
                 for vi in coldesc[2]:
                         ejemplosvi = table[table[colName] == vi]
                         gAcumul = gAcumul - GetEntropy(ejemplosvi)*(len(ejemplosvi.index) / len(table.index) )
 
-                return gAcumul
+                return (gAcumul, coldesc)
 
 
-def GetBestAtt(table): #retornar el mejor atributo para aplicar con Id3
+def GetBestAtt(table): #retornar el mejor atributo para aplicar con Id3, tambien la descripcion de las columnas por performance
         bestAttr = table.columns[0]
         bestGan = -1
+        bestColsInfo: None
         for col in table.columns:
                 if(col  != "stroke"):
-                        g = GetAttGanancia(table, col)
+                        (g, colInfos) = GetAttGanancia(table, col)
                         if(g>bestGan):
                                 bestGan = g
                                 bestAttr = col
+                                bestColsInfo = colInfos
 
-        return bestAttr
+        return (bestAttr, bestColsInfo)
 
 
 #########################################################################################
 # ALGORITMO ID3
 #########################################################################################
 
+def ID3_DecisionTree(pdf, maxLevels):
+        dateInit = datetime.now()
+        if(maxLevels ==0):
+                return G02TreeSheet("ID3 Max Level", pdf["stroke"].mode().values[0])
 
-
-def ID3_DecisionTree(pdf):
         dataf = pdf.copy()        
-        idColumn = GetBestAtt(dataf) #Elegir un atributo
+        idColumn, coldesc = GetBestAtt(dataf) #Elegir un atributo y retorna la descripcion de valores para esa eleccion
         #Crear una raíz
         ret = G02Tree(idColumn)
-        ret.DefaultReturn = dataf["stroke"].mode().values[0]
+        ret.DefaultReturn = dataf["stroke"].mode().values[0]        
 
         #• Si todos los ej. tienen el mismo valor → etiquetar con ese valor
         uniqueStrokes = dataf.stroke.unique()
@@ -228,7 +235,7 @@ def ID3_DecisionTree(pdf):
                 return G02TreeSheet(idColumn, dataf["stroke"].mode().values[0])
 
         #    ‣ Para cada valor vi de A 
-        coldesc = GetColumnDescriptor(pdf, idColumn) #obtiene los posibles valores de una columna, teniendo en cuenta los valores continuos 
+        #coldesc = GetColumnDescriptor(pdf, idColumn) #obtiene los posibles valores de una columna, teniendo en cuenta los valores continuos 
         if(coldesc[1]):#es continuo
                 #๏ Genero una rama
                 vi = coldesc[2][0]
@@ -240,7 +247,7 @@ def ID3_DecisionTree(pdf):
                         node.SubTree = G02TreeSheet(idColumn, dataf["stroke"].mode().values[0])
                 else: #En caso contrario → ID3(Ejemplosvi, Atributos -{A})                        
                         del ejemplosvi[idColumn] #Atributos -{A}
-                        node.SubTree = ID3_DecisionTree(ejemplosvi)
+                        node.SubTree = ID3_DecisionTree(ejemplosvi, maxLevels-1)
                 ret.Nodes.append(node)
 
                 # creo arbol mayor 
@@ -251,7 +258,7 @@ def ID3_DecisionTree(pdf):
                         node.SubTree = G02TreeSheet(idColumn, dataf["stroke"].mode().values[0])
                 else: #En caso contrario → ID3(Ejemplosvi, Atributos -{A})                        
                         del ejemplosvi[idColumn] #Atributos -{A}
-                        node.SubTree = ID3_DecisionTree(ejemplosvi)
+                        node.SubTree = ID3_DecisionTree(ejemplosvi, maxLevels-1)
                 ret.Nodes.append(node)  
         else:
                 for vi in coldesc[2]: #dfGlobal el df original
@@ -263,10 +270,16 @@ def ID3_DecisionTree(pdf):
                                 node.SubTree = G02TreeSheet(idColumn, dataf["stroke"].mode().values[0])
                         else: #En caso contrario → ID3(Ejemplosvi, Atributos -{A})                                
                                 del ejemplosvi[idColumn] #Atributos -{A}
-                                node.SubTree = ID3_DecisionTree(ejemplosvi)
+                                node.SubTree = ID3_DecisionTree(ejemplosvi, maxLevels-1)
                         ret.Nodes.append(node)
         
+        time = datetime.now() - dateInit
+        ret.DelayTime = math.ceil(time.total_seconds()*1000)
         return ret
+
+#########################################################################################
+# FUNCIONES SOBRE EL ARBOL ID3
+#########################################################################################
                 
 def EvaluateTable(item, id3Tree):        
         if(type(id3Tree) is G02TreeSheet):
@@ -285,9 +298,7 @@ def EvaluateTable(item, id3Tree):
         #Retornar un valor por defecto, por ejemplo el promedio de las hojas
         return id3Tree.DefaultReturn
 
-def TreeToString(id3Tree, nivel, maxlevel):
-    if(nivel > maxlevel):
-        return
+def TreeToString(id3Tree, nivel):
     ret = ""
     for node in id3Tree.Nodes: 
         for i in range(0, nivel):
@@ -295,23 +306,37 @@ def TreeToString(id3Tree, nivel, maxlevel):
         if(type(node) == G02TreeContNode):
             ret += id3Tree.IdColumn + " "   
             ret +="<= " if node.IsFirstSet else "> " + " "
-            ret += f"= {node.Value}" + " "                                                            
+            ret += f"{node.Value}" + " "                                                            
         else:
             ret +=id3Tree.IdColumn + " "
-            ret +=f"= {node.Value}" + " "
-
+            ret +=f"{node.Value}" + " "
+        
         if(type(node.SubTree) is G02TreeSheet):            
             ret +="===> YES\n" if node.SubTree.ReturnValue == 1 else "===> NO\n"
         else:
-            ret +="\n"
-            ret +=TreeToString(node.SubTree, nivel + 1, maxlevel)   
+                if(node.SubTree.DelayTime> 2000):
+                        ret += "(" + str(node.SubTree.DelayTime/1000) + " s) " 
+                else: 
+                        ret += "(" + str(node.SubTree.DelayTime) + " ms) "
+                ret +="\n"
+                ret +=TreeToString(node.SubTree, nivel + 1)   
     return ret          
 
-def SaveId3Tree(fileName, id3tree, maxLevels):
-    strTree = TreeToString(id3tree, 0, maxLevels)
+def SaveId3Tree(fileName, id3tree):
+    strTree = TreeToString(id3tree, 0)
+    if(id3tree.DelayTime> 2000):
+        strTree = "Tiempo Total " + str(id3tree.DelayTime/1000) + " segundos \n" + strTree
+    else: 
+        strTree += "Tiempo Total " + str(id3tree.DelayTime) + " milisegundos \n" + strTree
+    strTree = strTree
     f = open(fileName, "w")
     f.write(strTree)
     f.close()
+
+
+#########################################################################################
+# PRUEBAS
+#########################################################################################
 
 dfGlobal = df.copy()
 #del dfGlobal["id"] #el id no puede ir ya que hace sobreajuste
@@ -320,8 +345,9 @@ dfGlobal = df.copy()
 #1022 test size porque es el 20%, 5110 datos en total
 df_train, df_test = train_test_split(dfGlobal, test_size=0.2, random_state=42)
 
-ID3_tree = ID3_DecisionTree(df_train)
-SaveId3Tree("G02_ID3_tree.txt", ID3_tree, 15)
+maxTreeLevels = 10
+ID3_tree = ID3_DecisionTree(df_train, maxTreeLevels)
+SaveId3Tree(f"G02_ID3_tree_{maxTreeLevels}.txt", ID3_tree)
 
 predict = []
 
