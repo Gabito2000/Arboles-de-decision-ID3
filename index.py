@@ -268,11 +268,11 @@ def ID3_DecisionTree(pdf):
         
         return ret
                 
-def EvaluateTable(item, ID3_tree):        
-        if(type(ID3_tree) is G02TreeSheet):
-                return ID3_tree.ReturnValue
-        v = item[ID3_tree.IdColumn]
-        for node in ID3_tree.Nodes:                
+def EvaluateTable(item, id3Tree):        
+        if(type(id3Tree) is G02TreeSheet):
+                return id3Tree.ReturnValue
+        v = item[id3Tree.IdColumn]
+        for node in id3Tree.Nodes:                
                 if(type(node) == G02TreeContNode):    
                         if(node.IsFirstSet and v <= node.Value):
                                 return EvaluateTable(item, node.SubTree) 
@@ -283,7 +283,35 @@ def EvaluateTable(item, ID3_tree):
                                 return EvaluateTable(item, node.SubTree)
 
         #Retornar un valor por defecto, por ejemplo el promedio de las hojas
-        return ID3_tree.DefaultReturn
+        return id3Tree.DefaultReturn
+
+def TreeToString(id3Tree, nivel, maxlevel):
+    if(nivel > maxlevel):
+        return
+    ret = ""
+    for node in id3Tree.Nodes: 
+        for i in range(0, nivel):
+            ret += "       "               
+        if(type(node) == G02TreeContNode):
+            ret += id3Tree.IdColumn + " "   
+            ret +="<= " if node.IsFirstSet else "> " + " "
+            ret += f"= {node.Value}" + " "                                                            
+        else:
+            ret +=id3Tree.IdColumn + " "
+            ret +=f"= {node.Value}" + " "
+
+        if(type(node.SubTree) is G02TreeSheet):            
+            ret +="===> YES\n" if node.SubTree.ReturnValue == 1 else "===> NO\n"
+        else:
+            ret +="\n"
+            ret +=TreeToString(node.SubTree, nivel + 1, maxlevel)   
+    return ret          
+
+def SaveId3Tree(fileName, id3tree, maxLevels):
+    strTree = TreeToString(id3tree, 0, maxLevels)
+    f = open(fileName, "w")
+    f.write(strTree)
+    f.close()
 
 dfGlobal = df.copy()
 #del dfGlobal["id"] #el id no puede ir ya que hace sobreajuste
@@ -293,6 +321,7 @@ dfGlobal = df.copy()
 df_train, df_test = train_test_split(dfGlobal, test_size=0.2, random_state=42)
 
 ID3_tree = ID3_DecisionTree(df_train)
+SaveId3Tree("G02_ID3_tree.txt", ID3_tree, 15)
 
 predict = []
 
