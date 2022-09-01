@@ -5,9 +5,10 @@ import math
 import pandas as pd
 import matplotlib.pyplot as plt
 import statistics as stat
-#import seaborn as sns
+import seaborn as sns
 import numpy as np
 import warnings
+from imblearn.over_sampling import RandomOverSampler as oversampler
 from sklearn.model_selection import train_test_split
 from sklearn import tree
 from sklearn.metrics import f1_score as f1
@@ -41,23 +42,31 @@ plt.show()
 media = stat.median(df['bmi'])
 df['bmi'] = df['bmi'].replace(['N/A'], [media])
 
-
-
-df['bmi'] = df['bmi'].fillna(0.0)
+df['bmi'] = df['bmi'].fillna(media)
 df['ever_married'] = df['ever_married'].replace(['Yes', 'No'], [1,0])
 df['gender'] = df['gender'].replace(['Male', 'Female', 'Other'], [0,1,2])
 df['work_type'] = df['work_type'].replace(['Private', 'Self-employed', 'Govt_job', 'children', 'Never_worked'], [0,1,2,3,4])
 df['Residence_type'] = df['Residence_type'].replace(['Urban', 'Rural'], [1,0])
 df['smoking_status'] = df['smoking_status'].replace(['formerly smoked', 'never smoked', 'smokes', 'Unknown'], [0,1,2,3])
 
+ros = oversampler(random_state=42)
 X = df[["gender", "age", "hypertension", "heart_disease", "ever_married", "work_type", "Residence_type",
         "avg_glucose_level", "bmi", "smoking_status"]]
 Y = df.stroke
+X, Y = ros.fit_resample(X,Y)
+
+df = X
+df["stroke"] = Y
+
+sns.countplot(data = df, x="stroke")
+plt.show()
+
 
 #1022 test size porque es el 20%, 5110 datos en total
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=1022, random_state=42)
 
-dt_clf = tree.DecisionTreeClassifier(max_depth=4, criterion="entropy")
+
+dt_clf = tree.DecisionTreeClassifier()
 dt_clf = dt_clf.fit(X_train, Y_train)
 
 Y_pred = dt_clf.predict (X_test)
@@ -277,7 +286,7 @@ def EvaluateTable(item, ID3_tree):
         return ID3_tree.DefaultReturn
 
 dfGlobal = df.copy()
-del dfGlobal["id"] #el id no puede ir ya que hace sobreajuste
+#del dfGlobal["id"] #el id no puede ir ya que hace sobreajuste
 
 
 #1022 test size porque es el 20%, 5110 datos en total
@@ -292,7 +301,7 @@ for index, row in df_test.iterrows():
         predict.append(eval)
 
 pred = np.array(predict, dtype=int)
-print("############ID3_DecisionTree#############")
+print("\n############ID3_DecisionTree#############")
 print("F1 -> "+str(f1 (df_test['stroke'].values, pred)))
 print("Accuracy -> "+str(acc (df_test['stroke'].values, predict)))
 print("Precision -> "+str(precision (df_test['stroke'].values, predict)))
