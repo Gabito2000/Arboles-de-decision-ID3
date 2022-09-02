@@ -147,14 +147,13 @@ def __ID3_DecisionTree(pdf, maxLevels, FullColInfos):
         #• Si todos los ej. tienen el mismo valor → etiquetar con ese valor
         uniqueStrokes = dataf.stroke.unique()
         if(uniqueStrokes.size == 1):
-                return G02TreeSheet(idColumn, uniqueStrokes[0])
+                return G02TreeSheet("SAME RETURN", uniqueStrokes[0])
         
         #• Si no me quedan atributos → etiquetar con el valor más común
         if(dataf.columns.size == 1):
-                return G02TreeSheet(idColumn, dataf["stroke"].mode().values[0])
+                return G02TreeSheet("EMPTY_ATTS", dataf["stroke"].mode().values[0])
 
         #    ‣ Para cada valor vi de A 
-        #coldesc = GetColumnDescriptor(pdf, idColumn) #obtiene los posibles valores de una columna, teniendo en cuenta los valores continuos 
         if(colInfo[1]):#es continuo
                 #๏ Genero una rama
                 vi = colInfo[2][0]
@@ -163,7 +162,10 @@ def __ID3_DecisionTree(pdf, maxLevels, FullColInfos):
                 ejemplosvi = dataf[dataf[idColumn] <= vi]
                 #๏ Si Ejemplosvi es vacío → etiquetar con el valor más probable
                 if(len(ejemplosvi) == 0):
-                        node.SubTree = G02TreeSheet(idColumn, dataf["stroke"].mode().values[0])
+                        node.SubTree = G02TreeSheet("MEDIA", dataf["stroke"].mode().values[0])
+                elif(ejemplosvi.stroke.unique().size ==1):
+                        #• Si todos los ej. tienen el mismo valor → etiquetar con ese valor
+                        node.SubTree = G02TreeSheet("UNIQUE", ejemplosvi.stroke.unique()[0])
                 else: #En caso contrario → ID3(Ejemplosvi, Atributos -{A})                        
                         del ejemplosvi[idColumn] #Atributos -{A}
                         node.SubTree = __ID3_DecisionTree(ejemplosvi, maxLevels-1, FullColInfos)
@@ -174,7 +176,10 @@ def __ID3_DecisionTree(pdf, maxLevels, FullColInfos):
                 ejemplosvi = dataf[dataf[idColumn] > vi]
                 #๏ Si Ejemplosvi es vacío → etiquetar con el valor más probable
                 if(len(ejemplosvi) == 0):
-                        node.SubTree = G02TreeSheet(idColumn, dataf["stroke"].mode().values[0])
+                        node.SubTree = G02TreeSheet("MEDIA", dataf["stroke"].mode().values[0])
+                elif(ejemplosvi.stroke.unique().size ==1):
+                        #• Si todos los ej. tienen el mismo valor → etiquetar con ese valor
+                        node.SubTree = G02TreeSheet("UNIQUE", ejemplosvi.stroke.unique()[0])
                 else: #En caso contrario → ID3(Ejemplosvi, Atributos -{A})                        
                         del ejemplosvi[idColumn] #Atributos -{A}
                         node.SubTree = __ID3_DecisionTree(ejemplosvi, maxLevels-1, FullColInfos)
@@ -186,7 +191,10 @@ def __ID3_DecisionTree(pdf, maxLevels, FullColInfos):
                         ejemplosvi = dataf[dataf[idColumn] == vi]
                         #๏ Si Ejemplosvi es vacío → etiquetar con el valor más probable
                         if(len(ejemplosvi) == 0):
-                                node.SubTree = G02TreeSheet(idColumn, dataf["stroke"].mode().values[0])
+                                node.SubTree = G02TreeSheet("MEDIA", dataf["stroke"].mode().values[0])
+                        elif(ejemplosvi.stroke.unique().size ==1):
+                                #• Si todos los ej. tienen el mismo valor → etiquetar con ese valor
+                                node.SubTree = G02TreeSheet("UNIQUE", ejemplosvi.stroke.unique()[0])
                         else: #En caso contrario → ID3(Ejemplosvi, Atributos -{A})                                
                                 del ejemplosvi[idColumn] #Atributos -{A}
                                 node.SubTree = __ID3_DecisionTree(ejemplosvi, maxLevels-1, FullColInfos)
@@ -231,7 +239,7 @@ def TreeToString(id3Tree, nivel):
             ret +=f"{node.Value}" + " "
         
         if(type(node.SubTree) is G02TreeSheet):            
-            ret +="===> YES\n" if node.SubTree.ReturnValue == 1 else "===> NO\n"
+            ret +="===> YES - "+ node.SubTree.IdColumn + "\n" if node.SubTree.ReturnValue == 1 else "===> NO - "+ node.SubTree.IdColumn + "\n"
         else:
                 if(node.SubTree.DelayTime> 2000):
                         ret += "(" + str(node.SubTree.DelayTime/1000) + " s) " 

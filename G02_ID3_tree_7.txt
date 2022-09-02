@@ -1,392 +1,342 @@
-Tiempo Total 2.109 segundos 
-age <= 53.0 (936 ms) 
-       ever_married 1 (557 ms) 
-              hypertension 0 (307 ms) 
-                     work_type 0 (134 ms) 
-                            smoking_status 1 (38 ms) 
-                                   avg_glucose_level <= 162.045 (13 ms) 
-                                          bmi <= 21.45 ===> NO
-                                          bmi >  21.45 ===> NO
-                                   avg_glucose_level >  162.045 (13 ms) 
-                                          Residence_type 1 ===> NO
-                                          Residence_type 0 ===> NO
-                            smoking_status 3 (23 ms) 
-                                   heart_disease 0 (8 ms) 
-                                          bmi <= 21.45 ===> NO
-                                          bmi >  21.45 ===> NO
-                                   heart_disease 1 ===> NO
-                            smoking_status 0 (23 ms) 
-                                   gender 1 (7 ms) 
-                                          heart_disease 0 ===> NO
-                                          heart_disease 1 ===> NO
-                                   gender 0 (7 ms) 
-                                          bmi <= 21.45 ===> NO
-                                          bmi >  21.45 ===> NO
-                                   gender 2 ===> NO
-                            smoking_status 2 (24 ms) 
-                                   avg_glucose_level <= 162.045 (9 ms) 
-                                          heart_disease 0 ===> NO
-                                          heart_disease 1 ===> NO
-                                   avg_glucose_level >  162.045 (8 ms) 
-                                          heart_disease 0 ===> YES
-                                          heart_disease 1 ===> YES
-                     work_type 1 (64 ms) 
-                            gender 1 (27 ms) 
-                                   heart_disease 0 (7 ms) 
-                                          avg_glucose_level <= 162.045 ===> NO
-                                          avg_glucose_level >  162.045 ===> NO
-                                   heart_disease 1 ===> NO
-                            gender 0 (26 ms) 
-                                   heart_disease 0 (11 ms) 
-                                          bmi <= 21.45 ===> NO
-                                          bmi >  21.45 ===> NO
-                                   heart_disease 1 ===> NO
-                            gender 2 ===> NO
-                     work_type 2 (65 ms) 
-                            Residence_type 1 (28 ms) 
-                                   heart_disease 0 (10 ms) 
-                                          bmi <= 21.45 ===> NO
-                                          bmi >  21.45 ===> NO
-                                   heart_disease 1 ===> NO
-                            Residence_type 0 (28 ms) 
-                                   heart_disease 0 (1 ms) 
-                                          avg_glucose_level <= 162.045 ===> NO
-                                          avg_glucose_level >  162.045 ===> NO
-                                   heart_disease 1 ===> NO
-                     work_type 3 ===> NO
-                     work_type 4 ===> NO
-              hypertension 1 (227 ms) 
-                     gender 1 (163 ms) 
-                            smoking_status 1 (30 ms) 
-                                   Residence_type 1 (9 ms) 
-                                          avg_glucose_level <= 162.045 ===> YES
-                                          avg_glucose_level >  162.045 ===> YES
-                                   Residence_type 0 (9 ms) 
-                                          heart_disease 0 ===> NO
-                                          heart_disease 1 ===> NO
-                            smoking_status 3 (21 ms) 
-                                   work_type 0 (6 ms) 
-                                          heart_disease 0 ===> YES
-                                          heart_disease 1 ===> YES
-                                   work_type 1 ===> NO
-                                   work_type 2 ===> NO
-                                   work_type 3 ===> YES
-                                   work_type 4 ===> YES
-                            smoking_status 0 (48 ms) 
-                                   Residence_type 1 ===> NO
-                                   Residence_type 0 (16 ms) 
-                                          heart_disease 0 ===> YES
-                                          heart_disease 1 ===> YES
-                            smoking_status 2 (52 ms) 
-                                   heart_disease 0 (21 ms) 
-                                          bmi <= 21.45 ===> YES
-                                          bmi >  21.45 ===> YES
-                                   heart_disease 1 ===> YES
-                     gender 0 (57 ms) 
-                            bmi <= 21.45 ===> NO
-                            bmi >  21.45 (38 ms) 
-                                   heart_disease 0 (16 ms) 
-                                          avg_glucose_level <= 162.045 ===> NO
-                                          avg_glucose_level >  162.045 ===> NO
-                                   heart_disease 1 ===> NO
-                     gender 2 ===> YES
-       ever_married 0 (358 ms) 
-              smoking_status 1 (68 ms) 
-                     heart_disease 0 (52 ms) 
-                            hypertension 0 (31 ms) 
-                                   avg_glucose_level <= 162.045 (10 ms) 
-                                          bmi <= 21.45 ===> NO
-                                          bmi >  21.45 ===> NO
-                                   avg_glucose_level >  162.045 ===> NO
-                            hypertension 1 ===> NO
-                     heart_disease 1 ===> NO
-              smoking_status 3 (114 ms) 
-                     Residence_type 1 (47 ms) 
-                            hypertension 0 (28 ms) 
-                                   heart_disease 0 (11 ms) 
-                                          avg_glucose_level <= 162.045 ===> NO
-                                          avg_glucose_level >  162.045 ===> NO
-                                   heart_disease 1 ===> NO
-                            hypertension 1 ===> NO
-                     Residence_type 0 (52 ms) 
-                            hypertension 0 (38 ms) 
-                                   heart_disease 0 (18 ms) 
-                                          avg_glucose_level <= 162.045 ===> NO
-                                          avg_glucose_level >  162.045 ===> NO
-                                   heart_disease 1 ===> NO
-                            hypertension 1 ===> NO
-              smoking_status 0 (78 ms) 
-                     hypertension 0 (55 ms) 
-                            heart_disease 0 (35 ms) 
-                                   avg_glucose_level <= 162.045 (12 ms) 
-                                          bmi <= 21.45 ===> NO
-                                          bmi >  21.45 ===> NO
-                                   avg_glucose_level >  162.045 ===> NO
+Tiempo Total 5.698 segundos 
+age <= 44.5 (2.007 s) 
+       smoking_status 1 (252 ms) 
+              heart_disease 0 (201 ms) 
+                     hypertension 0 (132 ms) 
+                            avg_glucose_level <= 161.855 (61 ms) 
+                                   bmi <= 21.45 ===> NO
+                                   bmi >  21.45 (22 ms) 
+                                          work_type 0 ===> NO
+                                          work_type 1 ===> NO
+                                          work_type 2 ===> NO
+                                          work_type 3 ===> NO
+                                          work_type 4 ===> NO
+                            avg_glucose_level >  161.855 ===> NO
+                     hypertension 1 ===> NO
+              heart_disease 1 ===> NO
+       smoking_status 3 (416 ms) 
+              ever_married 1 (242 ms) 
+                     Residence_type 1 (74 ms) 
+                            heart_disease 0 (53 ms) 
+                                   hypertension 0 (22 ms) 
+                                          avg_glucose_level <= 161.855 ===> NO
+                                          avg_glucose_level >  161.855 ===> NO
+                                   hypertension 1 ===> NO
+                            heart_disease 1 ===> NO
+                     Residence_type 0 (136 ms) 
+                            heart_disease 0 (114 ms) 
+                                   avg_glucose_level <= 161.855 (36 ms) 
+                                          hypertension 0 ===> NO
+                                          hypertension 1 ===> NO
+                                   avg_glucose_level >  161.855 ===> NO
+                            heart_disease 1 ===> NO
+              ever_married 0 (145 ms) 
+                     hypertension 0 (105 ms) 
+                            heart_disease 0 (61 ms) 
+                                   avg_glucose_level <= 161.855 (19 ms) 
+                                          work_type 0 ===> NO
+                                          work_type 1 ===> NO
+                                          work_type 2 ===> NO
+                                          work_type 3 ===> NO
+                                          work_type 4 ===> NO
+                                   avg_glucose_level >  161.855 ===> NO
                             heart_disease 1 ===> NO
                      hypertension 1 ===> NO
-              smoking_status 2 (82 ms) 
-                     heart_disease 0 (51 ms) 
-                            hypertension 0 (27 ms) 
-                                   avg_glucose_level <= 162.045 (7 ms) 
+       smoking_status 0 (599 ms) 
+              hypertension 0 (525 ms) 
+                     heart_disease 0 (399 ms) 
+                            avg_glucose_level <= 161.855 (262 ms) 
+                                   bmi <= 21.45 ===> NO
+                                   bmi >  21.45 (82 ms) 
+                                          gender 1 ===> NO
+                                          gender 0 ===> NO
+                            avg_glucose_level >  161.855 ===> NO
+                     heart_disease 1 ===> NO
+              hypertension 1 ===> NO
+       smoking_status 2 (705 ms) 
+              hypertension 0 (558 ms) 
+                     work_type 0 (244 ms) 
+                            heart_disease 0 (127 ms) 
+                                   avg_glucose_level <= 161.855 (38 ms) 
                                           bmi <= 21.45 ===> NO
                                           bmi >  21.45 ===> NO
-                                   avg_glucose_level >  162.045 ===> NO
-                            hypertension 1 ===> NO
-                     heart_disease 1 ===> NO
-age >  53.0 (1142 ms) 
-       avg_glucose_level <= 162.045 (482 ms) 
-              ever_married 1 (238 ms) 
-                     heart_disease 0 (95 ms) 
-                            hypertension 0 (49 ms) 
-                                   work_type 0 (16 ms) 
-                                          smoking_status 1 ===> NO
-                                          smoking_status 3 ===> YES
-                                          smoking_status 0 ===> YES
-                                          smoking_status 2 ===> YES
-                                   work_type 1 (10 ms) 
-                                          smoking_status 1 ===> YES
-                                          smoking_status 3 ===> NO
-                                          smoking_status 0 ===> YES
-                                          smoking_status 2 ===> YES
-                                   work_type 2 (14 ms) 
-                                          smoking_status 1 ===> NO
-                                          smoking_status 3 ===> YES
-                                          smoking_status 0 ===> NO
-                                          smoking_status 2 ===> NO
-                                   work_type 3 ===> YES
-                                   work_type 4 ===> YES
-                            hypertension 1 (35 ms) 
-                                   Residence_type 1 (13 ms) 
-                                          work_type 0 ===> NO
-                                          work_type 1 ===> YES
-                                          work_type 2 ===> YES
-                                          work_type 3 ===> YES
-                                          work_type 4 ===> YES
-                                   Residence_type 0 (12 ms) 
+                                   avg_glucose_level >  161.855 ===> NO
+                            heart_disease 1 ===> NO
+                     work_type 1 (107 ms) 
+                            Residence_type 1 (47 ms) 
+                                   gender 1 (13 ms) 
+                                          ever_married 1 ===> YES
+                                          ever_married 0 ===> NO
+                                   gender 0 ===> NO
+                            Residence_type 0 ===> NO
+                     work_type 2 ===> NO
+                     work_type 3 ===> NO
+                     work_type 4 ===> NO
+              hypertension 1 (108 ms) 
+                     Residence_type 1 ===> NO
+                     Residence_type 0 (44 ms) 
+                            heart_disease 0 (27 ms) 
+                                   ever_married 1 (15 ms) 
                                           work_type 0 ===> YES
                                           work_type 1 ===> YES
                                           work_type 2 ===> YES
                                           work_type 3 ===> YES
                                           work_type 4 ===> YES
-                     heart_disease 1 (125 ms) 
-                            work_type 0 (42 ms) 
-                                   smoking_status 1 (2 ms) 
-                                          Residence_type 1 ===> NO
-                                          Residence_type 0 ===> YES
-                                   smoking_status 3 ===> NO
-                                   smoking_status 0 (8 ms) 
-                                          Residence_type 1 ===> NO
-                                          Residence_type 0 ===> YES
-                                   smoking_status 2 (10 ms) 
-                                          gender 1 ===> NO
-                                          gender 0 ===> YES
-                                          gender 2 ===> YES
-                            work_type 1 (38 ms) 
-                                   gender 1 (16 ms) 
-                                          smoking_status 1 ===> NO
-                                          smoking_status 3 ===> YES
-                                          smoking_status 0 ===> YES
-                                          smoking_status 2 ===> NO
-                                   gender 0 (12 ms) 
-                                          bmi <= 21.45 ===> NO
-                                          bmi >  21.45 ===> NO
-                                   gender 2 ===> YES
-                            work_type 2 (36 ms) 
-                                   smoking_status 1 (8 ms) 
-                                          gender 1 ===> NO
-                                          gender 0 ===> YES
-                                          gender 2 ===> YES
-                                   smoking_status 3 (0 ms) 
-                                          gender 1 ===> YES
-                                          gender 0 ===> YES
-                                          gender 2 ===> YES
-                                   smoking_status 0 ===> NO
-                                   smoking_status 2 (8 ms) 
+                                   ever_married 0 ===> YES
+                            heart_disease 1 ===> YES
+age >  44.5 (3.634 s) 
+       avg_glucose_level <= 161.855 (2.077 s) 
+              hypertension 0 (1405 ms) 
+                     heart_disease 0 (797 ms) 
+                            smoking_status 1 (201 ms) 
+                                   work_type 0 (50 ms) 
                                           gender 1 ===> YES
                                           gender 0 ===> NO
-                                          gender 2 ===> YES
-                            work_type 3 ===> YES
-                            work_type 4 ===> YES
-              ever_married 0 (217 ms) 
-                     smoking_status 1 (68 ms) 
-                            hypertension 0 (21 ms) 
-                                   Residence_type 1 (10 ms) 
+                                   work_type 1 (60 ms) 
                                           gender 1 ===> YES
                                           gender 0 ===> YES
-                                          gender 2 ===> YES
-                                   Residence_type 0 (2 ms) 
-                                          heart_disease 0 ===> NO
-                                          heart_disease 1 ===> NO
-                            hypertension 1 (32 ms) 
-                                   gender 1 (10 ms) 
+                                   work_type 2 (30 ms) 
+                                          ever_married 1 ===> NO
+                                          ever_married 0 ===> YES
+                                   work_type 3 ===> YES
+                                   work_type 4 ===> YES
+                            smoking_status 3 (196 ms) 
+                                   gender 1 (76 ms) 
+                                          Residence_type 1 ===> NO
+                                          Residence_type 0 ===> NO
+                                   gender 0 (82 ms) 
                                           bmi <= 21.45 ===> YES
-                                          bmi >  21.45 ===> YES
-                                   gender 0 (7 ms) 
+                                          bmi >  21.45 ===> NO
+                            smoking_status 0 (279 ms) 
+                                   work_type 0 (75 ms) 
+                                          gender 1 ===> YES
+                                          gender 0 ===> YES
+                                   work_type 1 (71 ms) 
+                                          Residence_type 1 ===> NO
+                                          Residence_type 0 ===> NO
+                                   work_type 2 (72 ms) 
+                                          ever_married 1 ===> NO
+                                          ever_married 0 ===> NO
+                                   work_type 3 ===> YES
+                                   work_type 4 ===> YES
+                            smoking_status 2 (91 ms) 
+                                   Residence_type 1 (21 ms) 
                                           work_type 0 ===> YES
+                                          work_type 1 ===> YES
+                                          work_type 2 ===> NO
+                                          work_type 3 ===> NO
+                                          work_type 4 ===> NO
+                                   Residence_type 0 (20 ms) 
+                                          gender 1 ===> YES
+                                          gender 0 ===> YES
+                     heart_disease 1 (565 ms) 
+                            smoking_status 1 (88 ms) 
+                                   Residence_type 1 ===> NO
+                                   Residence_type 0 (18 ms) 
+                                          work_type 0 ===> YES
+                                          work_type 1 ===> NO
+                                          work_type 2 ===> YES
+                                          work_type 3 ===> YES
+                                          work_type 4 ===> YES
+                            smoking_status 3 (161 ms) 
+                                   work_type 0 ===> NO
+                                   work_type 1 (34 ms) 
+                                          gender 1 ===> YES
+                                          gender 0 ===> NO
+                                   work_type 2 (49 ms) 
+                                          ever_married 1 ===> YES
+                                          ever_married 0 ===> YES
+                                   work_type 3 ===> YES
+                                   work_type 4 ===> YES
+                            smoking_status 0 (202 ms) 
+                                   Residence_type 1 (60 ms) 
+                                          work_type 0 ===> NO
                                           work_type 1 ===> YES
                                           work_type 2 ===> NO
                                           work_type 3 ===> YES
                                           work_type 4 ===> YES
-                                   gender 2 ===> YES
-                     smoking_status 3 (43 ms) 
-                            hypertension 0 (24 ms) 
-                                   bmi <= 21.45 ===> NO
-                                   bmi >  21.45 (9 ms) 
+                                   Residence_type 0 (31 ms) 
+                                          gender 1 ===> YES
+                                          gender 0 ===> YES
+                            smoking_status 2 (61 ms) 
+                                   work_type 0 (14 ms) 
                                           Residence_type 1 ===> YES
                                           Residence_type 0 ===> YES
-                            hypertension 1 ===> NO
-                     smoking_status 0 (57 ms) 
-                            heart_disease 0 (28 ms) 
-                                   bmi <= 21.45 ===> NO
-                                   bmi >  21.45 (10 ms) 
-                                          hypertension 0 ===> NO
-                                          hypertension 1 ===> YES
-                            heart_disease 1 (21 ms) 
-                                   gender 1 (10 ms) 
-                                          Residence_type 1 ===> YES
-                                          Residence_type 0 ===> YES
-                                   gender 0 ===> NO
-                                   gender 2 ===> YES
-                     smoking_status 2 (34 ms) 
-                            bmi <= 21.45 ===> NO
-                            bmi >  21.45 (24 ms) 
-                                   hypertension 0 (12 ms) 
-                                          heart_disease 0 ===> NO
-                                          heart_disease 1 ===> NO
-                                   hypertension 1 ===> NO
-       avg_glucose_level >  162.045 (642 ms) 
-              heart_disease 0 (386 ms) 
-                     work_type 0 (184 ms) 
-                            smoking_status 1 (59 ms) 
-                                   gender 1 (20 ms) 
-                                          hypertension 0 ===> YES
-                                          hypertension 1 ===> YES
+                                   work_type 1 ===> NO
+                                   work_type 2 (14 ms) 
+                                          gender 1 ===> YES
+                                          gender 0 ===> NO
+                                   work_type 3 ===> YES
+                                   work_type 4 ===> YES
+              hypertension 1 (606 ms) 
+                     ever_married 1 (375 ms) 
+                            smoking_status 1 (69 ms) 
+                                   gender 1 (26 ms) 
+                                          work_type 0 ===> YES
+                                          work_type 1 ===> YES
+                                          work_type 2 ===> YES
+                                          work_type 3 ===> YES
+                                          work_type 4 ===> YES
                                    gender 0 (19 ms) 
-                                          Residence_type 1 ===> YES
-                                          Residence_type 0 ===> YES
-                                   gender 2 ===> YES
-                            smoking_status 3 (33 ms) 
-                                   hypertension 0 (11 ms) 
                                           bmi <= 21.45 ===> NO
-                                          bmi >  21.45 ===> YES
-                                   hypertension 1 ===> NO
-                            smoking_status 0 (18 ms) 
-                                   ever_married 1 (10 ms) 
+                                          bmi >  21.45 ===> NO
+                            smoking_status 3 (56 ms) 
+                                   work_type 0 (15 ms) 
+                                          Residence_type 1 ===> YES
+                                          Residence_type 0 ===> NO
+                                   work_type 1 (7 ms) 
                                           gender 1 ===> YES
                                           gender 0 ===> YES
-                                          gender 2 ===> YES
-                                   ever_married 0 ===> NO
-                            smoking_status 2 (26 ms) 
-                                   Residence_type 1 (9 ms) 
-                                          hypertension 0 ===> YES
-                                          hypertension 1 ===> YES
-                                   Residence_type 0 (9 ms) 
-                                          gender 1 ===> NO
+                                   work_type 2 ===> NO
+                                   work_type 3 ===> YES
+                                   work_type 4 ===> YES
+                            smoking_status 0 (57 ms) 
+                                   Residence_type 1 (26 ms) 
+                                          work_type 0 ===> YES
+                                          work_type 1 ===> YES
+                                          work_type 2 ===> YES
+                                          work_type 3 ===> YES
+                                          work_type 4 ===> YES
+                                   Residence_type 0 (17 ms) 
+                                          gender 1 ===> YES
                                           gender 0 ===> YES
-                                          gender 2 ===> YES
-                     work_type 1 (75 ms) 
-                            hypertension 0 (28 ms) 
-                                   gender 1 (16 ms) 
-                                          bmi <= 21.45 ===> NO
-                                          bmi >  21.45 ===> YES
-                                   gender 0 (8 ms) 
-                                          Residence_type 1 ===> YES
-                                          Residence_type 0 ===> YES
-                                   gender 2 ===> YES
-                            hypertension 1 (36 ms) 
-                                   smoking_status 1 (7 ms) 
-                                          ever_married 1 ===> YES
-                                          ever_married 0 ===> NO
-                                   smoking_status 3 ===> NO
-                                   smoking_status 0 (8 ms) 
-                                          Residence_type 1 ===> YES
-                                          Residence_type 0 ===> YES
-                                   smoking_status 2 ===> NO
-                     work_type 2 (74 ms) 
-                            gender 1 (37 ms) 
-                                   smoking_status 1 (7 ms) 
-                                          ever_married 1 ===> YES
-                                          ever_married 0 ===> NO
-                                   smoking_status 3 (6 ms) 
-                                          hypertension 0 ===> YES
-                                          hypertension 1 ===> YES
-                                   smoking_status 0 (8 ms) 
+                            smoking_status 2 (159 ms) 
+                                   work_type 0 (55 ms) 
+                                          heart_disease 0 ===> NO
+                                          heart_disease 1 ===> YES
+                                   work_type 1 (34 ms) 
                                           Residence_type 1 ===> NO
                                           Residence_type 0 ===> YES
-                                   smoking_status 2 (7 ms) 
-                                          Residence_type 1 ===> NO
-                                          Residence_type 0 ===> YES
-                            gender 0 (25 ms) 
-                                   hypertension 0 (11 ms) 
-                                          ever_married 1 ===> NO
-                                          ever_married 0 ===> NO
-                                   hypertension 1 (8 ms) 
-                                          ever_married 1 ===> YES
-                                          ever_married 0 ===> YES
-                            gender 2 ===> YES
-                     work_type 3 ===> YES
-                     work_type 4 ===> YES
-              heart_disease 1 (239 ms) 
-                     work_type 0 (101 ms) 
-                            smoking_status 1 (24 ms) 
-                                   gender 1 (9 ms) 
-                                          ever_married 1 ===> YES
-                                          ever_married 0 ===> NO
-                                   gender 0 ===> NO
-                                   gender 2 ===> YES
-                            smoking_status 3 (21 ms) 
-                                   hypertension 0 (11 ms) 
-                                          gender 1 ===> YES
-                                          gender 0 ===> YES
-                                          gender 2 ===> YES
-                                   hypertension 1 ===> NO
-                            smoking_status 0 (24 ms) 
-                                   Residence_type 1 (6 ms) 
-                                          gender 1 ===> YES
-                                          gender 0 ===> YES
-                                          gender 2 ===> YES
-                                   Residence_type 0 (10 ms) 
-                                          gender 1 ===> NO
-                                          gender 0 ===> YES
-                                          gender 2 ===> YES
-                            smoking_status 2 (24 ms) 
-                                   gender 1 (9 ms) 
-                                          ever_married 1 ===> YES
-                                          ever_married 0 ===> YES
-                                   gender 0 (8 ms) 
-                                          Residence_type 1 ===> YES
-                                          Residence_type 0 ===> YES
-                                   gender 2 ===> YES
-                     work_type 1 (66 ms) 
-                            smoking_status 1 ===> NO
-                            smoking_status 3 ===> NO
-                            smoking_status 0 (25 ms) 
-                                   hypertension 0 (0 ms) 
-                                          gender 1 ===> NO
-                                          gender 0 ===> YES
-                                          gender 2 ===> YES
-                                   hypertension 1 ===> NO
-                            smoking_status 2 (25 ms) 
-                                   Residence_type 1 (10 ms) 
-                                          gender 1 ===> YES
-                                          gender 0 ===> YES
-                                          gender 2 ===> YES
-                                   Residence_type 0 ===> NO
-                     work_type 2 (52 ms) 
-                            smoking_status 1 (15 ms) 
-                                   gender 1 ===> YES
-                                   gender 0 (0 ms) 
+                                   work_type 2 ===> NO
+                                   work_type 3 ===> YES
+                                   work_type 4 ===> YES
+                     ever_married 0 (201 ms) 
+                            smoking_status 1 (52 ms) 
+                                   Residence_type 1 (18 ms) 
                                           bmi <= 21.45 ===> YES
                                           bmi >  21.45 ===> YES
-                                   gender 2 ===> YES
-                            smoking_status 3 (18 ms) 
-                                   hypertension 0 (4 ms) 
+                                   Residence_type 0 ===> NO
+                            smoking_status 3 ===> NO
+                            smoking_status 0 (45 ms) 
+                                   bmi <= 21.45 ===> NO
+                                   bmi >  21.45 (14 ms) 
+                                          gender 1 ===> YES
+                                          gender 0 ===> YES
+                            smoking_status 2 ===> NO
+       avg_glucose_level >  161.855 (1516 ms) 
+              heart_disease 0 (983 ms) 
+                     hypertension 0 (488 ms) 
+                            smoking_status 1 (139 ms) 
+                                   work_type 0 (32 ms) 
+                                          gender 1 ===> YES
+                                          gender 0 ===> YES
+                                   work_type 1 (32 ms) 
+                                          ever_married 1 ===> NO
+                                          ever_married 0 ===> NO
+                                   work_type 2 (27 ms) 
+                                          gender 1 ===> YES
+                                          gender 0 ===> NO
+                                   work_type 3 ===> YES
+                                   work_type 4 ===> YES
+                            smoking_status 3 (76 ms) 
+                                   work_type 0 (9 ms) 
+                                          gender 1 ===> YES
+                                          gender 0 ===> YES
+                                   work_type 1 (15 ms) 
+                                          ever_married 1 ===> YES
+                                          ever_married 0 ===> NO
+                                   work_type 2 (10 ms) 
+                                          gender 1 ===> YES
+                                          gender 0 ===> NO
+                                   work_type 3 ===> YES
+                                   work_type 4 ===> YES
+                            smoking_status 0 (50 ms) 
+                                   ever_married 1 (12 ms) 
+                                          gender 1 ===> YES
+                                          gender 0 ===> YES
+                                   ever_married 0 ===> NO
+                            smoking_status 2 (157 ms) 
+                                   gender 1 (46 ms) 
+                                          work_type 0 ===> YES
+                                          work_type 1 ===> YES
+                                          work_type 2 ===> YES
+                                          work_type 3 ===> YES
+                                          work_type 4 ===> YES
+                                   gender 0 (54 ms) 
+                                          Residence_type 1 ===> NO
+                                          Residence_type 0 ===> YES
+                     hypertension 1 (457 ms) 
+                            smoking_status 1 (175 ms) 
+                                   work_type 0 (39 ms) 
+                                          gender 1 ===> YES
+                                          gender 0 ===> YES
+                                   work_type 1 (52 ms) 
+                                          ever_married 1 ===> YES
+                                          ever_married 0 ===> NO
+                                   work_type 2 (39 ms) 
+                                          Residence_type 1 ===> YES
+                                          Residence_type 0 ===> NO
+                                   work_type 3 ===> YES
+                                   work_type 4 ===> YES
+                            smoking_status 3 ===> NO
+                            smoking_status 0 (58 ms) 
+                                   Residence_type 1 (20 ms) 
+                                          work_type 0 ===> NO
+                                          work_type 1 ===> YES
+                                          work_type 2 ===> NO
+                                          work_type 3 ===> YES
+                                          work_type 4 ===> YES
+                                   Residence_type 0 (16 ms) 
+                                          ever_married 1 ===> YES
+                                          ever_married 0 ===> NO
+                            smoking_status 2 (89 ms) 
+                                   Residence_type 1 (36 ms) 
+                                          gender 1 ===> YES
+                                          gender 0 ===> YES
+                                   Residence_type 0 ===> NO
+              heart_disease 1 (499 ms) 
+                     work_type 0 (241 ms) 
+                            smoking_status 1 (48 ms) 
+                                   gender 1 (14 ms) 
+                                          ever_married 1 ===> YES
+                                          ever_married 0 ===> NO
+                                   gender 0 ===> NO
+                            smoking_status 3 (45 ms) 
+                                   hypertension 0 (16 ms) 
+                                          gender 1 ===> YES
+                                          gender 0 ===> YES
+                                   hypertension 1 ===> NO
+                            smoking_status 0 (71 ms) 
+                                   Residence_type 1 (33 ms) 
+                                          gender 1 ===> YES
+                                          gender 0 ===> YES
+                                   Residence_type 0 (19 ms) 
+                                          gender 1 ===> NO
+                                          gender 0 ===> YES
+                            smoking_status 2 (44 ms) 
+                                   gender 1 (15 ms) 
                                           ever_married 1 ===> YES
                                           ever_married 0 ===> YES
-                                   hypertension 1 ===> YES
-                            smoking_status 0 (16 ms) 
+                                   gender 0 (13 ms) 
+                                          ever_married 1 ===> YES
+                                          ever_married 0 ===> YES
+                     work_type 1 (100 ms) 
+                            Residence_type 1 (55 ms) 
+                                   gender 1 ===> NO
+                                   gender 0 (21 ms) 
+                                          hypertension 0 ===> YES
+                                          hypertension 1 ===> NO
+                            Residence_type 0 ===> NO
+                     work_type 2 (107 ms) 
+                            smoking_status 1 (26 ms) 
+                                   bmi <= 21.45 ===> YES
+                                   bmi >  21.45 (7 ms) 
+                                          hypertension 0 ===> YES
+                                          hypertension 1 ===> YES
+                            smoking_status 3 ===> NO
+                            smoking_status 0 (31 ms) 
                                    hypertension 0 ===> NO
-                                   hypertension 1 (0 ms) 
+                                   hypertension 1 (7 ms) 
                                           ever_married 1 ===> YES
                                           ever_married 0 ===> YES
                             smoking_status 2 ===> YES
