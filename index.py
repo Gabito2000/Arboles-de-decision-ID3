@@ -1,11 +1,100 @@
-from datetime import  datetime
+from ast import For
+from datetime import date, datetime
 import sys
 import math
+import pandas as pd
+import matplotlib.pyplot as plt
+import statistics as stat
+import seaborn as sns
 import numpy as np
 import warnings
-
+from imblearn.over_sampling import RandomOverSampler as oversampler
+from sklearn.model_selection import train_test_split
+from sklearn import tree
+from sklearn.metrics import f1_score as f1
+from sklearn.metrics import accuracy_score as acc
+from sklearn.metrics import precision_score as precision
+from sklearn.metrics import recall_score as recall
 
 warnings.filterwarnings("ignore")
+
+df = pd.read_csv("./healthcare-dataset-stroke-data.csv")
+
+#print (df.head())
+
+#print (df.shape)
+
+#print(df.isnull().sum())
+
+#print (df.describe())
+
+""""
+sns.countplot(data = df, x="gender")
+plt.show()
+sns.countplot(data = df, x="work_type")
+plt.show()
+sns.countplot(data = df, x="Residence_type")
+plt.show()
+sns.countplot(data = df, x="smoking_status")
+plt.show()
+"""
+
+media = stat.median(df['bmi'])
+df['bmi'] = df['bmi'].replace(['N/A'], [media])
+
+df['bmi'] = df['bmi'].fillna(media)
+df['ever_married'] = df['ever_married'].replace(['Yes', 'No'], [1,0])
+df['gender'] = df['gender'].replace(['Male', 'Female', 'Other'], [0,1,2])
+df['work_type'] = df['work_type'].replace(['Private', 'Self-employed', 'Govt_job', 'children', 'Never_worked'], [0,1,2,3,4])
+df['Residence_type'] = df['Residence_type'].replace(['Urban', 'Rural'], [1,0])
+df['smoking_status'] = df['smoking_status'].replace(['formerly smoked', 'never smoked', 'smokes', 'Unknown'], [0,1,2,3])
+
+ros = oversampler(random_state=42)
+X = df[["gender", "age", "hypertension", "heart_disease", "ever_married", "work_type", "Residence_type",
+        "avg_glucose_level", "bmi", "smoking_status"]]
+Y = df.stroke
+X, Y = ros.fit_resample(X,Y)
+
+df = X
+df["stroke"] = Y
+
+sns.countplot(data = df, x="stroke")
+plt.show()
+
+
+#1022 test size porque es el 20%, 5110 datos en total
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=1022, random_state=42)
+
+
+dt_clf = tree.DecisionTreeClassifier()
+dt_clf = dt_clf.fit(X_train, Y_train)
+
+Y_pred = dt_clf.predict (X_test)
+
+print("############DecisionTreeClassifier#############")
+print("F1 -> "+str(f1 (Y_test, Y_pred)))
+print("Accuracy -> "+str(acc (Y_test, Y_pred)))
+print("Precision -> "+str(precision (Y_test, Y_pred)))
+print("Recall -> "+str(recall (Y_test, Y_pred)))
+
+     
+	
+"""
+Fase 1
+	- Acomodar datos en 1 archivo solo
+	- Ajustar tipos de datos
+	- rellenar datos faltantes
+	- Todos los valores a reales
+	- Enumerados: crear columnas binarias
+	- Normalizar los valores
+        - los atributos continuos, cambiarlos como se vio en el teoricos, diapo arboles 33
+
+	
+Fase 2
+	- Separar conjuntos Entrenamiento, Validacion, Test
+	- Misma distribucion: aleatorio
+	
+"""
 
 #########################################################################################
 # ESPECIFICACION DE LAS CLASES PARA LA GENERACION DEL ARBOL
@@ -76,13 +165,7 @@ def GetColumnDescriptor(df, col):
                 desc.append(df[col].value_counts().index)
         
         return desc
-
-def GetFullColumnDescriptor(table): 
-        descs = {}
-        for col in table.columns:
-                descs[col] = GetColumnDescriptor(table, col)
-        return descs
-
+           
 def GetEntropy(table):
         #Entropia(S) = − p+ . log(p+) − p− . log(p−)
         if(len(table) ==0):
@@ -94,53 +177,50 @@ def GetEntropy(table):
         entropia = - p_plus*math.log(p_plus) - p_min*math.log(p_min)
         return entropia
 
-def GetAttGanancia(table, colName, colinfo): #Gan(S, Ded) = 1 − 1/4.E(SDed=Alta) − 2/4.E(SDed=Media) − 1/4.E(SDed=Baja)     
-        if(colinfo[1]):
-                vCorte = colinfo[2][0]
+def GetAttGanancia(table, colName): #Gan(S, Ded) = 1 − 1/4.E(SDed=Alta) − 2/4.E(SDed=Media) − 1/4.E(SDed=Baja)
+        coldesc = GetColumnDescriptor(table, colName)        
+        if(coldesc[1]):
+                vCorte = coldesc[2][0]
                 ejemplosvi = table[table[colName] <= vCorte]
                 gAcumul = 1 - GetEntropy(ejemplosvi)*(len(ejemplosvi.index) / len(table.index) )
                 ejemplosvi = table[table[colName] > vCorte]
                 gAcumul = gAcumul - GetEntropy(ejemplosvi)*(len(ejemplosvi.index) / len(table.index) )            
-                return gAcumul
+                return (gAcumul, coldesc)
         else:
                 gAcumul = 1
-                for vi in colinfo[2]:
+                for vi in coldesc[2]:
                         ejemplosvi = table[table[colName] == vi]
                         gAcumul = gAcumul - GetEntropy(ejemplosvi)*(len(ejemplosvi.index) / len(table.index) )
 
-                return gAcumul
+                return (gAcumul, coldesc)
 
 
-def GetBestAtt(table, colinfos): #retornar el mejor atributo para aplicar con Id3, tambien la descripcion de las columnas por performance
+def GetBestAtt(table): #retornar el mejor atributo para aplicar con Id3, tambien la descripcion de las columnas por performance
         bestAttr = table.columns[0]
         bestGan = -1
+        bestColsInfo: None
         for col in table.columns:
                 if(col  != "stroke"):
-                        g = GetAttGanancia(table, col, colinfos[col])
+                        (g, colInfos) = GetAttGanancia(table, col)
                         if(g>bestGan):
                                 bestGan = g
                                 bestAttr = col
+                                bestColsInfo = colInfos
 
-        return bestAttr
+        return (bestAttr, bestColsInfo)
 
 
 #########################################################################################
 # ALGORITMO ID3
 #########################################################################################
-def ID3_DecisionTree(pdf, maxLevels):
-        FullColInfos = GetFullColumnDescriptor(pdf)
-        if(maxLevels == None):
-                maxLevels = sys.maxsize
-        return __ID3_DecisionTree(pdf, maxLevels, FullColInfos)
 
-def __ID3_DecisionTree(pdf, maxLevels, FullColInfos):
+def ID3_DecisionTree(pdf, maxLevels):
         dateInit = datetime.now()
         if(maxLevels ==0):
                 return G02TreeSheet("ID3 Max Level", pdf["stroke"].mode().values[0])
 
-        dataf = pdf.copy()
-        idColumn = GetBestAtt(dataf, FullColInfos) #Elegir un atributo y retorna la descripcion de valores para esa eleccion
-        colInfo = FullColInfos[idColumn]
+        dataf = pdf.copy()        
+        idColumn, coldesc = GetBestAtt(dataf) #Elegir un atributo y retorna la descripcion de valores para esa eleccion
         #Crear una raíz
         ret = G02Tree(idColumn)
         ret.DefaultReturn = dataf["stroke"].mode().values[0]        
@@ -148,28 +228,26 @@ def __ID3_DecisionTree(pdf, maxLevels, FullColInfos):
         #• Si todos los ej. tienen el mismo valor → etiquetar con ese valor
         uniqueStrokes = dataf.stroke.unique()
         if(uniqueStrokes.size == 1):
-                return G02TreeSheet("SAME RETURN", uniqueStrokes[0])
+                return G02TreeSheet(idColumn, uniqueStrokes[0])
         
         #• Si no me quedan atributos → etiquetar con el valor más común
         if(dataf.columns.size == 1):
-                return G02TreeSheet("EMPTY_ATTS", dataf["stroke"].mode().values[0])
+                return G02TreeSheet(idColumn, dataf["stroke"].mode().values[0])
 
         #    ‣ Para cada valor vi de A 
-        if(colInfo[1]):#es continuo
+        #coldesc = GetColumnDescriptor(pdf, idColumn) #obtiene los posibles valores de una columna, teniendo en cuenta los valores continuos 
+        if(coldesc[1]):#es continuo
                 #๏ Genero una rama
-                vi = colInfo[2][0]
+                vi = coldesc[2][0]
                 node = G02TreeContNode(vi, True)  
                 #creo arbol menor
                 ejemplosvi = dataf[dataf[idColumn] <= vi]
                 #๏ Si Ejemplosvi es vacío → etiquetar con el valor más probable
                 if(len(ejemplosvi) == 0):
-                        node.SubTree = G02TreeSheet("MEDIA", dataf["stroke"].mode().values[0])
-                elif(ejemplosvi.stroke.unique().size ==1):
-                        #• Si todos los ej. tienen el mismo valor → etiquetar con ese valor
-                        node.SubTree = G02TreeSheet("UNIQUE", ejemplosvi.stroke.unique()[0])
+                        node.SubTree = G02TreeSheet(idColumn, dataf["stroke"].mode().values[0])
                 else: #En caso contrario → ID3(Ejemplosvi, Atributos -{A})                        
                         del ejemplosvi[idColumn] #Atributos -{A}
-                        node.SubTree = __ID3_DecisionTree(ejemplosvi, maxLevels-1, FullColInfos)
+                        node.SubTree = ID3_DecisionTree(ejemplosvi, maxLevels-1)
                 ret.Nodes.append(node)
 
                 # creo arbol mayor 
@@ -177,28 +255,22 @@ def __ID3_DecisionTree(pdf, maxLevels, FullColInfos):
                 ejemplosvi = dataf[dataf[idColumn] > vi]
                 #๏ Si Ejemplosvi es vacío → etiquetar con el valor más probable
                 if(len(ejemplosvi) == 0):
-                        node.SubTree = G02TreeSheet("MEDIA", dataf["stroke"].mode().values[0])
-                elif(ejemplosvi.stroke.unique().size ==1):
-                        #• Si todos los ej. tienen el mismo valor → etiquetar con ese valor
-                        node.SubTree = G02TreeSheet("UNIQUE", ejemplosvi.stroke.unique()[0])
+                        node.SubTree = G02TreeSheet(idColumn, dataf["stroke"].mode().values[0])
                 else: #En caso contrario → ID3(Ejemplosvi, Atributos -{A})                        
                         del ejemplosvi[idColumn] #Atributos -{A}
-                        node.SubTree = __ID3_DecisionTree(ejemplosvi, maxLevels-1, FullColInfos)
+                        node.SubTree = ID3_DecisionTree(ejemplosvi, maxLevels-1)
                 ret.Nodes.append(node)  
         else:
-                for vi in colInfo[2]: #dfGlobal el df original
+                for vi in coldesc[2]: #dfGlobal el df original
                         #๏ Ejemplosvi={ejemplos en los cuales A=vi }
                         node = G02TreeNode(vi)
                         ejemplosvi = dataf[dataf[idColumn] == vi]
                         #๏ Si Ejemplosvi es vacío → etiquetar con el valor más probable
                         if(len(ejemplosvi) == 0):
-                                node.SubTree = G02TreeSheet("MEDIA", dataf["stroke"].mode().values[0])
-                        elif(ejemplosvi.stroke.unique().size ==1):
-                                #• Si todos los ej. tienen el mismo valor → etiquetar con ese valor
-                                node.SubTree = G02TreeSheet("UNIQUE", ejemplosvi.stroke.unique()[0])
+                                node.SubTree = G02TreeSheet(idColumn, dataf["stroke"].mode().values[0])
                         else: #En caso contrario → ID3(Ejemplosvi, Atributos -{A})                                
                                 del ejemplosvi[idColumn] #Atributos -{A}
-                                node.SubTree = __ID3_DecisionTree(ejemplosvi, maxLevels-1, FullColInfos)
+                                node.SubTree = ID3_DecisionTree(ejemplosvi, maxLevels-1)
                         ret.Nodes.append(node)
         
         time = datetime.now() - dateInit
@@ -209,30 +281,22 @@ def __ID3_DecisionTree(pdf, maxLevels, FullColInfos):
 # FUNCIONES SOBRE EL ARBOL ID3
 #########################################################################################
                 
-def __EvaluateTable(item, id3Tree):        
+def EvaluateTable(item, id3Tree):        
         if(type(id3Tree) is G02TreeSheet):
                 return id3Tree.ReturnValue
         v = item[id3Tree.IdColumn]
         for node in id3Tree.Nodes:                
                 if(type(node) == G02TreeContNode):    
                         if(node.IsFirstSet and v <= node.Value):
-                                return __EvaluateTable(item, node.SubTree) 
+                                return EvaluateTable(item, node.SubTree) 
                         if((not node.IsFirstSet) and v > node.Value):
-                                return __EvaluateTable(item, node.SubTree)                                           
+                                return EvaluateTable(item, node.SubTree)                                           
                 else:
                         if(v == node.Value):
-                                return __EvaluateTable(item, node.SubTree)
+                                return EvaluateTable(item, node.SubTree)
 
         #Retornar un valor por defecto, por ejemplo el promedio de las hojas
         return id3Tree.DefaultReturn
-
-def TestID3Tree(X_Test, id3Tree):        
-        predict = []
-        for index, row in X_Test.iterrows():
-                eval = __EvaluateTable(row, id3Tree)
-                predict.append(eval)
-
-        return np.array(predict, dtype=int)
 
 def TreeToString(id3Tree, nivel):
     ret = ""
@@ -248,7 +312,7 @@ def TreeToString(id3Tree, nivel):
             ret +=f"{node.Value}" + " "
         
         if(type(node.SubTree) is G02TreeSheet):            
-            ret +="===> YES - "+ node.SubTree.IdColumn + "\n" if node.SubTree.ReturnValue == 1 else "===> NO - "+ node.SubTree.IdColumn + "\n"
+            ret +="===> YES\n" if node.SubTree.ReturnValue == 1 else "===> NO\n"
         else:
                 if(node.SubTree.DelayTime> 2000):
                         ret += "(" + str(node.SubTree.DelayTime/1000) + " s) " 
@@ -269,3 +333,31 @@ def SaveId3Tree(fileName, id3tree):
     f.write(strTree)
     f.close()
 
+
+#########################################################################################
+# PRUEBAS
+#########################################################################################
+
+dfGlobal = df.copy()
+#del dfGlobal["id"] #el id no puede ir ya que hace sobreajuste
+
+
+#1022 test size porque es el 20%, 5110 datos en total
+df_train, df_test = train_test_split(dfGlobal, test_size=0.2, random_state=42)
+
+maxTreeLevels = 10
+ID3_tree = ID3_DecisionTree(df_train, maxTreeLevels)
+SaveId3Tree(f"G02_ID3_tree_{maxTreeLevels}.txt", ID3_tree)
+
+predict = []
+
+for index, row in df_test.iterrows():
+        eval = EvaluateTable(row, ID3_tree)
+        predict.append(eval)
+
+pred = np.array(predict, dtype=int)
+print("\n############ID3_DecisionTree#############")
+print("F1 -> "+str(f1 (df_test['stroke'].values, pred)))
+print("Accuracy -> "+str(acc (df_test['stroke'].values, predict)))
+print("Precision -> "+str(precision (df_test['stroke'].values, predict)))
+print("Recall -> "+str(recall (df_test['stroke'].values, predict)))
