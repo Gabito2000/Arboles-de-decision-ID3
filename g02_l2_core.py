@@ -77,7 +77,13 @@ def GetColumnDescriptor(df, col):
                 desc.append(df[col].value_counts().index)
         
         return desc
-           
+
+def GetFullColumnDescriptor(table): 
+        descs = {}
+        for col in table.columns:
+                descs[col] = GetColumnDescriptor(table, col)
+        return descs
+
 def GetEntropy(table):
         #Entropia(S) = − p+ . log(p+) − p− . log(p−)
         if(len(table) ==0):
@@ -89,50 +95,51 @@ def GetEntropy(table):
         entropia = - p_plus*math.log(p_plus) - p_min*math.log(p_min)
         return entropia
 
-def GetAttGanancia(table, colName): #Gan(S, Ded) = 1 − 1/4.E(SDed=Alta) − 2/4.E(SDed=Media) − 1/4.E(SDed=Baja)
-        coldesc = GetColumnDescriptor(table, colName)        
-        if(coldesc[1]):
-                vCorte = coldesc[2][0]
+def GetAttGanancia(table, colName, colinfo): #Gan(S, Ded) = 1 − 1/4.E(SDed=Alta) − 2/4.E(SDed=Media) − 1/4.E(SDed=Baja)     
+        if(colinfo[1]):
+                vCorte = colinfo[2][0]
                 ejemplosvi = table[table[colName] <= vCorte]
                 gAcumul = 1 - GetEntropy(ejemplosvi)*(len(ejemplosvi.index) / len(table.index) )
                 ejemplosvi = table[table[colName] > vCorte]
                 gAcumul = gAcumul - GetEntropy(ejemplosvi)*(len(ejemplosvi.index) / len(table.index) )            
-                return (gAcumul, coldesc)
+                return gAcumul
         else:
                 gAcumul = 1
-                for vi in coldesc[2]:
+                for vi in colinfo[2]:
                         ejemplosvi = table[table[colName] == vi]
                         gAcumul = gAcumul - GetEntropy(ejemplosvi)*(len(ejemplosvi.index) / len(table.index) )
 
-                return (gAcumul, coldesc)
+                return gAcumul
 
 
-def GetBestAtt(table): #retornar el mejor atributo para aplicar con Id3, tambien la descripcion de las columnas por performance
+def GetBestAtt(table, colinfos): #retornar el mejor atributo para aplicar con Id3, tambien la descripcion de las columnas por performance
         bestAttr = table.columns[0]
         bestGan = -1
-        bestColsInfo: None
         for col in table.columns:
                 if(col  != "stroke"):
-                        (g, colInfos) = GetAttGanancia(table, col)
+                        g = GetAttGanancia(table, col, colinfos[col])
                         if(g>bestGan):
                                 bestGan = g
                                 bestAttr = col
-                                bestColsInfo = colInfos
 
-        return (bestAttr, bestColsInfo)
+        return bestAttr
 
 
 #########################################################################################
 # ALGORITMO ID3
 #########################################################################################
-
 def ID3_DecisionTree(pdf, maxLevels):
+        FullColInfos = GetFullColumnDescriptor(pdf)
+        return __ID3_DecisionTree(pdf, maxLevels, FullColInfos)
+
+def __ID3_DecisionTree(pdf, maxLevels, FullColInfos):
         dateInit = datetime.now()
         if(maxLevels ==0):
                 return G02TreeSheet("ID3 Max Level", pdf["stroke"].mode().values[0])
 
-        dataf = pdf.copy()        
-        idColumn, coldesc = GetBestAtt(dataf) #Elegir un atributo y retorna la descripcion de valores para esa eleccion
+        dataf = pdf.copy()
+        idColumn = GetBestAtt(dataf, FullColInfos) #Elegir un atributo y retorna la descripcion de valores para esa eleccion
+        colInfo = FullColInfos[idColumn]
         #Crear una raíz
         ret = G02Tree(idColumn)
         ret.DefaultReturn = dataf["stroke"].mode().values[0]        
@@ -148,9 +155,9 @@ def ID3_DecisionTree(pdf, maxLevels):
 
         #    ‣ Para cada valor vi de A 
         #coldesc = GetColumnDescriptor(pdf, idColumn) #obtiene los posibles valores de una columna, teniendo en cuenta los valores continuos 
-        if(coldesc[1]):#es continuo
+        if(colInfo[1]):#es continuo
                 #๏ Genero una rama
-                vi = coldesc[2][0]
+                vi = colInfo[2][0]
                 node = G02TreeContNode(vi, True)  
                 #creo arbol menor
                 ejemplosvi = dataf[dataf[idColumn] <= vi]
@@ -159,7 +166,7 @@ def ID3_DecisionTree(pdf, maxLevels):
                         node.SubTree = G02TreeSheet(idColumn, dataf["stroke"].mode().values[0])
                 else: #En caso contrario → ID3(Ejemplosvi, Atributos -{A})                        
                         del ejemplosvi[idColumn] #Atributos -{A}
-                        node.SubTree = ID3_DecisionTree(ejemplosvi, maxLevels-1)
+                        node.SubTree = __ID3_DecisionTree(ejemplosvi, maxLevels-1, FullColInfos)
                 ret.Nodes.append(node)
 
                 # creo arbol mayor 
@@ -170,10 +177,10 @@ def ID3_DecisionTree(pdf, maxLevels):
                         node.SubTree = G02TreeSheet(idColumn, dataf["stroke"].mode().values[0])
                 else: #En caso contrario → ID3(Ejemplosvi, Atributos -{A})                        
                         del ejemplosvi[idColumn] #Atributos -{A}
-                        node.SubTree = ID3_DecisionTree(ejemplosvi, maxLevels-1)
+                        node.SubTree = __ID3_DecisionTree(ejemplosvi, maxLevels-1, FullColInfos)
                 ret.Nodes.append(node)  
         else:
-                for vi in coldesc[2]: #dfGlobal el df original
+                for vi in colInfo[2]: #dfGlobal el df original
                         #๏ Ejemplosvi={ejemplos en los cuales A=vi }
                         node = G02TreeNode(vi)
                         ejemplosvi = dataf[dataf[idColumn] == vi]
@@ -182,7 +189,7 @@ def ID3_DecisionTree(pdf, maxLevels):
                                 node.SubTree = G02TreeSheet(idColumn, dataf["stroke"].mode().values[0])
                         else: #En caso contrario → ID3(Ejemplosvi, Atributos -{A})                                
                                 del ejemplosvi[idColumn] #Atributos -{A}
-                                node.SubTree = ID3_DecisionTree(ejemplosvi, maxLevels-1)
+                                node.SubTree = __ID3_DecisionTree(ejemplosvi, maxLevels-1, FullColInfos)
                         ret.Nodes.append(node)
         
         time = datetime.now() - dateInit
