@@ -1,106 +1,106 @@
-Tiempo Total 11.248 segundos 
-age <= 53.0 (3.35 s) 
-       ever_married 1 (2.164 s) 
-              hypertension 0 (1370 ms) 
-                     work_type 0 (770 ms) 
-                            smoking_status 1 (281 ms) 
-                                   avg_glucose_level <= 162.045 (154 ms) 
-                                          gender 1 (83 ms) 
-                                                 Residence_type 1 (27 ms) 
+Tiempo Total 4.198 segundos 
+age <= 53.0 (1436 ms) 
+       ever_married 1 (1001 ms) 
+              hypertension 0 (564 ms) 
+                     work_type 0 (300 ms) 
+                            smoking_status 1 (101 ms) 
+                                   avg_glucose_level <= 162.045 (50 ms) 
+                                          gender 1 (23 ms) 
+                                                 Residence_type 1 (0 ms) 
                                                         bmi <= 19.35 ===> NO - MEDIA
-                                                        bmi >  19.35 (9 ms) 
+                                                        bmi >  19.35 (0 ms) 
                                                                heart_disease 0 ===> NO - EMPTY_ATTS
                                                                heart_disease 1 ===> NO - UNIQUE
-                                                 Residence_type 0 (30 ms) 
-                                                        heart_disease 0 (13 ms) 
+                                                 Residence_type 0 (9 ms) 
+                                                        heart_disease 0 (5 ms) 
                                                                bmi <= 19.35 ===> NO - UNIQUE
                                                                bmi >  19.35 ===> NO - EMPTY_ATTS
                                                         heart_disease 1 ===> NO - MEDIA
-                                          gender 0 (43 ms) 
+                                          gender 0 (13 ms) 
                                                  bmi <= 19.35 ===> NO - UNIQUE
-                                                 bmi >  19.35 (21 ms) 
-                                                        heart_disease 0 (9 ms) 
+                                                 bmi >  19.35 (13 ms) 
+                                                        heart_disease 0 (0 ms) 
                                                                Residence_type 1 ===> NO - UNIQUE
                                                                Residence_type 0 ===> NO - EMPTY_ATTS
                                                         heart_disease 1 ===> NO - UNIQUE
                                           gender 2 ===> NO - MEDIA
-                                   avg_glucose_level >  162.045 (100 ms) 
-                                          Residence_type 1 (42 ms) 
+                                   avg_glucose_level >  162.045 (50 ms) 
+                                          Residence_type 1 (18 ms) 
                                                  bmi <= 19.35 ===> NO - MEDIA
-                                                 bmi >  19.35 (22 ms) 
-                                                        heart_disease 0 (11 ms) 
+                                                 bmi >  19.35 (16 ms) 
+                                                        heart_disease 0 (5 ms) 
                                                                gender 1 ===> YES - EMPTY_ATTS
                                                                gender 0 ===> NO - UNIQUE
                                                                gender 2 ===> NO - MEDIA
                                                         heart_disease 1 ===> NO - UNIQUE
-                                          Residence_type 0 (35 ms) 
-                                                 heart_disease 0 (20 ms) 
+                                          Residence_type 0 (17 ms) 
+                                                 heart_disease 0 (12 ms) 
                                                         bmi <= 19.35 ===> NO - MEDIA
                                                         bmi >  19.35 (8 ms) 
                                                                gender 1 ===> YES - EMPTY_ATTS
                                                                gender 0 ===> NO - UNIQUE
                                                                gender 2 ===> NO - MEDIA
                                                  heart_disease 1 ===> NO - MEDIA
-                            smoking_status 3 (96 ms) 
+                            smoking_status 3 (56 ms) 
                                    bmi <= 19.35 ===> NO - MEDIA
-                                   bmi >  19.35 (68 ms) 
-                                          heart_disease 0 (45 ms) 
-                                                 avg_glucose_level <= 162.045 (26 ms) 
+                                   bmi >  19.35 (39 ms) 
+                                          heart_disease 0 (34 ms) 
+                                                 avg_glucose_level <= 162.045 (20 ms) 
                                                         Residence_type 1 ===> NO - UNIQUE
-                                                        Residence_type 0 (13 ms) 
+                                                        Residence_type 0 (5 ms) 
                                                                gender 1 ===> NO - UNIQUE
                                                                gender 0 ===> NO - EMPTY_ATTS
                                                                gender 2 ===> NO - MEDIA
                                                  avg_glucose_level >  162.045 ===> NO - UNIQUE
                                           heart_disease 1 ===> NO - UNIQUE
-                            smoking_status 0 (181 ms) 
-                                   gender 1 (70 ms) 
-                                          heart_disease 0 (46 ms) 
+                            smoking_status 0 (65 ms) 
+                                   gender 1 (28 ms) 
+                                          heart_disease 0 (18 ms) 
                                                  bmi <= 19.35 ===> NO - UNIQUE
-                                                 bmi >  19.35 (26 ms) 
-                                                        avg_glucose_level <= 162.045 (12 ms) 
+                                                 bmi >  19.35 (12 ms) 
+                                                        avg_glucose_level <= 162.045 (3 ms) 
                                                                Residence_type 1 ===> NO - UNIQUE
                                                                Residence_type 0 ===> NO - EMPTY_ATTS
                                                         avg_glucose_level >  162.045 ===> NO - UNIQUE
                                           heart_disease 1 ===> NO - MEDIA
-                                   gender 0 (76 ms) 
+                                   gender 0 (22 ms) 
                                           bmi <= 19.35 ===> NO - MEDIA
-                                          bmi >  19.35 (49 ms) 
-                                                 heart_disease 0 (26 ms) 
-                                                        avg_glucose_level <= 162.045 (9 ms) 
+                                          bmi >  19.35 (15 ms) 
+                                                 heart_disease 0 (7 ms) 
+                                                        avg_glucose_level <= 162.045 (4 ms) 
                                                                Residence_type 1 ===> YES - EMPTY_ATTS
                                                                Residence_type 0 ===> NO - UNIQUE
                                                         avg_glucose_level >  162.045 ===> NO - UNIQUE
                                                  heart_disease 1 ===> NO - UNIQUE
                                    gender 2 ===> NO - MEDIA
-                            smoking_status 2 (170 ms) 
-                                   avg_glucose_level <= 162.045 (74 ms) 
-                                          heart_disease 0 (45 ms) 
+                            smoking_status 2 (64 ms) 
+                                   avg_glucose_level <= 162.045 (24 ms) 
+                                          heart_disease 0 (17 ms) 
                                                  bmi <= 19.35 ===> NO - UNIQUE
-                                                 bmi >  19.35 (28 ms) 
-                                                        gender 1 (9 ms) 
+                                                 bmi >  19.35 (9 ms) 
+                                                        gender 1 (4 ms) 
                                                                Residence_type 1 ===> NO - UNIQUE
                                                                Residence_type 0 ===> NO - EMPTY_ATTS
                                                         gender 0 ===> NO - UNIQUE
                                                         gender 2 ===> NO - MEDIA
                                           heart_disease 1 ===> NO - UNIQUE
-                                   avg_glucose_level >  162.045 (65 ms) 
-                                          heart_disease 0 (46 ms) 
+                                   avg_glucose_level >  162.045 (29 ms) 
+                                          heart_disease 0 (22 ms) 
                                                  bmi <= 19.35 ===> YES - MEDIA
-                                                 bmi >  19.35 (28 ms) 
-                                                        gender 1 (13 ms) 
+                                                 bmi >  19.35 (14 ms) 
+                                                        gender 1 (7 ms) 
                                                                Residence_type 1 ===> YES - EMPTY_ATTS
                                                                Residence_type 0 ===> NO - UNIQUE
                                                         gender 0 ===> NO - UNIQUE
                                                         gender 2 ===> YES - MEDIA
                                           heart_disease 1 ===> YES - MEDIA
-                     work_type 1 (282 ms) 
-                            gender 1 (126 ms) 
-                                   heart_disease 0 (93 ms) 
+                     work_type 1 (152 ms) 
+                            gender 1 (69 ms) 
+                                   heart_disease 0 (54 ms) 
                                           bmi <= 19.35 ===> NO - UNIQUE
-                                          bmi >  19.35 (61 ms) 
-                                                 avg_glucose_level <= 162.045 (30 ms) 
-                                                        Residence_type 1 (15 ms) 
+                                          bmi >  19.35 (34 ms) 
+                                                 avg_glucose_level <= 162.045 (18 ms) 
+                                                        Residence_type 1 (7 ms) 
                                                                smoking_status 1 ===> NO - UNIQUE
                                                                smoking_status 3 ===> NO - UNIQUE
                                                                smoking_status 0 ===> NO - UNIQUE
@@ -108,12 +108,12 @@ age <= 53.0 (3.35 s)
                                                         Residence_type 0 ===> NO - UNIQUE
                                                  avg_glucose_level >  162.045 ===> NO - UNIQUE
                                    heart_disease 1 ===> NO - UNIQUE
-                            gender 0 (117 ms) 
+                            gender 0 (59 ms) 
                                    bmi <= 19.35 ===> NO - MEDIA
-                                   bmi >  19.35 (87 ms) 
-                                          heart_disease 0 (61 ms) 
-                                                 avg_glucose_level <= 162.045 (35 ms) 
-                                                        Residence_type 1 (20 ms) 
+                                   bmi >  19.35 (41 ms) 
+                                          heart_disease 0 (25 ms) 
+                                                 avg_glucose_level <= 162.045 (13 ms) 
+                                                        Residence_type 1 (7 ms) 
                                                                smoking_status 1 ===> NO - UNIQUE
                                                                smoking_status 3 ===> YES - EMPTY_ATTS
                                                                smoking_status 0 ===> NO - UNIQUE
@@ -122,13 +122,13 @@ age <= 53.0 (3.35 s)
                                                  avg_glucose_level >  162.045 ===> NO - UNIQUE
                                           heart_disease 1 ===> NO - UNIQUE
                             gender 2 ===> NO - MEDIA
-                     work_type 2 (271 ms) 
-                            Residence_type 1 (110 ms) 
+                     work_type 2 (96 ms) 
+                            Residence_type 1 (44 ms) 
                                    bmi <= 19.35 ===> NO - MEDIA
-                                   bmi >  19.35 (78 ms) 
-                                          heart_disease 0 (53 ms) 
-                                                 avg_glucose_level <= 162.045 (31 ms) 
-                                                        gender 1 (14 ms) 
+                                   bmi >  19.35 (33 ms) 
+                                          heart_disease 0 (25 ms) 
+                                                 avg_glucose_level <= 162.045 (14 ms) 
+                                                        gender 1 (7 ms) 
                                                                smoking_status 1 ===> NO - EMPTY_ATTS
                                                                smoking_status 3 ===> NO - UNIQUE
                                                                smoking_status 0 ===> NO - UNIQUE
@@ -137,12 +137,12 @@ age <= 53.0 (3.35 s)
                                                         gender 2 ===> NO - MEDIA
                                                  avg_glucose_level >  162.045 ===> NO - UNIQUE
                                           heart_disease 1 ===> NO - UNIQUE
-                            Residence_type 0 (126 ms) 
-                                   heart_disease 0 (92 ms) 
+                            Residence_type 0 (33 ms) 
+                                   heart_disease 0 (24 ms) 
                                           bmi <= 19.35 ===> NO - UNIQUE
-                                          bmi >  19.35 (58 ms) 
-                                                 avg_glucose_level <= 162.045 (34 ms) 
-                                                        gender 1 (17 ms) 
+                                          bmi >  19.35 (14 ms) 
+                                                 avg_glucose_level <= 162.045 (13 ms) 
+                                                        gender 1 (2 ms) 
                                                                smoking_status 1 ===> NO - UNIQUE
                                                                smoking_status 3 ===> NO - UNIQUE
                                                                smoking_status 0 ===> YES - EMPTY_ATTS
@@ -153,13 +153,13 @@ age <= 53.0 (3.35 s)
                                    heart_disease 1 ===> NO - UNIQUE
                      work_type 3 ===> NO - MEDIA
                      work_type 4 ===> NO - MEDIA
-              hypertension 1 (733 ms) 
-                     gender 1 (530 ms) 
-                            smoking_status 1 (195 ms) 
-                                   Residence_type 1 (96 ms) 
-                                          avg_glucose_level <= 162.045 (37 ms) 
-                                                 work_type 0 (16 ms) 
-                                                        heart_disease 0 (6 ms) 
+              hypertension 1 (409 ms) 
+                     gender 1 (322 ms) 
+                            smoking_status 1 (185 ms) 
+                                   Residence_type 1 (91 ms) 
+                                          avg_glucose_level <= 162.045 (38 ms) 
+                                                 work_type 0 (15 ms) 
+                                                        heart_disease 0 (7 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         heart_disease 1 ===> YES - MEDIA
@@ -167,8 +167,8 @@ age <= 53.0 (3.35 s)
                                                  work_type 2 ===> NO - UNIQUE
                                                  work_type 3 ===> YES - MEDIA
                                                  work_type 4 ===> YES - MEDIA
-                                          avg_glucose_level >  162.045 (38 ms) 
-                                                 heart_disease 0 (23 ms) 
+                                          avg_glucose_level >  162.045 (34 ms) 
+                                                 heart_disease 0 (27 ms) 
                                                         bmi <= 19.35 ===> YES - MEDIA
                                                         bmi >  19.35 (11 ms) 
                                                                work_type 0 ===> NO - UNIQUE
@@ -178,21 +178,21 @@ age <= 53.0 (3.35 s)
                                                                work_type 4 ===> YES - MEDIA
                                                  heart_disease 1 ===> YES - MEDIA
                                    Residence_type 0 (74 ms) 
-                                          heart_disease 0 (53 ms) 
+                                          heart_disease 0 (45 ms) 
                                                  bmi <= 19.35 ===> NO - MEDIA
-                                                 bmi >  19.35 (30 ms) 
+                                                 bmi >  19.35 (25 ms) 
                                                         avg_glucose_level <= 162.045 ===> NO - UNIQUE
-                                                        avg_glucose_level >  162.045 (12 ms) 
+                                                        avg_glucose_level >  162.045 (10 ms) 
                                                                work_type 0 ===> NO - UNIQUE
                                                                work_type 1 ===> YES - EMPTY_ATTS
                                                                work_type 2 ===> YES - MEDIA
                                                                work_type 3 ===> YES - MEDIA
                                                                work_type 4 ===> YES - MEDIA
                                           heart_disease 1 ===> NO - MEDIA
-                            smoking_status 3 (80 ms) 
-                                   work_type 0 (53 ms) 
-                                          heart_disease 0 (38 ms) 
-                                                 Residence_type 1 (21 ms) 
+                            smoking_status 3 (46 ms) 
+                                   work_type 0 (30 ms) 
+                                          heart_disease 0 (22 ms) 
+                                                 Residence_type 1 (12 ms) 
                                                         avg_glucose_level <= 162.045 (8 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
@@ -203,13 +203,13 @@ age <= 53.0 (3.35 s)
                                    work_type 2 ===> NO - UNIQUE
                                    work_type 3 ===> YES - MEDIA
                                    work_type 4 ===> YES - MEDIA
-                            smoking_status 0 (96 ms) 
+                            smoking_status 0 (36 ms) 
                                    Residence_type 1 ===> NO - UNIQUE
-                                   Residence_type 0 (72 ms) 
-                                          heart_disease 0 (54 ms) 
-                                                 avg_glucose_level <= 162.045 (34 ms) 
+                                   Residence_type 0 (21 ms) 
+                                          heart_disease 0 (21 ms) 
+                                                 avg_glucose_level <= 162.045 (9 ms) 
                                                         bmi <= 19.35 ===> YES - MEDIA
-                                                        bmi >  19.35 (15 ms) 
+                                                        bmi >  19.35 (9 ms) 
                                                                work_type 0 ===> YES - UNIQUE
                                                                work_type 1 ===> YES - MEDIA
                                                                work_type 2 ===> NO - UNIQUE
@@ -217,13 +217,13 @@ age <= 53.0 (3.35 s)
                                                                work_type 4 ===> YES - MEDIA
                                                  avg_glucose_level >  162.045 ===> YES - MEDIA
                                           heart_disease 1 ===> YES - MEDIA
-                            smoking_status 2 (109 ms) 
-                                   heart_disease 0 (80 ms) 
+                            smoking_status 2 (34 ms) 
+                                   heart_disease 0 (24 ms) 
                                           bmi <= 19.35 ===> YES - MEDIA
-                                          bmi >  19.35 (56 ms) 
+                                          bmi >  19.35 (16 ms) 
                                                  Residence_type 1 ===> NO - UNIQUE
-                                                 Residence_type 0 (35 ms) 
-                                                        work_type 0 (13 ms) 
+                                                 Residence_type 0 (10 ms) 
+                                                        work_type 0 (10 ms) 
                                                                avg_glucose_level <= 162.045 ===> YES - EMPTY_ATTS
                                                                avg_glucose_level >  162.045 ===> NO - UNIQUE
                                                         work_type 1 ===> NO - UNIQUE
@@ -231,15 +231,15 @@ age <= 53.0 (3.35 s)
                                                         work_type 3 ===> YES - MEDIA
                                                         work_type 4 ===> YES - MEDIA
                                    heart_disease 1 ===> YES - MEDIA
-                     gender 0 (158 ms) 
+                     gender 0 (51 ms) 
                             bmi <= 19.35 ===> NO - MEDIA
-                            bmi >  19.35 (122 ms) 
-                                   heart_disease 0 (92 ms) 
-                                          avg_glucose_level <= 162.045 (57 ms) 
-                                                 work_type 0 (31 ms) 
+                            bmi >  19.35 (38 ms) 
+                                   heart_disease 0 (25 ms) 
+                                          avg_glucose_level <= 162.045 (21 ms) 
+                                                 work_type 0 (11 ms) 
                                                         smoking_status 1 ===> NO - UNIQUE
                                                         smoking_status 3 ===> NO - UNIQUE
-                                                        smoking_status 0 (8 ms) 
+                                                        smoking_status 0 (2 ms) 
                                                                Residence_type 1 ===> YES - EMPTY_ATTS
                                                                Residence_type 0 ===> YES - MEDIA
                                                         smoking_status 2 ===> NO - UNIQUE
@@ -250,16 +250,16 @@ age <= 53.0 (3.35 s)
                                           avg_glucose_level >  162.045 ===> NO - UNIQUE
                                    heart_disease 1 ===> NO - UNIQUE
                      gender 2 ===> YES - MEDIA
-       ever_married 0 (1127 ms) 
-              smoking_status 1 (266 ms) 
-                     heart_disease 0 (213 ms) 
-                            hypertension 0 (159 ms) 
-                                   avg_glucose_level <= 162.045 (117 ms) 
+       ever_married 0 (409 ms) 
+              smoking_status 1 (81 ms) 
+                     heart_disease 0 (67 ms) 
+                            hypertension 0 (54 ms) 
+                                   avg_glucose_level <= 162.045 (39 ms) 
                                           bmi <= 19.35 ===> NO - UNIQUE
-                                          bmi >  19.35 (85 ms) 
-                                                 Residence_type 1 (53 ms) 
+                                          bmi >  19.35 (30 ms) 
+                                                 Residence_type 1 (21 ms) 
                                                         gender 1 ===> NO - UNIQUE
-                                                        gender 0 (26 ms) 
+                                                        gender 0 (10 ms) 
                                                                work_type 0 ===> NO - UNIQUE
                                                                work_type 1 ===> NO - UNIQUE
                                                                work_type 2 ===> YES - EMPTY_ATTS
@@ -270,17 +270,17 @@ age <= 53.0 (3.35 s)
                                    avg_glucose_level >  162.045 ===> NO - UNIQUE
                             hypertension 1 ===> NO - UNIQUE
                      heart_disease 1 ===> NO - MEDIA
-              smoking_status 3 (392 ms) 
-                     Residence_type 1 (166 ms) 
-                            hypertension 0 (120 ms) 
-                                   heart_disease 0 (88 ms) 
-                                          avg_glucose_level <= 162.045 (60 ms) 
+              smoking_status 3 (159 ms) 
+                     Residence_type 1 (79 ms) 
+                            hypertension 0 (55 ms) 
+                                   heart_disease 0 (42 ms) 
+                                          avg_glucose_level <= 162.045 (27 ms) 
                                                  work_type 0 ===> NO - UNIQUE
                                                  work_type 1 ===> NO - UNIQUE
                                                  work_type 2 ===> NO - UNIQUE
-                                                 work_type 3 (24 ms) 
+                                                 work_type 3 (9 ms) 
                                                         bmi <= 19.35 ===> NO - UNIQUE
-                                                        bmi >  19.35 (11 ms) 
+                                                        bmi >  19.35 (4 ms) 
                                                                gender 1 ===> NO - EMPTY_ATTS
                                                                gender 0 ===> NO - UNIQUE
                                                                gender 2 ===> NO - MEDIA
@@ -288,15 +288,15 @@ age <= 53.0 (3.35 s)
                                           avg_glucose_level >  162.045 ===> NO - UNIQUE
                                    heart_disease 1 ===> NO - UNIQUE
                             hypertension 1 ===> NO - UNIQUE
-                     Residence_type 0 (179 ms) 
-                            hypertension 0 (131 ms) 
-                                   heart_disease 0 (91 ms) 
-                                          avg_glucose_level <= 162.045 (61 ms) 
+                     Residence_type 0 (61 ms) 
+                            hypertension 0 (50 ms) 
+                                   heart_disease 0 (31 ms) 
+                                          avg_glucose_level <= 162.045 (20 ms) 
                                                  work_type 0 ===> NO - UNIQUE
                                                  work_type 1 ===> NO - UNIQUE
                                                  work_type 2 ===> NO - UNIQUE
-                                                 work_type 3 (29 ms) 
-                                                        gender 1 (12 ms) 
+                                                 work_type 3 (7 ms) 
+                                                        gender 1 (3 ms) 
                                                                bmi <= 19.35 ===> NO - UNIQUE
                                                                bmi >  19.35 ===> NO - EMPTY_ATTS
                                                         gender 0 ===> NO - UNIQUE
@@ -305,15 +305,15 @@ age <= 53.0 (3.35 s)
                                           avg_glucose_level >  162.045 ===> NO - UNIQUE
                                    heart_disease 1 ===> NO - MEDIA
                             hypertension 1 ===> NO - MEDIA
-              smoking_status 0 (206 ms) 
-                     hypertension 0 (162 ms) 
-                            heart_disease 0 (117 ms) 
+              smoking_status 0 (81 ms) 
+                     hypertension 0 (61 ms) 
+                            heart_disease 0 (48 ms) 
                                    bmi <= 19.35 ===> NO - UNIQUE
-                                   bmi >  19.35 (81 ms) 
-                                          avg_glucose_level <= 162.045 (53 ms) 
-                                                 gender 1 (28 ms) 
+                                   bmi >  19.35 (34 ms) 
+                                          avg_glucose_level <= 162.045 (22 ms) 
+                                                 gender 1 (18 ms) 
                                                         work_type 0 ===> NO - UNIQUE
-                                                        work_type 1 (7 ms) 
+                                                        work_type 1 (2 ms) 
                                                                Residence_type 1 ===> YES - UNIQUE
                                                                Residence_type 0 ===> NO - UNIQUE
                                                         work_type 2 ===> NO - UNIQUE
@@ -324,15 +324,15 @@ age <= 53.0 (3.35 s)
                                           avg_glucose_level >  162.045 ===> NO - UNIQUE
                             heart_disease 1 ===> NO - UNIQUE
                      hypertension 1 ===> NO - UNIQUE
-              smoking_status 2 (185 ms) 
+              smoking_status 2 (69 ms) 
                      bmi <= 19.35 ===> NO - UNIQUE
-                     bmi >  19.35 (141 ms) 
-                            heart_disease 0 (105 ms) 
-                                   hypertension 0 (69 ms) 
-                                          avg_glucose_level <= 162.045 (44 ms) 
-                                                 work_type 0 (25 ms) 
+                     bmi >  19.35 (56 ms) 
+                            heart_disease 0 (37 ms) 
+                                   hypertension 0 (27 ms) 
+                                          avg_glucose_level <= 162.045 (17 ms) 
+                                                 work_type 0 (13 ms) 
                                                         Residence_type 1 ===> NO - UNIQUE
-                                                        Residence_type 0 (10 ms) 
+                                                        Residence_type 0 (3 ms) 
                                                                gender 1 ===> NO - UNIQUE
                                                                gender 0 ===> YES - EMPTY_ATTS
                                                                gender 2 ===> NO - MEDIA
@@ -343,201 +343,201 @@ age <= 53.0 (3.35 s)
                                           avg_glucose_level >  162.045 ===> NO - UNIQUE
                                    hypertension 1 ===> NO - UNIQUE
                             heart_disease 1 ===> NO - UNIQUE
-age >  53.0 (7.817 s) 
-       avg_glucose_level <= 162.045 (3.87 s) 
-              ever_married 1 (2.451 s) 
-                     heart_disease 0 (1626 ms) 
-                            hypertension 0 (852 ms) 
-                                   work_type 0 (314 ms) 
-                                          smoking_status 1 (74 ms) 
-                                                 gender 1 (32 ms) 
-                                                        Residence_type 1 (10 ms) 
+age >  53.0 (2.71 s) 
+       avg_glucose_level <= 162.045 (1379 ms) 
+              ever_married 1 (861 ms) 
+                     heart_disease 0 (571 ms) 
+                            hypertension 0 (323 ms) 
+                                   work_type 0 (111 ms) 
+                                          smoking_status 1 (22 ms) 
+                                                 gender 1 (15 ms) 
+                                                        Residence_type 1 (4 ms) 
                                                                bmi <= 19.35 ===> NO - UNIQUE
-                                                               bmi >  19.35 ===> YES - EMPTY_ATTS
-                                                        Residence_type 0 (10 ms) 
-                                                               bmi <= 19.35 ===> NO - UNIQUE
-                                                               bmi >  19.35 ===> YES - EMPTY_ATTS
-                                                 gender 0 (23 ms) 
-                                                        Residence_type 1 (8 ms) 
-                                                               bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         Residence_type 0 (6 ms) 
+                                                               bmi <= 19.35 ===> NO - UNIQUE
+                                                               bmi >  19.35 ===> YES - EMPTY_ATTS
+                                                 gender 0 (3 ms) 
+                                                        Residence_type 1 (0 ms) 
+                                                               bmi <= 19.35 ===> YES - MEDIA
+                                                               bmi >  19.35 ===> YES - EMPTY_ATTS
+                                                        Residence_type 0 (0 ms) 
                                                                bmi <= 19.35 ===> NO - MEDIA
                                                                bmi >  19.35 ===> NO - EMPTY_ATTS
                                                  gender 2 ===> NO - MEDIA
-                                          smoking_status 3 (81 ms) 
-                                                 gender 1 (36 ms) 
-                                                        Residence_type 1 (8 ms) 
+                                          smoking_status 3 (21 ms) 
+                                                 gender 1 (9 ms) 
+                                                        Residence_type 1 (0 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
-                                                        Residence_type 0 (11 ms) 
+                                                        Residence_type 0 (3 ms) 
                                                                bmi <= 19.35 ===> NO - UNIQUE
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
-                                                 gender 0 (27 ms) 
-                                                        Residence_type 1 (8 ms) 
+                                                 gender 0 (7 ms) 
+                                                        Residence_type 1 (2 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
-                                                        Residence_type 0 (6 ms) 
+                                                        Residence_type 0 (0 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                  gender 2 ===> YES - MEDIA
-                                          smoking_status 0 (70 ms) 
-                                                 Residence_type 1 (26 ms) 
+                                          smoking_status 0 (30 ms) 
+                                                 Residence_type 1 (9 ms) 
                                                         bmi <= 19.35 ===> NO - UNIQUE
-                                                        bmi >  19.35 (13 ms) 
+                                                        bmi >  19.35 (2 ms) 
                                                                gender 1 ===> YES - EMPTY_ATTS
                                                                gender 0 ===> YES - EMPTY_ATTS
                                                                gender 2 ===> YES - MEDIA
-                                                 Residence_type 0 (28 ms) 
-                                                        gender 1 (7 ms) 
+                                                 Residence_type 0 (13 ms) 
+                                                        gender 1 (10 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
-                                                        gender 0 (6 ms) 
+                                                        gender 0 (0 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         gender 2 ===> YES - MEDIA
-                                          smoking_status 2 (55 ms) 
+                                          smoking_status 2 (19 ms) 
                                                  bmi <= 19.35 ===> NO - UNIQUE
-                                                 bmi >  19.35 (39 ms) 
-                                                        Residence_type 1 (12 ms) 
+                                                 bmi >  19.35 (15 ms) 
+                                                        Residence_type 1 (10 ms) 
                                                                gender 1 ===> YES - EMPTY_ATTS
                                                                gender 0 ===> YES - EMPTY_ATTS
                                                                gender 2 ===> YES - MEDIA
-                                                        Residence_type 0 (12 ms) 
+                                                        Residence_type 0 (6 ms) 
                                                                gender 1 ===> YES - EMPTY_ATTS
                                                                gender 0 ===> YES - EMPTY_ATTS
                                                                gender 2 ===> YES - MEDIA
-                                   work_type 1 (274 ms) 
-                                          smoking_status 1 (77 ms) 
-                                                 gender 1 (40 ms) 
-                                                        bmi <= 19.35 (12 ms) 
+                                   work_type 1 (119 ms) 
+                                          smoking_status 1 (29 ms) 
+                                                 gender 1 (11 ms) 
+                                                        bmi <= 19.35 (0 ms) 
                                                                Residence_type 1 ===> NO - UNIQUE
                                                                Residence_type 0 ===> YES - EMPTY_ATTS
-                                                        bmi >  19.35 (13 ms) 
-                                                               Residence_type 1 ===> YES - EMPTY_ATTS
-                                                               Residence_type 0 ===> YES - EMPTY_ATTS
-                                                 gender 0 (20 ms) 
-                                                        bmi <= 19.35 ===> NO - UNIQUE
                                                         bmi >  19.35 (9 ms) 
                                                                Residence_type 1 ===> YES - EMPTY_ATTS
                                                                Residence_type 0 ===> YES - EMPTY_ATTS
+                                                 gender 0 (8 ms) 
+                                                        bmi <= 19.35 ===> NO - UNIQUE
+                                                        bmi >  19.35 (5 ms) 
+                                                               Residence_type 1 ===> YES - EMPTY_ATTS
+                                                               Residence_type 0 ===> YES - EMPTY_ATTS
                                                  gender 2 ===> YES - MEDIA
-                                          smoking_status 3 (36 ms) 
+                                          smoking_status 3 (25 ms) 
                                                  bmi <= 19.35 ===> NO - UNIQUE
-                                                 bmi >  19.35 (18 ms) 
-                                                        Residence_type 1 (9 ms) 
+                                                 bmi >  19.35 (16 ms) 
+                                                        Residence_type 1 (6 ms) 
                                                                gender 1 ===> NO - EMPTY_ATTS
                                                                gender 0 ===> NO - UNIQUE
                                                                gender 2 ===> NO - MEDIA
                                                         Residence_type 0 ===> NO - UNIQUE
-                                          smoking_status 0 (91 ms) 
-                                                 gender 1 (32 ms) 
-                                                        Residence_type 1 (7 ms) 
+                                          smoking_status 0 (42 ms) 
+                                                 gender 1 (18 ms) 
+                                                        Residence_type 1 (3 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
-                                                        Residence_type 0 (13 ms) 
+                                                        Residence_type 0 (6 ms) 
                                                                bmi <= 19.35 ===> NO - UNIQUE
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
-                                                 gender 0 (38 ms) 
-                                                        Residence_type 1 (12 ms) 
+                                                 gender 0 (15 ms) 
+                                                        Residence_type 1 (8 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
-                                                        Residence_type 0 (11 ms) 
+                                                        Residence_type 0 (6 ms) 
                                                                bmi <= 19.35 ===> NO - MEDIA
                                                                bmi >  19.35 ===> NO - EMPTY_ATTS
                                                  gender 2 ===> YES - MEDIA
-                                          smoking_status 2 (44 ms) 
+                                          smoking_status 2 (18 ms) 
                                                  gender 1 ===> NO - UNIQUE
-                                                 gender 0 (26 ms) 
-                                                        Residence_type 1 (7 ms) 
+                                                 gender 0 (9 ms) 
+                                                        Residence_type 1 (5 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
-                                                        Residence_type 0 (11 ms) 
+                                                        Residence_type 0 (0 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                  gender 2 ===> YES - MEDIA
-                                   work_type 2 (216 ms) 
-                                          smoking_status 1 (35 ms) 
+                                   work_type 2 (83 ms) 
+                                          smoking_status 1 (16 ms) 
                                                  bmi <= 19.35 ===> NO - MEDIA
-                                                 bmi >  19.35 (21 ms) 
-                                                        gender 1 (8 ms) 
+                                                 bmi >  19.35 (11 ms) 
+                                                        gender 1 (7 ms) 
                                                                Residence_type 1 ===> YES - EMPTY_ATTS
                                                                Residence_type 0 ===> NO - UNIQUE
                                                         gender 0 ===> NO - UNIQUE
                                                         gender 2 ===> NO - MEDIA
-                                          smoking_status 3 (45 ms) 
-                                                 gender 1 (26 ms) 
-                                                        Residence_type 1 (6 ms) 
+                                          smoking_status 3 (17 ms) 
+                                                 gender 1 (17 ms) 
+                                                        Residence_type 1 (4 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
-                                                        Residence_type 0 (8 ms) 
+                                                        Residence_type 0 (4 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                  gender 0 ===> NO - UNIQUE
                                                  gender 2 ===> YES - MEDIA
-                                          smoking_status 0 (43 ms) 
+                                          smoking_status 0 (15 ms) 
                                                  bmi <= 19.35 ===> NO - UNIQUE
-                                                 bmi >  19.35 (27 ms) 
-                                                        gender 1 (10 ms) 
+                                                 bmi >  19.35 (15 ms) 
+                                                        gender 1 (3 ms) 
                                                                Residence_type 1 ===> NO - UNIQUE
                                                                Residence_type 0 ===> NO - EMPTY_ATTS
                                                         gender 0 ===> NO - UNIQUE
                                                         gender 2 ===> NO - MEDIA
-                                          smoking_status 2 (63 ms) 
+                                          smoking_status 2 (17 ms) 
                                                  bmi <= 19.35 ===> NO - MEDIA
-                                                 bmi >  19.35 (45 ms) 
+                                                 bmi >  19.35 (9 ms) 
                                                         Residence_type 1 ===> NO - UNIQUE
-                                                        Residence_type 0 (28 ms) 
+                                                        Residence_type 0 (5 ms) 
                                                                gender 1 ===> NO - UNIQUE
                                                                gender 0 ===> YES - EMPTY_ATTS
                                                                gender 2 ===> YES - MEDIA
                                    work_type 3 ===> YES - MEDIA
                                    work_type 4 ===> YES - MEDIA
-                            hypertension 1 (735 ms) 
-                                   Residence_type 1 (330 ms) 
-                                          work_type 0 (110 ms) 
-                                                 gender 1 (43 ms) 
+                            hypertension 1 (234 ms) 
+                                   Residence_type 1 (99 ms) 
+                                          work_type 0 (34 ms) 
+                                                 gender 1 (19 ms) 
                                                         bmi <= 19.35 ===> NO - MEDIA
-                                                        bmi >  19.35 (21 ms) 
+                                                        bmi >  19.35 (8 ms) 
                                                                smoking_status 1 ===> YES - EMPTY_ATTS
                                                                smoking_status 3 ===> NO - UNIQUE
                                                                smoking_status 0 ===> NO - UNIQUE
                                                                smoking_status 2 ===> NO - UNIQUE
-                                                 gender 0 (35 ms) 
+                                                 gender 0 (10 ms) 
                                                         bmi <= 19.35 ===> YES - MEDIA
-                                                        bmi >  19.35 (19 ms) 
+                                                        bmi >  19.35 (10 ms) 
                                                                smoking_status 1 ===> NO - UNIQUE
                                                                smoking_status 3 ===> YES - MEDIA
                                                                smoking_status 0 ===> YES - EMPTY_ATTS
                                                                smoking_status 2 ===> NO - UNIQUE
                                                  gender 2 ===> NO - MEDIA
-                                          work_type 1 (115 ms) 
-                                                 smoking_status 1 (23 ms) 
-                                                        gender 1 (7 ms) 
-                                                               bmi <= 19.35 ===> YES - MEDIA
-                                                               bmi >  19.35 ===> YES - EMPTY_ATTS
-                                                        gender 0 ===> NO - UNIQUE
-                                                        gender 2 ===> YES - MEDIA
-                                                 smoking_status 3 (31 ms) 
-                                                        gender 1 (12 ms) 
-                                                               bmi <= 19.35 ===> YES - MEDIA
-                                                               bmi >  19.35 ===> YES - EMPTY_ATTS
-                                                        gender 0 ===> NO - UNIQUE
-                                                        gender 2 ===> YES - MEDIA
-                                                 smoking_status 0 (36 ms) 
+                                          work_type 1 (29 ms) 
+                                                 smoking_status 1 (10 ms) 
                                                         gender 1 (10 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
-                                                        gender 0 (11 ms) 
+                                                        gender 0 ===> NO - UNIQUE
+                                                        gender 2 ===> YES - MEDIA
+                                                 smoking_status 3 (8 ms) 
+                                                        gender 1 (3 ms) 
+                                                               bmi <= 19.35 ===> YES - MEDIA
+                                                               bmi >  19.35 ===> YES - EMPTY_ATTS
+                                                        gender 0 ===> NO - UNIQUE
+                                                        gender 2 ===> YES - MEDIA
+                                                 smoking_status 0 (9 ms) 
+                                                        gender 1 (0 ms) 
+                                                               bmi <= 19.35 ===> YES - MEDIA
+                                                               bmi >  19.35 ===> YES - EMPTY_ATTS
+                                                        gender 0 (9 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         gender 2 ===> YES - MEDIA
                                                  smoking_status 2 ===> NO - UNIQUE
-                                          work_type 2 (65 ms) 
+                                          work_type 2 (21 ms) 
                                                  gender 1 ===> NO - UNIQUE
-                                                 gender 0 (36 ms) 
+                                                 gender 0 (12 ms) 
                                                         bmi <= 19.35 ===> YES - MEDIA
-                                                        bmi >  19.35 (19 ms) 
+                                                        bmi >  19.35 (12 ms) 
                                                                smoking_status 1 ===> NO - UNIQUE
                                                                smoking_status 3 ===> NO - UNIQUE
                                                                smoking_status 0 ===> YES - UNIQUE
@@ -545,44 +545,44 @@ age >  53.0 (7.817 s)
                                                  gender 2 ===> YES - MEDIA
                                           work_type 3 ===> YES - MEDIA
                                           work_type 4 ===> YES - MEDIA
-                                   Residence_type 0 (322 ms) 
-                                          work_type 0 (88 ms) 
-                                                 smoking_status 1 (35 ms) 
-                                                        gender 1 (9 ms) 
+                                   Residence_type 0 (119 ms) 
+                                          work_type 0 (26 ms) 
+                                                 smoking_status 1 (4 ms) 
+                                                        gender 1 (0 ms) 
                                                                bmi <= 19.35 ===> NO - UNIQUE
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
-                                                        gender 0 (10 ms) 
+                                                        gender 0 (0 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         gender 2 ===> YES - MEDIA
                                                  smoking_status 3 ===> NO - UNIQUE
-                                                 smoking_status 0 (26 ms) 
-                                                        gender 1 (9 ms) 
+                                                 smoking_status 0 (15 ms) 
+                                                        gender 1 (4 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         gender 0 ===> NO - UNIQUE
                                                         gender 2 ===> YES - MEDIA
                                                  smoking_status 2 ===> NO - UNIQUE
-                                          work_type 1 (132 ms) 
-                                                 smoking_status 1 (26 ms) 
-                                                        gender 1 (11 ms) 
+                                          work_type 1 (50 ms) 
+                                                 smoking_status 1 (18 ms) 
+                                                        gender 1 (8 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         gender 0 ===> NO - UNIQUE
                                                         gender 2 ===> YES - MEDIA
-                                                 smoking_status 3 (31 ms) 
+                                                 smoking_status 3 (10 ms) 
                                                         gender 1 ===> NO - UNIQUE
-                                                        gender 0 (12 ms) 
+                                                        gender 0 (10 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         gender 2 ===> YES - MEDIA
-                                                 smoking_status 0 (22 ms) 
+                                                 smoking_status 0 (8 ms) 
                                                         bmi <= 19.35 ===> YES - MEDIA
-                                                        bmi >  19.35 (8 ms) 
+                                                        bmi >  19.35 (1 ms) 
                                                                gender 1 ===> YES - EMPTY_ATTS
                                                                gender 0 ===> YES - UNIQUE
                                                                gender 2 ===> YES - MEDIA
-                                                 smoking_status 2 (28 ms) 
+                                                 smoking_status 2 (16 ms) 
                                                         gender 1 (10 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
@@ -590,16 +590,16 @@ age >  53.0 (7.817 s)
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         gender 2 ===> YES - MEDIA
-                                          work_type 2 (63 ms) 
-                                                 smoking_status 1 (21 ms) 
-                                                        gender 1 (8 ms) 
+                                          work_type 2 (33 ms) 
+                                                 smoking_status 1 (11 ms) 
+                                                        gender 1 (3 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         gender 0 ===> YES - MEDIA
                                                         gender 2 ===> YES - MEDIA
                                                  smoking_status 3 ===> YES - MEDIA
-                                                 smoking_status 0 (19 ms) 
-                                                        gender 1 (8 ms) 
+                                                 smoking_status 0 (13 ms) 
+                                                        gender 1 (12 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         gender 0 ===> NO - UNIQUE
@@ -607,137 +607,137 @@ age >  53.0 (7.817 s)
                                                  smoking_status 2 ===> NO - UNIQUE
                                           work_type 3 ===> YES - MEDIA
                                           work_type 4 ===> YES - MEDIA
-                     heart_disease 1 (770 ms) 
-                            work_type 0 (280 ms) 
-                                   smoking_status 1 (85 ms) 
+                     heart_disease 1 (270 ms) 
+                            work_type 0 (103 ms) 
+                                   smoking_status 1 (30 ms) 
                                           Residence_type 1 ===> NO - UNIQUE
-                                          Residence_type 0 (65 ms) 
-                                                 gender 1 (21 ms) 
-                                                        hypertension 0 (8 ms) 
+                                          Residence_type 0 (29 ms) 
+                                                 gender 1 (1 ms) 
+                                                        hypertension 0 (0 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         hypertension 1 ===> NO - UNIQUE
-                                                 gender 0 (25 ms) 
-                                                        hypertension 0 (6 ms) 
+                                                 gender 0 (16 ms) 
+                                                        hypertension 0 (4 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
-                                                        hypertension 1 (7 ms) 
+                                                        hypertension 1 (3 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                  gender 2 ===> YES - MEDIA
                                    smoking_status 3 ===> NO - UNIQUE
-                                   smoking_status 0 (75 ms) 
+                                   smoking_status 0 (18 ms) 
                                           Residence_type 1 ===> NO - UNIQUE
-                                          Residence_type 0 (50 ms) 
-                                                 hypertension 0 (29 ms) 
-                                                        gender 1 (7 ms) 
+                                          Residence_type 0 (9 ms) 
+                                                 hypertension 0 (4 ms) 
+                                                        gender 1 (0 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
-                                                        gender 0 (9 ms) 
+                                                        gender 0 (0 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         gender 2 ===> YES - MEDIA
                                                  hypertension 1 ===> NO - UNIQUE
-                                   smoking_status 2 (87 ms) 
+                                   smoking_status 2 (37 ms) 
                                           gender 1 ===> NO - UNIQUE
-                                          gender 0 (60 ms) 
-                                                 Residence_type 1 (23 ms) 
+                                          gender 0 (22 ms) 
+                                                 Residence_type 1 (9 ms) 
                                                         bmi <= 19.35 ===> YES - MEDIA
-                                                        bmi >  19.35 (10 ms) 
+                                                        bmi >  19.35 (9 ms) 
                                                                hypertension 0 ===> YES - EMPTY_ATTS
                                                                hypertension 1 ===> YES - UNIQUE
-                                                 Residence_type 0 (20 ms) 
-                                                        hypertension 0 (9 ms) 
+                                                 Residence_type 0 (9 ms) 
+                                                        hypertension 0 (3 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         hypertension 1 ===> NO - UNIQUE
                                           gender 2 ===> YES - MEDIA
-                            work_type 1 (231 ms) 
-                                   gender 1 (118 ms) 
+                            work_type 1 (74 ms) 
+                                   gender 1 (35 ms) 
                                           smoking_status 1 ===> NO - UNIQUE
-                                          smoking_status 3 (40 ms) 
+                                          smoking_status 3 (12 ms) 
                                                  Residence_type 1 ===> NO - UNIQUE
-                                                 Residence_type 0 (25 ms) 
-                                                        hypertension 0 (10 ms) 
+                                                 Residence_type 0 (12 ms) 
+                                                        hypertension 0 (1 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         hypertension 1 ===> YES - MEDIA
-                                          smoking_status 0 (38 ms) 
-                                                 hypertension 0 (25 ms) 
+                                          smoking_status 0 (16 ms) 
+                                                 hypertension 0 (15 ms) 
                                                         Residence_type 1 ===> YES - MEDIA
-                                                        Residence_type 0 (13 ms) 
+                                                        Residence_type 0 (3 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                  hypertension 1 ===> YES - MEDIA
                                           smoking_status 2 ===> NO - UNIQUE
-                                   gender 0 (80 ms) 
+                                   gender 0 (26 ms) 
                                           bmi <= 19.35 ===> NO - MEDIA
-                                          bmi >  19.35 (50 ms) 
-                                                 hypertension 0 (25 ms) 
+                                          bmi >  19.35 (16 ms) 
+                                                 hypertension 0 (10 ms) 
                                                         smoking_status 1 ===> NO - UNIQUE
                                                         smoking_status 3 ===> NO - UNIQUE
-                                                        smoking_status 0 (9 ms) 
+                                                        smoking_status 0 (4 ms) 
                                                                Residence_type 1 ===> YES - EMPTY_ATTS
                                                                Residence_type 0 ===> NO - UNIQUE
                                                         smoking_status 2 ===> NO - UNIQUE
                                                  hypertension 1 ===> NO - UNIQUE
                                    gender 2 ===> YES - MEDIA
-                            work_type 2 (220 ms) 
-                                   smoking_status 1 (54 ms) 
+                            work_type 2 (80 ms) 
+                                   smoking_status 1 (20 ms) 
                                           gender 1 ===> NO - UNIQUE
-                                          gender 0 (34 ms) 
-                                                 hypertension 0 (18 ms) 
+                                          gender 0 (8 ms) 
+                                                 hypertension 0 (3 ms) 
                                                         Residence_type 1 ===> YES - MEDIA
-                                                        Residence_type 0 (9 ms) 
+                                                        Residence_type 0 (0 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                  hypertension 1 ===> NO - UNIQUE
                                           gender 2 ===> YES - MEDIA
-                                   smoking_status 3 (60 ms) 
+                                   smoking_status 3 (25 ms) 
                                           gender 1 ===> YES - MEDIA
-                                          gender 0 (40 ms) 
-                                                 hypertension 0 (24 ms) 
+                                          gender 0 (13 ms) 
+                                                 hypertension 0 (11 ms) 
                                                         bmi <= 19.35 ===> YES - MEDIA
-                                                        bmi >  19.35 (12 ms) 
+                                                        bmi >  19.35 (11 ms) 
                                                                Residence_type 1 ===> YES - UNIQUE
                                                                Residence_type 0 ===> NO - UNIQUE
                                                  hypertension 1 ===> YES - MEDIA
                                           gender 2 ===> YES - MEDIA
                                    smoking_status 0 ===> NO - UNIQUE
-                                   smoking_status 2 (71 ms) 
-                                          gender 1 (45 ms) 
+                                   smoking_status 2 (24 ms) 
+                                          gender 1 (19 ms) 
                                                  Residence_type 1 ===> YES - MEDIA
-                                                 Residence_type 0 (30 ms) 
+                                                 Residence_type 0 (8 ms) 
                                                         bmi <= 19.35 ===> YES - MEDIA
-                                                        bmi >  19.35 (13 ms) 
+                                                        bmi >  19.35 (0 ms) 
                                                                hypertension 0 ===> YES - UNIQUE
                                                                hypertension 1 ===> NO - UNIQUE
                                           gender 0 ===> NO - UNIQUE
                                           gender 2 ===> YES - MEDIA
                             work_type 3 ===> YES - MEDIA
                             work_type 4 ===> YES - MEDIA
-              ever_married 0 (1361 ms) 
-                     smoking_status 1 (511 ms) 
-                            hypertension 0 (294 ms) 
-                                   Residence_type 1 (144 ms) 
-                                          gender 1 (71 ms) 
-                                                 work_type 0 (21 ms) 
-                                                        heart_disease 0 (10 ms) 
+              ever_married 0 (500 ms) 
+                     smoking_status 1 (174 ms) 
+                            hypertension 0 (94 ms) 
+                                   Residence_type 1 (50 ms) 
+                                          gender 1 (21 ms) 
+                                                 work_type 0 (9 ms) 
+                                                        heart_disease 0 (2 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         heart_disease 1 ===> YES - MEDIA
-                                                 work_type 1 (21 ms) 
-                                                        heart_disease 0 (9 ms) 
+                                                 work_type 1 (9 ms) 
+                                                        heart_disease 0 (3 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         heart_disease 1 ===> NO - UNIQUE
                                                  work_type 2 ===> NO - UNIQUE
                                                  work_type 3 ===> YES - MEDIA
                                                  work_type 4 ===> YES - MEDIA
-                                          gender 0 (41 ms) 
+                                          gender 0 (17 ms) 
                                                  work_type 0 ===> NO - UNIQUE
-                                                 work_type 1 (18 ms) 
-                                                        heart_disease 0 (9 ms) 
+                                                 work_type 1 (9 ms) 
+                                                        heart_disease 0 (4 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         heart_disease 1 ===> YES - MEDIA
@@ -745,11 +745,11 @@ age >  53.0 (7.817 s)
                                                  work_type 3 ===> YES - MEDIA
                                                  work_type 4 ===> YES - MEDIA
                                           gender 2 ===> YES - MEDIA
-                                   Residence_type 0 (115 ms) 
-                                          heart_disease 0 (75 ms) 
+                                   Residence_type 0 (32 ms) 
+                                          heart_disease 0 (22 ms) 
                                                  bmi <= 19.35 ===> NO - UNIQUE
-                                                 bmi >  19.35 (46 ms) 
-                                                        gender 1 (20 ms) 
+                                                 bmi >  19.35 (12 ms) 
+                                                        gender 1 (11 ms) 
                                                                work_type 0 ===> YES - EMPTY_ATTS
                                                                work_type 1 ===> NO - UNIQUE
                                                                work_type 2 ===> NO - UNIQUE
@@ -758,12 +758,12 @@ age >  53.0 (7.817 s)
                                                         gender 0 ===> NO - UNIQUE
                                                         gender 2 ===> NO - MEDIA
                                           heart_disease 1 ===> NO - MEDIA
-                            hypertension 1 (184 ms) 
-                                   gender 1 (85 ms) 
+                            hypertension 1 (60 ms) 
+                                   gender 1 (26 ms) 
                                           bmi <= 19.35 ===> YES - MEDIA
-                                          bmi >  19.35 (55 ms) 
-                                                 heart_disease 0 (31 ms) 
-                                                        work_type 0 (9 ms) 
+                                          bmi >  19.35 (15 ms) 
+                                                 heart_disease 0 (15 ms) 
+                                                        work_type 0 (3 ms) 
                                                                Residence_type 1 ===> YES - UNIQUE
                                                                Residence_type 0 ===> NO - UNIQUE
                                                         work_type 1 ===> YES - UNIQUE
@@ -771,10 +771,10 @@ age >  53.0 (7.817 s)
                                                         work_type 3 ===> YES - MEDIA
                                                         work_type 4 ===> YES - MEDIA
                                                  heart_disease 1 ===> YES - UNIQUE
-                                   gender 0 (58 ms) 
-                                          work_type 0 (34 ms) 
-                                                 heart_disease 0 (18 ms) 
-                                                        Residence_type 1 (8 ms) 
+                                   gender 0 (24 ms) 
+                                          work_type 0 (13 ms) 
+                                                 heart_disease 0 (9 ms) 
+                                                        Residence_type 1 (9 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         Residence_type 0 ===> YES - MEDIA
@@ -784,21 +784,21 @@ age >  53.0 (7.817 s)
                                           work_type 3 ===> YES - MEDIA
                                           work_type 4 ===> YES - MEDIA
                                    gender 2 ===> YES - MEDIA
-                     smoking_status 3 (285 ms) 
-                            hypertension 0 (240 ms) 
-                                   Residence_type 1 (117 ms) 
-                                          gender 1 (86 ms) 
-                                                 heart_disease 0 (36 ms) 
+                     smoking_status 3 (117 ms) 
+                            hypertension 0 (100 ms) 
+                                   Residence_type 1 (50 ms) 
+                                          gender 1 (34 ms) 
+                                                 heart_disease 0 (19 ms) 
                                                         bmi <= 19.35 ===> YES - MEDIA
-                                                        bmi >  19.35 (19 ms) 
+                                                        bmi >  19.35 (4 ms) 
                                                                work_type 0 ===> YES - EMPTY_ATTS
                                                                work_type 1 ===> YES - MEDIA
                                                                work_type 2 ===> YES - UNIQUE
                                                                work_type 3 ===> YES - MEDIA
                                                                work_type 4 ===> YES - MEDIA
-                                                 heart_disease 1 (24 ms) 
+                                                 heart_disease 1 (14 ms) 
                                                         work_type 0 ===> YES - MEDIA
-                                                        work_type 1 (8 ms) 
+                                                        work_type 1 (0 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         work_type 2 ===> YES - MEDIA
@@ -806,11 +806,11 @@ age >  53.0 (7.817 s)
                                                         work_type 4 ===> YES - MEDIA
                                           gender 0 ===> NO - UNIQUE
                                           gender 2 ===> YES - MEDIA
-                                   Residence_type 0 (90 ms) 
-                                          work_type 0 (51 ms) 
-                                                 heart_disease 0 (30 ms) 
+                                   Residence_type 0 (35 ms) 
+                                          work_type 0 (27 ms) 
+                                                 heart_disease 0 (11 ms) 
                                                         bmi <= 19.35 ===> YES - MEDIA
-                                                        bmi >  19.35 (14 ms) 
+                                                        bmi >  19.35 (9 ms) 
                                                                gender 1 ===> NO - UNIQUE
                                                                gender 0 ===> YES - UNIQUE
                                                                gender 2 ===> YES - MEDIA
@@ -820,15 +820,15 @@ age >  53.0 (7.817 s)
                                           work_type 3 ===> YES - MEDIA
                                           work_type 4 ===> YES - MEDIA
                             hypertension 1 ===> NO - UNIQUE
-                     smoking_status 0 (333 ms) 
-                            heart_disease 0 (140 ms) 
+                     smoking_status 0 (120 ms) 
+                            heart_disease 0 (52 ms) 
                                    bmi <= 19.35 ===> NO - UNIQUE
-                                   bmi >  19.35 (100 ms) 
+                                   bmi >  19.35 (33 ms) 
                                           work_type 0 ===> NO - UNIQUE
                                           work_type 1 ===> NO - UNIQUE
-                                          work_type 2 (64 ms) 
-                                                 gender 1 (33 ms) 
-                                                        Residence_type 1 (15 ms) 
+                                          work_type 2 (17 ms) 
+                                                 gender 1 (7 ms) 
+                                                        Residence_type 1 (1 ms) 
                                                                hypertension 0 ===> NO - UNIQUE
                                                                hypertension 1 ===> YES - UNIQUE
                                                         Residence_type 0 ===> YES - MEDIA
@@ -836,12 +836,12 @@ age >  53.0 (7.817 s)
                                                  gender 2 ===> YES - MEDIA
                                           work_type 3 ===> NO - MEDIA
                                           work_type 4 ===> NO - MEDIA
-                            heart_disease 1 (132 ms) 
-                                   gender 1 (94 ms) 
+                            heart_disease 1 (50 ms) 
+                                   gender 1 (33 ms) 
                                           Residence_type 1 ===> YES - MEDIA
-                                          Residence_type 0 (55 ms) 
+                                          Residence_type 0 (18 ms) 
                                                  bmi <= 19.35 ===> YES - MEDIA
-                                                 bmi >  19.35 (22 ms) 
+                                                 bmi >  19.35 (14 ms) 
                                                         work_type 0 ===> YES - UNIQUE
                                                         work_type 1 ===> NO - UNIQUE
                                                         work_type 2 ===> YES - MEDIA
@@ -849,15 +849,15 @@ age >  53.0 (7.817 s)
                                                         work_type 4 ===> YES - MEDIA
                                    gender 0 ===> NO - UNIQUE
                                    gender 2 ===> YES - MEDIA
-                     smoking_status 2 (178 ms) 
+                     smoking_status 2 (56 ms) 
                             bmi <= 19.35 ===> NO - MEDIA
-                            bmi >  19.35 (129 ms) 
-                                   hypertension 0 (91 ms) 
-                                          heart_disease 0 (59 ms) 
+                            bmi >  19.35 (39 ms) 
+                                   hypertension 0 (35 ms) 
+                                          heart_disease 0 (17 ms) 
                                                  work_type 0 ===> NO - UNIQUE
                                                  work_type 1 ===> NO - UNIQUE
-                                                 work_type 2 (25 ms) 
-                                                        gender 1 (9 ms) 
+                                                 work_type 2 (16 ms) 
+                                                        gender 1 (4 ms) 
                                                                Residence_type 1 ===> YES - UNIQUE
                                                                Residence_type 0 ===> NO - UNIQUE
                                                         gender 0 ===> NO - UNIQUE
@@ -866,71 +866,71 @@ age >  53.0 (7.817 s)
                                                  work_type 4 ===> NO - MEDIA
                                           heart_disease 1 ===> NO - UNIQUE
                                    hypertension 1 ===> NO - UNIQUE
-       avg_glucose_level >  162.045 (3.888 s) 
-              heart_disease 0 (2.054 s) 
-                     work_type 0 (895 ms) 
-                            smoking_status 1 (330 ms) 
-                                   gender 1 (152 ms) 
-                                          hypertension 0 (68 ms) 
-                                                 Residence_type 1 (23 ms) 
-                                                        ever_married 1 (8 ms) 
+       avg_glucose_level >  162.045 (1309 ms) 
+              heart_disease 0 (682 ms) 
+                     work_type 0 (277 ms) 
+                            smoking_status 1 (101 ms) 
+                                   gender 1 (43 ms) 
+                                          hypertension 0 (19 ms) 
+                                                 Residence_type 1 (12 ms) 
+                                                        ever_married 1 (3 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         ever_married 0 ===> YES - MEDIA
-                                                 Residence_type 0 (19 ms) 
+                                                 Residence_type 0 (6 ms) 
                                                         bmi <= 19.35 ===> YES - MEDIA
-                                                        bmi >  19.35 (9 ms) 
+                                                        bmi >  19.35 (3 ms) 
                                                                ever_married 1 ===> YES - EMPTY_ATTS
                                                                ever_married 0 ===> NO - UNIQUE
-                                          hypertension 1 (58 ms) 
-                                                 Residence_type 1 (20 ms) 
+                                          hypertension 1 (15 ms) 
+                                                 Residence_type 1 (15 ms) 
                                                         bmi <= 19.35 ===> YES - MEDIA
-                                                        bmi >  19.35 (8 ms) 
+                                                        bmi >  19.35 (4 ms) 
                                                                ever_married 1 ===> YES - EMPTY_ATTS
                                                                ever_married 0 ===> YES - UNIQUE
-                                                 Residence_type 0 (20 ms) 
-                                                        ever_married 1 (11 ms) 
+                                                 Residence_type 0 (0 ms) 
+                                                        ever_married 1 (0 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         ever_married 0 ===> YES - MEDIA
-                                   gender 0 (150 ms) 
-                                          Residence_type 1 (69 ms) 
-                                                 hypertension 0 (27 ms) 
-                                                        ever_married 1 (10 ms) 
+                                   gender 0 (50 ms) 
+                                          Residence_type 1 (17 ms) 
+                                                 hypertension 0 (9 ms) 
+                                                        ever_married 1 (9 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         ever_married 0 ===> YES - MEDIA
-                                                 hypertension 1 (26 ms) 
-                                                        ever_married 1 (13 ms) 
+                                                 hypertension 1 (4 ms) 
+                                                        ever_married 1 (0 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         ever_married 0 ===> YES - MEDIA
-                                          Residence_type 0 (55 ms) 
-                                                 hypertension 0 (19 ms) 
-                                                        ever_married 1 (8 ms) 
+                                          Residence_type 0 (17 ms) 
+                                                 hypertension 0 (8 ms) 
+                                                        ever_married 1 (6 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         ever_married 0 ===> YES - MEDIA
-                                                 hypertension 1 (20 ms) 
+                                                 hypertension 1 (1 ms) 
                                                         bmi <= 19.35 ===> YES - MEDIA
-                                                        bmi >  19.35 (9 ms) 
+                                                        bmi >  19.35 (0 ms) 
                                                                ever_married 1 ===> YES - EMPTY_ATTS
                                                                ever_married 0 ===> YES - UNIQUE
                                    gender 2 ===> YES - MEDIA
-                            smoking_status 3 (148 ms) 
-                                   hypertension 0 (111 ms) 
+                            smoking_status 3 (49 ms) 
+                                   hypertension 0 (32 ms) 
                                           bmi <= 19.35 ===> NO - UNIQUE
-                                          bmi >  19.35 (77 ms) 
-                                                 Residence_type 1 (30 ms) 
-                                                        gender 1 (7 ms) 
+                                          bmi >  19.35 (25 ms) 
+                                                 Residence_type 1 (12 ms) 
+                                                        gender 1 (3 ms) 
                                                                ever_married 1 ===> YES - EMPTY_ATTS
                                                                ever_married 0 ===> YES - MEDIA
-                                                        gender 0 (8 ms) 
+                                                        gender 0 (3 ms) 
                                                                ever_married 1 ===> YES - EMPTY_ATTS
                                                                ever_married 0 ===> YES - MEDIA
                                                         gender 2 ===> YES - MEDIA
-                                                 Residence_type 0 (29 ms) 
-                                                        gender 1 (7 ms) 
+                                                 Residence_type 0 (11 ms) 
+                                                        gender 1 (0 ms) 
                                                                ever_married 1 ===> YES - EMPTY_ATTS
                                                                ever_married 0 ===> YES - MEDIA
                                                         gender 0 (10 ms) 
@@ -938,367 +938,367 @@ age >  53.0 (7.817 s)
                                                                ever_married 0 ===> YES - MEDIA
                                                         gender 2 ===> YES - MEDIA
                                    hypertension 1 ===> NO - UNIQUE
-                            smoking_status 0 (199 ms) 
-                                   ever_married 1 (170 ms) 
-                                          gender 1 (72 ms) 
-                                                 Residence_type 1 (24 ms) 
-                                                        hypertension 0 (12 ms) 
+                            smoking_status 0 (60 ms) 
+                                   ever_married 1 (58 ms) 
+                                          gender 1 (18 ms) 
+                                                 Residence_type 1 (0 ms) 
+                                                        hypertension 0 (0 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         hypertension 1 ===> NO - UNIQUE
-                                                 Residence_type 0 (23 ms) 
+                                                 Residence_type 0 (5 ms) 
                                                         bmi <= 19.35 ===> YES - MEDIA
-                                                        bmi >  19.35 (8 ms) 
+                                                        bmi >  19.35 (0 ms) 
                                                                hypertension 0 ===> YES - EMPTY_ATTS
                                                                hypertension 1 ===> YES - UNIQUE
-                                          gender 0 (66 ms) 
-                                                 hypertension 0 (25 ms) 
-                                                        Residence_type 1 (8 ms) 
+                                          gender 0 (26 ms) 
+                                                 hypertension 0 (9 ms) 
+                                                        Residence_type 1 (4 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
-                                                        Residence_type 0 (7 ms) 
+                                                        Residence_type 0 (2 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
-                                                 hypertension 1 (25 ms) 
+                                                 hypertension 1 (9 ms) 
                                                         Residence_type 1 ===> NO - UNIQUE
-                                                        Residence_type 0 (12 ms) 
+                                                        Residence_type 0 (9 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                           gender 2 ===> YES - MEDIA
                                    ever_married 0 ===> NO - UNIQUE
-                            smoking_status 2 (171 ms) 
-                                   Residence_type 1 (95 ms) 
-                                          hypertension 0 (35 ms) 
-                                                 gender 1 (19 ms) 
-                                                        ever_married 1 (7 ms) 
+                            smoking_status 2 (59 ms) 
+                                   Residence_type 1 (35 ms) 
+                                          hypertension 0 (11 ms) 
+                                                 gender 1 (5 ms) 
+                                                        ever_married 1 (1 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         ever_married 0 ===> YES - MEDIA
                                                  gender 0 ===> NO - UNIQUE
                                                  gender 2 ===> YES - MEDIA
-                                          hypertension 1 (36 ms) 
+                                          hypertension 1 (16 ms) 
                                                  gender 1 ===> NO - UNIQUE
-                                                 gender 0 (20 ms) 
-                                                        ever_married 1 (9 ms) 
+                                                 gender 0 (15 ms) 
+                                                        ever_married 1 (3 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         ever_married 0 ===> YES - MEDIA
                                                  gender 2 ===> YES - MEDIA
-                                   Residence_type 0 (49 ms) 
+                                   Residence_type 0 (17 ms) 
                                           gender 1 ===> NO - UNIQUE
-                                          gender 0 (29 ms) 
-                                                 hypertension 0 (15 ms) 
-                                                        ever_married 1 (6 ms) 
+                                          gender 0 (16 ms) 
+                                                 hypertension 0 (6 ms) 
+                                                        ever_married 1 (2 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         ever_married 0 ===> YES - MEDIA
                                                  hypertension 1 ===> NO - UNIQUE
                                           gender 2 ===> YES - MEDIA
-                     work_type 1 (546 ms) 
-                            hypertension 0 (262 ms) 
-                                   gender 1 (113 ms) 
-                                          ever_married 1 (87 ms) 
-                                                 Residence_type 1 (37 ms) 
-                                                        smoking_status 1 (8 ms) 
+                     work_type 1 (187 ms) 
+                            hypertension 0 (90 ms) 
+                                   gender 1 (36 ms) 
+                                          ever_married 1 (28 ms) 
+                                                 Residence_type 1 (16 ms) 
+                                                        smoking_status 1 (2 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         smoking_status 3 ===> YES - MEDIA
-                                                        smoking_status 0 (11 ms) 
+                                                        smoking_status 0 (6 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         smoking_status 2 ===> NO - UNIQUE
-                                                 Residence_type 0 (29 ms) 
-                                                        smoking_status 1 (8 ms) 
+                                                 Residence_type 0 (12 ms) 
+                                                        smoking_status 1 (0 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         smoking_status 3 ===> YES - MEDIA
                                                         smoking_status 0 ===> NO - UNIQUE
-                                                        smoking_status 2 (7 ms) 
+                                                        smoking_status 2 (11 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                           ever_married 0 ===> NO - UNIQUE
-                                   gender 0 (116 ms) 
-                                          Residence_type 1 (45 ms) 
+                                   gender 0 (44 ms) 
+                                          Residence_type 1 (16 ms) 
                                                  smoking_status 1 ===> NO - UNIQUE
-                                                 smoking_status 3 (21 ms) 
-                                                        ever_married 1 (7 ms) 
+                                                 smoking_status 3 (8 ms) 
+                                                        ever_married 1 (3 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         ever_married 0 ===> YES - MEDIA
                                                  smoking_status 0 ===> NO - UNIQUE
                                                  smoking_status 2 ===> NO - UNIQUE
-                                          Residence_type 0 (45 ms) 
+                                          Residence_type 0 (18 ms) 
                                                  smoking_status 1 ===> NO - UNIQUE
                                                  smoking_status 3 ===> NO - UNIQUE
-                                                 smoking_status 0 (21 ms) 
-                                                        ever_married 1 (7 ms) 
+                                                 smoking_status 0 (13 ms) 
+                                                        ever_married 1 (3 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         ever_married 0 ===> NO - UNIQUE
                                                  smoking_status 2 ===> NO - UNIQUE
                                    gender 2 ===> YES - MEDIA
-                            hypertension 1 (243 ms) 
-                                   smoking_status 1 (98 ms) 
-                                          ever_married 1 (73 ms) 
-                                                 Residence_type 1 (27 ms) 
-                                                        gender 1 (7 ms) 
+                            hypertension 1 (83 ms) 
+                                   smoking_status 1 (35 ms) 
+                                          ever_married 1 (31 ms) 
+                                                 Residence_type 1 (12 ms) 
+                                                        gender 1 (3 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
-                                                        gender 0 (7 ms) 
+                                                        gender 0 (1 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         gender 2 ===> YES - MEDIA
-                                                 Residence_type 0 (30 ms) 
-                                                        gender 1 (7 ms) 
+                                                 Residence_type 0 (12 ms) 
+                                                        gender 1 (10 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
-                                                        gender 0 (10 ms) 
+                                                        gender 0 (1 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         gender 2 ===> YES - MEDIA
                                           ever_married 0 ===> NO - UNIQUE
                                    smoking_status 3 ===> NO - UNIQUE
-                                   smoking_status 0 (104 ms) 
-                                          Residence_type 1 (41 ms) 
-                                                 ever_married 1 (23 ms) 
+                                   smoking_status 0 (34 ms) 
+                                          Residence_type 1 (9 ms) 
+                                                 ever_married 1 (1 ms) 
                                                         bmi <= 19.35 ===> YES - MEDIA
-                                                        bmi >  19.35 (9 ms) 
+                                                        bmi >  19.35 (0 ms) 
                                                                gender 1 ===> YES - UNIQUE
                                                                gender 0 ===> NO - UNIQUE
                                                                gender 2 ===> YES - MEDIA
                                                  ever_married 0 ===> YES - MEDIA
-                                          Residence_type 0 (34 ms) 
+                                          Residence_type 0 (19 ms) 
                                                  gender 1 ===> NO - UNIQUE
-                                                 gender 0 (18 ms) 
-                                                        ever_married 1 (9 ms) 
+                                                 gender 0 (6 ms) 
+                                                        ever_married 1 (3 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         ever_married 0 ===> YES - MEDIA
                                                  gender 2 ===> YES - MEDIA
                                    smoking_status 2 ===> NO - UNIQUE
-                     work_type 2 (549 ms) 
-                            gender 1 (297 ms) 
-                                   smoking_status 1 (80 ms) 
-                                          ever_married 1 (58 ms) 
-                                                 hypertension 0 (26 ms) 
+                     work_type 2 (194 ms) 
+                            gender 1 (124 ms) 
+                                   smoking_status 1 (44 ms) 
+                                          ever_married 1 (29 ms) 
+                                                 hypertension 0 (13 ms) 
+                                                        Residence_type 1 (3 ms) 
+                                                               bmi <= 19.35 ===> YES - MEDIA
+                                                               bmi >  19.35 ===> YES - EMPTY_ATTS
+                                                        Residence_type 0 (3 ms) 
+                                                               bmi <= 19.35 ===> YES - MEDIA
+                                                               bmi >  19.35 ===> YES - EMPTY_ATTS
+                                                 hypertension 1 (10 ms) 
                                                         Residence_type 1 (9 ms) 
-                                                               bmi <= 19.35 ===> YES - MEDIA
-                                                               bmi >  19.35 ===> YES - EMPTY_ATTS
-                                                        Residence_type 0 (6 ms) 
-                                                               bmi <= 19.35 ===> YES - MEDIA
-                                                               bmi >  19.35 ===> YES - EMPTY_ATTS
-                                                 hypertension 1 (17 ms) 
-                                                        Residence_type 1 (7 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         Residence_type 0 ===> YES - MEDIA
                                           ever_married 0 ===> NO - UNIQUE
-                                   smoking_status 3 (57 ms) 
-                                          hypertension 0 (40 ms) 
-                                                 ever_married 1 (24 ms) 
+                                   smoking_status 3 (26 ms) 
+                                          hypertension 0 (18 ms) 
+                                                 ever_married 1 (6 ms) 
                                                         bmi <= 19.35 ===> YES - MEDIA
-                                                        bmi >  19.35 (11 ms) 
+                                                        bmi >  19.35 (0 ms) 
                                                                Residence_type 1 ===> NO - UNIQUE
                                                                Residence_type 0 ===> YES - UNIQUE
                                                  ever_married 0 ===> YES - MEDIA
                                           hypertension 1 ===> YES - MEDIA
-                                   smoking_status 0 (61 ms) 
+                                   smoking_status 0 (28 ms) 
                                           Residence_type 1 ===> NO - UNIQUE
-                                          Residence_type 0 (36 ms) 
-                                                 hypertension 0 (18 ms) 
-                                                        ever_married 1 (10 ms) 
+                                          Residence_type 0 (22 ms) 
+                                                 hypertension 0 (13 ms) 
+                                                        ever_married 1 (4 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         ever_married 0 ===> YES - MEDIA
                                                  hypertension 1 ===> YES - MEDIA
-                                   smoking_status 2 (65 ms) 
+                                   smoking_status 2 (21 ms) 
                                           Residence_type 1 ===> NO - UNIQUE
-                                          Residence_type 0 (44 ms) 
-                                                 hypertension 0 (27 ms) 
-                                                        ever_married 1 (10 ms) 
+                                          Residence_type 0 (21 ms) 
+                                                 hypertension 0 (9 ms) 
+                                                        ever_married 1 (0 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         ever_married 0 ===> YES - MEDIA
                                                  hypertension 1 ===> YES - MEDIA
-                            gender 0 (218 ms) 
-                                   hypertension 0 (98 ms) 
-                                          ever_married 1 (63 ms) 
+                            gender 0 (56 ms) 
+                                   hypertension 0 (26 ms) 
+                                          ever_married 1 (17 ms) 
                                                  bmi <= 19.35 ===> NO - MEDIA
-                                                 bmi >  19.35 (29 ms) 
+                                                 bmi >  19.35 (12 ms) 
                                                         smoking_status 1 ===> NO - UNIQUE
                                                         smoking_status 3 ===> NO - UNIQUE
-                                                        smoking_status 0 (9 ms) 
+                                                        smoking_status 0 (4 ms) 
                                                                Residence_type 1 ===> YES - EMPTY_ATTS
                                                                Residence_type 0 ===> NO - UNIQUE
                                                         smoking_status 2 ===> NO - UNIQUE
                                           ever_married 0 ===> NO - MEDIA
-                                   hypertension 1 (87 ms) 
-                                          ever_married 1 (61 ms) 
+                                   hypertension 1 (19 ms) 
+                                          ever_married 1 (16 ms) 
                                                  bmi <= 19.35 ===> YES - MEDIA
-                                                 bmi >  19.35 (30 ms) 
+                                                 bmi >  19.35 (6 ms) 
                                                         Residence_type 1 ===> YES - UNIQUE
                                                         Residence_type 0 ===> NO - UNIQUE
                                           ever_married 0 ===> YES - MEDIA
                             gender 2 ===> YES - MEDIA
                      work_type 3 ===> YES - MEDIA
                      work_type 4 ===> YES - MEDIA
-              heart_disease 1 (1768 ms) 
-                     work_type 0 (905 ms) 
-                            smoking_status 1 (154 ms) 
-                                   gender 1 (103 ms) 
-                                          ever_married 1 (70 ms) 
-                                                 hypertension 0 (44 ms) 
-                                                        Residence_type 1 (15 ms) 
+              heart_disease 1 (614 ms) 
+                     work_type 0 (380 ms) 
+                            smoking_status 1 (35 ms) 
+                                   gender 1 (30 ms) 
+                                          ever_married 1 (17 ms) 
+                                                 hypertension 0 (10 ms) 
+                                                        Residence_type 1 (0 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
-                                                        Residence_type 0 (11 ms) 
+                                                        Residence_type 0 (9 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                  hypertension 1 ===> NO - UNIQUE
                                           ever_married 0 ===> NO - UNIQUE
                                    gender 0 ===> NO - UNIQUE
                                    gender 2 ===> YES - MEDIA
-                            smoking_status 3 (179 ms) 
-                                   hypertension 0 (137 ms) 
-                                          gender 1 (48 ms) 
-                                                 Residence_type 1 (26 ms) 
-                                                        ever_married 1 (12 ms) 
+                            smoking_status 3 (49 ms) 
+                                   hypertension 0 (47 ms) 
+                                          gender 1 (7 ms) 
+                                                 Residence_type 1 (3 ms) 
+                                                        ever_married 1 (0 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         ever_married 0 ===> YES - MEDIA
                                                  Residence_type 0 ===> NO - UNIQUE
-                                          gender 0 (55 ms) 
-                                                 ever_married 1 (33 ms) 
+                                          gender 0 (23 ms) 
+                                                 ever_married 1 (13 ms) 
                                                         bmi <= 19.35 ===> YES - MEDIA
-                                                        bmi >  19.35 (15 ms) 
+                                                        bmi >  19.35 (10 ms) 
                                                                Residence_type 1 ===> YES - EMPTY_ATTS
                                                                Residence_type 0 ===> YES - UNIQUE
                                                  ever_married 0 ===> YES - MEDIA
                                           gender 2 ===> YES - MEDIA
                                    hypertension 1 ===> NO - UNIQUE
-                            smoking_status 0 (244 ms) 
-                                   Residence_type 1 (120 ms) 
-                                          gender 1 (46 ms) 
+                            smoking_status 0 (132 ms) 
+                                   Residence_type 1 (65 ms) 
+                                          gender 1 (23 ms) 
                                                  hypertension 0 ===> YES - MEDIA
-                                                 hypertension 1 (24 ms) 
-                                                        ever_married 1 (12 ms) 
+                                                 hypertension 1 (14 ms) 
+                                                        ever_married 1 (0 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         ever_married 0 ===> YES - MEDIA
-                                          gender 0 (44 ms) 
-                                                 ever_married 1 (27 ms) 
+                                          gender 0 (24 ms) 
+                                                 ever_married 1 (14 ms) 
                                                         bmi <= 19.35 ===> YES - MEDIA
-                                                        bmi >  19.35 (13 ms) 
+                                                        bmi >  19.35 (6 ms) 
                                                                hypertension 0 ===> YES - EMPTY_ATTS
                                                                hypertension 1 ===> YES - UNIQUE
                                                  ever_married 0 ===> YES - MEDIA
                                           gender 2 ===> YES - MEDIA
-                                   Residence_type 0 (84 ms) 
+                                   Residence_type 0 (49 ms) 
                                           gender 1 ===> NO - UNIQUE
-                                          gender 0 (50 ms) 
-                                                 hypertension 0 (26 ms) 
-                                                        ever_married 1 (10 ms) 
+                                          gender 0 (30 ms) 
+                                                 hypertension 0 (14 ms) 
+                                                        ever_married 1 (0 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         ever_married 0 ===> NO - UNIQUE
                                                  hypertension 1 ===> NO - UNIQUE
                                           gender 2 ===> YES - MEDIA
-                            smoking_status 2 (273 ms) 
-                                   gender 1 (107 ms) 
-                                          ever_married 1 (43 ms) 
-                                                 Residence_type 1 (24 ms) 
+                            smoking_status 2 (150 ms) 
+                                   gender 1 (68 ms) 
+                                          ever_married 1 (28 ms) 
+                                                 Residence_type 1 (15 ms) 
                                                         bmi <= 19.35 ===> YES - MEDIA
-                                                        bmi >  19.35 (8 ms) 
+                                                        bmi >  19.35 (14 ms) 
                                                                hypertension 0 ===> NO - UNIQUE
                                                                hypertension 1 ===> YES - UNIQUE
                                                  Residence_type 0 ===> YES - MEDIA
-                                          ever_married 0 (41 ms) 
-                                                 hypertension 0 (24 ms) 
-                                                        Residence_type 1 (10 ms) 
+                                          ever_married 0 (21 ms) 
+                                                 hypertension 0 (18 ms) 
+                                                        Residence_type 1 (5 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         Residence_type 0 ===> YES - MEDIA
                                                  hypertension 1 ===> YES - MEDIA
-                                   gender 0 (135 ms) 
-                                          Residence_type 1 (52 ms) 
-                                                 ever_married 1 (30 ms) 
+                                   gender 0 (60 ms) 
+                                          Residence_type 1 (17 ms) 
+                                                 ever_married 1 (9 ms) 
                                                         bmi <= 19.35 ===> YES - MEDIA
-                                                        bmi >  19.35 (13 ms) 
+                                                        bmi >  19.35 (0 ms) 
                                                                hypertension 0 ===> YES - EMPTY_ATTS
                                                                hypertension 1 ===> YES - UNIQUE
                                                  ever_married 0 ===> YES - MEDIA
-                                          Residence_type 0 (52 ms) 
-                                                 ever_married 1 (32 ms) 
+                                          Residence_type 0 (30 ms) 
+                                                 ever_married 1 (13 ms) 
                                                         bmi <= 19.35 ===> YES - MEDIA
-                                                        bmi >  19.35 (15 ms) 
+                                                        bmi >  19.35 (5 ms) 
                                                                hypertension 0 ===> YES - EMPTY_ATTS
                                                                hypertension 1 ===> YES - UNIQUE
                                                  ever_married 0 ===> YES - MEDIA
                                    gender 2 ===> YES - MEDIA
-                     work_type 1 (320 ms) 
+                     work_type 1 (117 ms) 
                             smoking_status 1 ===> NO - UNIQUE
                             smoking_status 3 ===> NO - UNIQUE
-                            smoking_status 0 (110 ms) 
-                                   hypertension 0 (75 ms) 
+                            smoking_status 0 (49 ms) 
+                                   hypertension 0 (30 ms) 
                                           gender 1 ===> NO - UNIQUE
-                                          gender 0 (46 ms) 
-                                                 ever_married 1 (30 ms) 
-                                                        Residence_type 1 (14 ms) 
+                                          gender 0 (16 ms) 
+                                                 ever_married 1 (16 ms) 
+                                                        Residence_type 1 (5 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         Residence_type 0 ===> YES - MEDIA
                                                  ever_married 0 ===> YES - MEDIA
                                           gender 2 ===> YES - MEDIA
                                    hypertension 1 ===> NO - UNIQUE
-                            smoking_status 2 (155 ms) 
-                                   Residence_type 1 (120 ms) 
-                                          gender 1 (46 ms) 
-                                                 ever_married 1 (24 ms) 
+                            smoking_status 2 (47 ms) 
+                                   Residence_type 1 (35 ms) 
+                                          gender 1 (15 ms) 
+                                                 ever_married 1 (11 ms) 
                                                         bmi <= 19.35 ===> YES - MEDIA
-                                                        bmi >  19.35 (10 ms) 
+                                                        bmi >  19.35 (5 ms) 
                                                                hypertension 0 ===> NO - UNIQUE
                                                                hypertension 1 ===> YES - UNIQUE
                                                  ever_married 0 ===> YES - MEDIA
-                                          gender 0 (45 ms) 
-                                                 hypertension 0 (28 ms) 
-                                                        ever_married 1 (11 ms) 
+                                          gender 0 (11 ms) 
+                                                 hypertension 0 (6 ms) 
+                                                        ever_married 1 (3 ms) 
                                                                bmi <= 19.35 ===> YES - MEDIA
                                                                bmi >  19.35 ===> YES - EMPTY_ATTS
                                                         ever_married 0 ===> YES - MEDIA
                                                  hypertension 1 ===> YES - MEDIA
                                           gender 2 ===> YES - MEDIA
                                    Residence_type 0 ===> NO - UNIQUE
-                     work_type 2 (456 ms) 
-                            smoking_status 1 (140 ms) 
+                     work_type 2 (95 ms) 
+                            smoking_status 1 (24 ms) 
                                    gender 1 ===> YES - MEDIA
-                                   gender 0 (96 ms) 
+                                   gender 0 (15 ms) 
                                           bmi <= 19.35 ===> YES - MEDIA
-                                          bmi >  19.35 (57 ms) 
-                                                 hypertension 0 (32 ms) 
-                                                        ever_married 1 (12 ms) 
+                                          bmi >  19.35 (15 ms) 
+                                                 hypertension 0 (0 ms) 
+                                                        ever_married 1 (0 ms) 
                                                                Residence_type 1 ===> NO - UNIQUE
                                                                Residence_type 0 ===> YES - UNIQUE
                                                         ever_married 0 ===> YES - MEDIA
                                                  hypertension 1 ===> YES - UNIQUE
                                    gender 2 ===> YES - MEDIA
-                            smoking_status 3 (114 ms) 
-                                   hypertension 0 (81 ms) 
+                            smoking_status 3 (34 ms) 
+                                   hypertension 0 (19 ms) 
                                           ever_married 1 ===> YES - MEDIA
-                                          ever_married 0 (56 ms) 
-                                                 Residence_type 1 (29 ms) 
+                                          ever_married 0 (19 ms) 
+                                                 Residence_type 1 (10 ms) 
                                                         bmi <= 19.35 ===> YES - MEDIA
-                                                        bmi >  19.35 (12 ms) 
+                                                        bmi >  19.35 (3 ms) 
                                                                gender 1 ===> NO - UNIQUE
                                                                gender 0 ===> YES - UNIQUE
                                                                gender 2 ===> YES - MEDIA
                                                  Residence_type 0 ===> YES - MEDIA
                                    hypertension 1 ===> YES - MEDIA
-                            smoking_status 0 (140 ms) 
+                            smoking_status 0 (25 ms) 
                                    hypertension 0 ===> NO - UNIQUE
-                                   hypertension 1 (96 ms) 
-                                          ever_married 1 (62 ms) 
+                                   hypertension 1 (16 ms) 
+                                          ever_married 1 (11 ms) 
                                                  bmi <= 19.35 ===> YES - MEDIA
-                                                 bmi >  19.35 (31 ms) 
+                                                 bmi >  19.35 (11 ms) 
                                                         gender 1 ===> YES - UNIQUE
                                                         gender 0 ===> NO - UNIQUE
                                                         gender 2 ===> YES - MEDIA
