@@ -1,7 +1,9 @@
+import argparse
 from ast import For
 from datetime import date, datetime
 import sys
 import math
+from xmlrpc.client import Boolean
 import pandas as pd
 import matplotlib.pyplot as plt
 import statistics as stat
@@ -19,6 +21,15 @@ from sklearn.metrics import recall_score as recall
 warnings.filterwarnings("ignore")
 
 df = pd.read_csv("./healthcare-dataset-stroke-data.csv")
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--algoritmo", type=str, default="g02", required=False, help="Algoritmo a usar, 'g02' o 'dtc' (DecisionTreeClassifier) por defecto se usa el desarrollado por el grupo 02,")
+parser.add_argument("--oversample", type=int, default=0, required=False, help="Utilizar oversample, 0 = 'No' cualquier otro valor se toma como 'Si'")
+
+args = parser.parse_args()
+
+print("Utilizando parámetros, Algoritmo = "+args.algoritmo+", Oversample = "+str(args.oversample))
 
 #print (df.head())
 
@@ -49,33 +60,41 @@ df['work_type'] = df['work_type'].replace(['Private', 'Self-employed', 'Govt_job
 df['Residence_type'] = df['Residence_type'].replace(['Urban', 'Rural'], [1,0])
 df['smoking_status'] = df['smoking_status'].replace(['formerly smoked', 'never smoked', 'smokes', 'Unknown'], [0,1,2,3])
 
-ros = oversampler(random_state=42)
-X = df[["gender", "age", "hypertension", "heart_disease", "ever_married", "work_type", "Residence_type",
-        "avg_glucose_level", "bmi", "smoking_status"]]
-Y = df.stroke
-X, Y = ros.fit_resample(X,Y)
+if (args.oversample != 0):
+        ros = oversampler(random_state=42)
+        X = df[["gender", "age", "hypertension", "heart_disease", "ever_married", "work_type", "Residence_type",
+                "avg_glucose_level", "bmi", "smoking_status"]]
+        Y = df.stroke
+        X, Y = ros.fit_resample(X,Y)
 
-df = X
-df["stroke"] = Y
+        df = X
+        df["stroke"] = Y
 
+"""
 sns.countplot(data = df, x="stroke")
 plt.show()
+"""
 
 
-#1022 test size porque es el 20%, 5110 datos en total
-X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=1022, random_state=42)
+if (args.algoritmo == 'dtc'):
+        #1022 test size porque es el 20%, 5110 datos en total
+        X = df[["gender", "age", "hypertension", "heart_disease", "ever_married", "work_type", "Residence_type",
+                "avg_glucose_level", "bmi", "smoking_status"]]
+        Y = df.stroke
+        X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=1022, random_state=42)
 
 
-dt_clf = tree.DecisionTreeClassifier()
-dt_clf = dt_clf.fit(X_train, Y_train)
+        dt_clf = tree.DecisionTreeClassifier()
+        dt_clf = dt_clf.fit(X_train, Y_train)
 
-Y_pred = dt_clf.predict (X_test)
+        Y_pred = dt_clf.predict (X_test)
 
-print("############DecisionTreeClassifier#############")
-print("F1 -> "+str(f1 (Y_test, Y_pred)))
-print("Accuracy -> "+str(acc (Y_test, Y_pred)))
-print("Precision -> "+str(precision (Y_test, Y_pred)))
-print("Recall -> "+str(recall (Y_test, Y_pred)))
+        print("############ DecisionTreeClassifier #############\n")
+        print("F1 -> "+str(f1 (Y_test, Y_pred)))
+        print("Accuracy -> "+str(acc (Y_test, Y_pred)))
+        print("Precision -> "+str(precision (Y_test, Y_pred)))
+        print("Recall -> "+str(recall (Y_test, Y_pred)))
+        print("\n#################################################\n")
 
      
 	
@@ -338,26 +357,29 @@ def SaveId3Tree(fileName, id3tree):
 # PRUEBAS
 #########################################################################################
 
-dfGlobal = df.copy()
-#del dfGlobal["id"] #el id no puede ir ya que hace sobreajuste
 
+#Si el algoritmo no es el DecisionTreeClassifier, entonces siempre usamos el nuestro
+if (args.algoritmo != 'dtc'):
+        dfGlobal = df.copy()
+        #del dfGlobal["id"] #el id no puede ir ya que hace sobreajuste
 
-#1022 test size porque es el 20%, 5110 datos en total
-df_train, df_test = train_test_split(dfGlobal, test_size=0.2, random_state=42)
+        #1022 test size porque es el 20%, 5110 datos en total
+        df_train, df_test = train_test_split(dfGlobal, test_size=0.2, random_state=42)
 
-maxTreeLevels = 10
-ID3_tree = ID3_DecisionTree(df_train, maxTreeLevels)
-SaveId3Tree(f"G02_ID3_tree_{maxTreeLevels}.txt", ID3_tree)
+        maxTreeLevels = 10
+        ID3_tree = ID3_DecisionTree(df_train, maxTreeLevels)
+        SaveId3Tree(f"G02_ID3_tree_{maxTreeLevels}.txt", ID3_tree)
 
-predict = []
+        predict = []
 
-for index, row in df_test.iterrows():
-        eval = EvaluateTable(row, ID3_tree)
-        predict.append(eval)
+        for index, row in df_test.iterrows():
+                eval = EvaluateTable(row, ID3_tree)
+                predict.append(eval)
 
-pred = np.array(predict, dtype=int)
-print("\n############ID3_DecisionTree#############")
-print("F1 -> "+str(f1 (df_test['stroke'].values, pred)))
-print("Accuracy -> "+str(acc (df_test['stroke'].values, predict)))
-print("Precision -> "+str(precision (df_test['stroke'].values, predict)))
-print("Recall -> "+str(recall (df_test['stroke'].values, predict)))
+        pred = np.array(predict, dtype=int)
+        print("\n############ ID3_DecisionTree Implementación G02 #############")
+        print("F1 -> "+str(f1 (df_test['stroke'].values, pred)))
+        print("Accuracy -> "+str(acc (df_test['stroke'].values, predict)))
+        print("Precision -> "+str(precision (df_test['stroke'].values, predict)))
+        print("Recall -> "+str(recall (df_test['stroke'].values, predict)))
+        print("\n#############################################################\n")
