@@ -139,12 +139,7 @@ def __ID3_DecisionTree(pdf, maxLevels, FullColInfos):
                 return G02TreeSheet("ID3 Max Level", pdf["stroke"].mode().values[0])
 
         dataf = pdf.copy()
-        idColumn = GetBestAtt(dataf, FullColInfos) #Elegir un atributo y retorna la descripcion de valores para esa eleccion
-        colInfo = FullColInfos[idColumn]
-        #Crear una raíz
-        ret = G02Tree(idColumn)
-        ret.DefaultReturn = dataf["stroke"].mode().values[0]        
-
+        
         #• Si todos los ej. tienen el mismo valor → etiquetar con ese valor
         uniqueStrokes = dataf.stroke.unique()
         if(uniqueStrokes.size == 1):
@@ -153,6 +148,13 @@ def __ID3_DecisionTree(pdf, maxLevels, FullColInfos):
         #• Si no me quedan atributos → etiquetar con el valor más común
         if(dataf.columns.size == 1):
                 return G02TreeSheet("EMPTY_ATTS", dataf["stroke"].mode().values[0])
+        
+        idColumn = GetBestAtt(dataf, FullColInfos) #Elegir un atributo y retorna la descripcion de valores para esa eleccion
+        colInfo = FullColInfos[idColumn]        
+
+        #Crear una raíz
+        ret = G02Tree(idColumn)
+        ret.DefaultReturn = dataf["stroke"].mode().values[0]                
 
         #    ‣ Para cada valor vi de A 
         if(colInfo[1]):#es continuo
